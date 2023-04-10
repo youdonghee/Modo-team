@@ -1,12 +1,27 @@
-.row1{
+body,html{
   width: 100%;
-  height: 150px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.full{
+  width: 100%;
+  height: 100%;
+}
+.row1{
+  box-sizing: border-box;
+  width: 100%;
+  height: 20%;
   border: solid 1px black;
   display: flex;
   justify-content: space-between;
 }
 .row1-left{
   display: flex;
+}
+.row1-right{
+  height: 100%;
 }
 .time-main{
   width: 200px;
@@ -28,8 +43,9 @@
 }
 
 .row2{
+  box-sizing: border-box;
   width: 100%;
-  height: 350px;
+  height: 40%;
   border: solid 1px black;
 
 }
@@ -41,9 +57,9 @@
 }
 
 .row3{
-
+  box-sizing: border-box;
   width: 100%;
-  height: 435px;
+  height: 40%;
   border: solid 1px black;
   display: flex;
 
