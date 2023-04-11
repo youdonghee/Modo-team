@@ -1,0 +1,69 @@
+.row1{
+    width: 100%;
+    height: 150px;
+    border: solid 1px black;
+    display: flex;
+    justify-content: space-between;
+}
+.row1-left{
+    display: flex;
+}
+.time-main{
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+}
+.board{
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+
+}
+
+.up-percent{
+    
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+}
+
+.row2{
+    width: 100%;
+    height: 350px;
+    border: solid 1px black;
+    
+}
+
+.row2 .A,.B,.C,.D,.E{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+}
+
+.row3{
+
+    width: 100%;
+    height: 435px;
+    border: solid 1px black;
+    display: flex;
+
+}
+
+.chat{
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+}
+
+.seed-money{
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+
+}
+
+.news{
+    width: 200px;
+    height: 100px;
+    border: solid 1px black;
+}
