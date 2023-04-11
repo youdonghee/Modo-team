@@ -66,20 +66,34 @@ body,html{
 }
 
 .chat{
-  width: 200px;
-  height: 100px;
+  width: 20%;
+  height: 100%;
   border: solid 1px black;
 }
 
 .seed-money{
-  width: 200px;
-  height: 100px;
+  width: 60%;
+  height: 100%;
   border: solid 1px black;
 
 }
 
-.news{
-  width: 200px;
-  height: 100px;
+.news-container{
+  width: 20%;
+  height: 100%;
   border: solid 1px black;
+}
+.news{
+  box-sizing: border-box;
+  position: absolute;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px 10px 0 0 ;
+  padding: 15px 20px;
+  bottom: -100px;
+  border: 1px solid;
+  transition: 0.3s ease-in-out;
+}
+
+.news.Show{
+  transform: translateY(-100px);
 }
