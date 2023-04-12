@@ -32,8 +32,7 @@ function setTimer(time) {
 
 function timer() {
   if (interval == 1)return;
-  if (timeout == null) timeout = 20;
-  // timeout = 20; // 5분
+  if (timeout == null) timeout = 10;
   setTimer(1000);
 }
 function stopTimer() {
@@ -44,36 +43,72 @@ function stopTimer() {
 //   setTimer(1000);
 //   console.log("다시");
 // }
-function test1() {
+function ten() {
   if(fast) return;
   reset(interval,null,10,true)
   setTimer(1000);
-  console.log("rr");
 }
-// function fastTime() {
-//   if(fast) return;
-//   reset(interval,null,timeout,true)
-//   setTimer(500);
-//   console.log("빨리");
-// }
 const play = document.querySelector(".play");
 const timeStop = document.querySelector(".stop");
-// const skip = document.querySelector(".skip");
-const skip = document.querySelector(".test");
+const skip = document.querySelector(".ten");
 
 play.onclick = timer;
 timeStop.onclick = stopTimer;
-// skip.onclick = fastTime;
-skip.onclick = test1;
+skip.onclick = ten;
 
 // 뉴스
-let showNews = document.querySelector(".news")
-let goNews
-goNews = function(){
-  showNews.classList.add("Show");
-  setTimeout(() => {
-    showNews.classList.remove("Show");
-  }, 5000);
-}
-goNews();
+// let target = document.querySelector(".news");
+// let player = function player() {
+//   target.animate(
+//     [
+//       {
+//         transform : 'translateY(30px)',
+//         opacity: '0'
+//       },
+//       {
+//         transform : 'translate(0,0)',
+//         opacity: '1'
+//       }
+//     ], 1000
+//   )
+// }
+// 라운드 5분마다 팝업 1개씩 띄우기
+// 팝업은 10초후 사라지기
 
+// 매입 매도
+// 눌렀을때 모달팝업 뜨고
+// let target = document.querySelector(".news");
+// let player = function player() {
+//   target.animate(
+//     [
+//       {
+//         transform : 'translateY(30px)',
+//         opacity: '0'
+//       },
+//       {
+//         transform : 'translate(0,0)',
+//         opacity: '1'
+//       }
+//     ], 1000
+//   )
+// }
+// 라운드 5분마다 팝업 1개씩 띄우기
+// 팝업은 10초후 사라지기
+
+// 매입 매도
+// 눌렀을때 모달팝업 뜨고
+let open = function () {
+  document.querySelector(".modal").classList.remove("hidden");
+}
+let close = function () {
+  document.querySelector(".modal").classList.add("hidden");
+}
+document.querySelector(".A").addEventListener("click", open);
+// document.querySelector(".closeBtn").addEventListener("click", close);
+// document.querySelector(".bg").addEventListener("click", close);
+
+// 값 보내기
+function getvalueInText(i) {
+  let inputData = document.getElementById("data1").value;
+  let text = document.querySelectorAll(".vol")[i].innerHTML=inputData
+}
