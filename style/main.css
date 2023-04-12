@@ -13,7 +13,7 @@ body,html{
   box-sizing: border-box;
   width: 100%;
   height: 20%;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   display: flex;
   justify-content: space-between;
 }
@@ -36,13 +36,13 @@ body,html{
 }
 
 .up-percent{
-
   width: 200px;
   height: 100px;
   border: solid 1px black;
 }
 
 .row2{
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 40%;
@@ -51,12 +51,13 @@ body,html{
 }
 
 .row2 .A,.B,.C,.D,.E{
-  width: 100px;
-  height: 100px;
+  width: 250px;
+  height: 270px;
   border: solid 1px black;
 }
 
 .row3{
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 40%;
@@ -68,32 +69,71 @@ body,html{
 .chat{
   width: 20%;
   height: 100%;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
 
 .seed-money{
   width: 60%;
   height: 100%;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 
 }
 
+/* 뉴스 나중에 */
 .news-container{
+  position: relative;
   width: 20%;
   height: 100%;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
+
 .news{
   box-sizing: border-box;
   position: absolute;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,.2);
   border-radius: 10px 10px 0 0 ;
   padding: 15px 20px;
-  bottom: -100px;
+  width: 100%;
+  bottom: 0px;
   border: 1px solid;
   transition: 0.3s ease-in-out;
+  /* opacity: 0; */
 }
 
-.news.Show{
+/* .news.Show{
   transform: translateY(-100px);
+} */
+
+/* 모달 */
+/* 모달 배경부분임 */
+.row2 .A{
+  position: relative;
+}
+.modal{
+  position: absolute;
+  background-color: rgb(255, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal .bg{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 255, 255, 0.258);
+}
+.modalBox {
+  position: absolute;
+}
+/* .hidden {
+  display: none;
+} */
+
+/* 지갑 표 */
+.tb{
+  display: flex;
+  border: 1px solid black;
 }

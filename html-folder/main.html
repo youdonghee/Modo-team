@@ -15,8 +15,7 @@
           <div id="time">남은 시간 :</div>
           <button class="play">게임시작</button>
           <button class="stop">일시정지</button>
-          <button class="skip">넘기기</button>
-          <button class="test">넘기기</button>
+          <button class="ten">10초</button>
         </div>
   
         <div class="board">
@@ -44,11 +43,29 @@
     <div class="row2">
   
       <div style="display: flex;justify-content: space-around;">
-        <div class="A"></div>
-        <div class="B"></div>
-        <div class="C"></div>
-        <div class="D"></div>
-        <div class="E"></div>
+        <div class="A">
+        
+        
+          <button class="openBtn">열기</button>
+          <div class="modal hidden">
+            <div class="bg"></div>
+            <div class="modalBox">
+              <div>
+                <p>모달내용</p>
+              </div>
+              <div class="btn-wrap">
+                <input type="number" Id="data1">
+                <input type="button" onclick="getvalueInText(1);">
+              </div>
+            </div>
+          </div>
+        
+        
+        </div>
+        <div class="B"><button class="tesb">b</button></div>
+        <div class="C"><button class="tesb">c</button></div>
+        <div class="D"><button class="tesb">d</button></div>
+        <div class="E"><button class="tesb">e</button></div>
   
       </div>
   
@@ -63,29 +80,30 @@
         주식 그래프
         <!-- 스와이프 자리 -->
       </div>
+
       <div class="seed-money">
         지갑
-        <div class="rest-money"></div>
-        <div class="title">
-          <div class="name"></div>
-          <div class="avg-price"></div>
-          <div class="vol"></div>
-          <div class="buy-price"></div>
-          <div class="plus-minus"></div>
-          <div class="plus-minus-percent"></div>
-  
+        <div class="rest-money">내 보유현금</div>
+        <div class="title tb">
+          <div class="name tb">주식명</div>
+          <div class="avg-price tb">평균단가(매입가격*수량)+/총수량</div>
+          <div class="vol tb">수량</div>
+          <div class="buy-price tb">매입가격</div>
+          <div class="plus-minus tb">평가손익</div>
+          <div class="plus-minus-percent tb">수익률</div>
         </div>
+
         <div class="myA">
-          <div class="name"></div>
+          <div class="name">A주식</div>
           <div class="avg-price"></div>
-          <div class="vol"></div>
+          <div class="vol">0원</div>
           <div class="buy-price"></div>
           <div class="plus-minus"></div>
           <div class="plus-minus-percent"></div>
   
         </div>
         <div class="myB">
-          <div class="name"></div>
+          <div class="name">B주식</div>
           <div class="avg-price"></div>
           <div class="vol"></div>
           <div class="buy-price"></div>
@@ -94,7 +112,7 @@
   
         </div>
         <div class="myC">
-          <div class="name"></div>
+          <div class="name">C주식</div>
           <div class="avg-price"></div>
           <div class="vol"></div>
           <div class="buy-price"></div>
@@ -103,7 +121,7 @@
   
         </div>
         <div class="myD">
-          <div class="name"></div>
+          <div class="name">D주식</div>
           <div class="avg-price"></div>
           <div class="vol"></div>
           <div class="buy-price"></div>
@@ -112,7 +130,7 @@
   
         </div>
         <div class="myE">
-          <div class="name"></div>
+          <div class="name">E주식</div>
           <div class="avg-price"></div>
           <div class="vol"></div>
           <div class="buy-price"></div>
