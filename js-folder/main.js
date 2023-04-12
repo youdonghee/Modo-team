@@ -21,7 +21,10 @@ function setTimer(time) {
       timeout--;
       if (timeout < 0) {
         document.getElementById("time").innerHTML=`시간종료`
-        reset(interval,null,null,false)
+        reset(interval,null,null,false);
+        randomPrice();
+
+        timer();
       }
     }, time);
   }
@@ -31,7 +34,7 @@ function timer() {
   if (interval == 1)return;
   if (timeout == null) timeout = 20;
   // timeout = 20; // 5분
-  setTimer(2000);
+  setTimer(1000);
 }
 function stopTimer() {
   reset(interval,null,timeout,false)
@@ -72,5 +75,5 @@ goNews = function(){
     showNews.classList.remove("Show");
   }, 5000);
 }
-goNews()
+goNews();
 
