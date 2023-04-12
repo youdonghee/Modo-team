@@ -3,6 +3,7 @@ let min;
 let sec;
 let interval;
 let fast = false;
+let isModal=false;
 
 // 타이머
 function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
@@ -22,6 +23,9 @@ function setTimer(time) {
       if (timeout < 0) {
         document.getElementById("time").innerHTML=`시간종료`
         reset(interval,null,null,false)
+        randomPrice();
+
+        timer();
       }
     }, time);
   }
@@ -73,19 +77,62 @@ skip.onclick = ten;
 // 팝업은 10초후 사라지기
 
 // 매입 매도
-// 눌렀을때 모달팝업 뜨고
-let open = function () {
-  document.querySelector(".modal").classList.remove("hidden");
+let aa = document.querySelectorAll('.f');
+let bb = document.querySelectorAll('.closeBtn')
+// console.log(aa); // A f, B f 담기고
+
+let open = function (i) {
+  if(isModal){
+
+  }else{
+    isModal=true
+    let a = document.querySelectorAll(".modal");
+    console.log(a);
+    a[i].classList.remove("hidden");
+  }
 }
-let close = function () {
-  document.querySelector(".modal").classList.add("hidden");
+// 클릭
+aa.forEach(function(i,index){
+  i.onclick = function(){
+    open(index);
+  }
+})
+bb.forEach(function (i,index) {
+  i.onclick = function () {
+    close(index);
+  }
+})
+
+
+let close = function (i) {
+  let a = document.querySelectorAll(".modal");
+  a[i].classList.add("hidden");
+  setTimeout(()=>{
+    isModal=false
+  },10)
 }
-document.querySelector(".openBtn").addEventListener("click", open);
-// document.querySelector(".closeBtn").addEventListener("click", close);
+
+// aa.forEach(function(i,index){
+//   i.onclick = function(){
+//     close(index)
+//   }
+// })
+
+  
+  // document.querySelector(".A").addEventListener("click", open(0));
+  // document.querySelector(".B").addEventListener("click", open(i));
+  
+// document.querySelector(".C").addEventListener("click", open);
+// document.querySelector(".D").addEventListener("click", open);
+// document.querySelector(".E").addEventListener("click", open);
+document.querySelector(".closeBtn").addEventListener("click", close);
+
 // document.querySelector(".bg").addEventListener("click", close);
 
 // 값 보내기
 function getvalueInText(i) {
-  let inputData = document.getElementById("data1").value;
-  let text = document.querySelectorAll(".vol")[i].innerHTML=inputData
+  let inputData = document.getElementsByClassName("data")[i].value;
+  let text = document.querySelectorAll(".vol")[i += 1].innerHTML=inputData
 }
+// let testnum = [];
+// testnum.push()
