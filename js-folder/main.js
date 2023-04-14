@@ -4,6 +4,8 @@ let sec;
 let interval;
 let fast = false;
 let isModal=false;
+let count=0;
+
 
 // 타이머
 function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
@@ -11,6 +13,7 @@ function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
   interval = interValue;
   timeout = timeoutValue;
   fast = fastValue;
+
 }
 
 function setTimer(time) {
@@ -23,8 +26,8 @@ function setTimer(time) {
       if (timeout < 0) {
         document.getElementById("time").innerHTML=`시간종료`
         reset(interval,null,null,false)
-        randomPrice();
-
+        a();
+        count++;
         timer();
       }
     }, time);

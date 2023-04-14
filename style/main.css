@@ -4,8 +4,7 @@ body,html{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  /* overflow: hidden; */
+  background-color: white;
 }
 .full{
   width: 100%;
@@ -14,7 +13,7 @@ body,html{
 .row1{
   box-sizing: border-box;
   width: 100%;
-  height: 20%;
+  height: 200px;
   border: solid 1px black;
   display: flex;
   justify-content: space-between;
@@ -23,6 +22,8 @@ body,html{
   display: flex;
 }
 .row1-right{
+  
+  width: 200px;
   height: 100%;
 }
 .time-main{
@@ -38,10 +39,112 @@ body,html{
 }
 
 .up-percent{
+  margin-left: -50px;
+  width: 240px;
+  height: 100%;
+  border: solid 1px black;
+  position: relative;
+}
+/* .up-percent div{
+  
+  text-align: center;
+  width: 240px;
+  height: 10px;
+} */
+.up-percent ol{
 
+  font-family: 'godic';
   width: 200px;
   height: 100px;
-  border: solid 1px black;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -13px;
+
+  
+}
+.up-percent li{
+  
+  width: 75px;
+  height: 20px;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  text-align: left;
+
+}
+.up-percent li span{
+  float: right;
+}
+.list{
+  list-style: none;
+  
+}
+.list-title2
+{
+  font-family: 'godic';
+  text-align: center;
+  width: 240px;
+  height: 20px;
+  display: flex;
+
+}
+.list-title1{
+  font-family: 'godic';
+  width: 240px;
+  height: 20px;
+  font-size: large;
+  background-color: rgb(182, 250, 182);
+  height: 28px;
+  text-align: center;
+}
+.list-title2{
+  margin-top: 7px;
+  font-family: 'godic';
+  
+}
+.list-title2-span1{
+  /* margin-left: 30px; */
+  width: 120px;
+  text-align: center;
+}
+.list-title2-span2{
+  width: 60px;
+
+  /* margin-left: 15px; */
+}
+.list-title2-span3{
+  width: 60px;
+
+  /* margin-left: 5px; */
+}
+@font-face{
+  font-family: 'godic';
+  src: url(../style/NotoSansKR-Medium.otf) format('truetype');    
+}
+.list-flex {
+  display: flex;
+  margin-bottom: 3px;
+  
+}
+.list-flex li{
+  font-family: 'godic';
+  margin-top: -1px;
+  
+}
+.list-flex span{
+  font-family: 'digital';
+  height: 20px;
+  
+  margin-top: 2px;
+}
+.list-flex-per{
+  
+  width: 45px;
+  text-align: right;
+  font-size: small;
+}
+.list-flex-price{
+  width: 60px;
+  text-align: center;
 }
 
 .row2{
@@ -52,9 +155,7 @@ body,html{
   height: 350px;
   border: solid 1px black;
   /* background-color: #2880a0; */
-  background-color: rgb(250, 250, 250);
-
-
+  background-color: white;
 }
 
 .ABCDE{
@@ -86,14 +187,18 @@ body,html{
 }
 
 .row2 .A{
-  background-image: url(../img/경일최종.jpg);
+  background-image: url(../img/경일_검정.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+
 }
 
 .A .x,
-.B .x{
+.B .x,
+.C .x,
+.D .x,
+.E .x{
   /* border: 1px solid black; */
   display: none;
   width: 350px;
@@ -110,32 +215,37 @@ body,html{
 }
 
 .row2 .B{
-  background-image: url(../img/건설최종.jpg);
+  background-image: url(../img/cm건설_검정.png);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  
 }
 
 .row2 .C{
-  background-image: url(../img/은행최종.png);
+  background-image: url(../img/jw은행_검정.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; 
+  position: relative;
 }
 
 .row2 .D{
-  background-image: url(../img/전자최종.png);
+  background-image: url(../img/전자_검정.png);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .row2 .E{
-  background-image: url(../img/통신최종.png);
+  background-image: url(../img/통신_검정.png);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 @font-face{
   font-family: 'digital';
-  src: url(./LAB디지털.ttf) format('truetype');    
+  src: url(../style/LAB디지털.ttf) format('truetype');    
 }
 
 .price{
@@ -151,10 +261,9 @@ body,html{
   width: 30px;
   height: 50px;
   /* border: solid 1px black; */
-  background-image: url(../img/pm.png);
+  background-image: url(../img/pm_.png);
   background-repeat: no-repeat;
   background-position-x: 1px;
-  background-color: rgb(250, 250, 250);
   background-size: 100%;
   background-position-y: 13px;
 
@@ -195,20 +304,21 @@ body,html{
 }
 
 .chat{
-  width: 20%;
+  width: 50%;
   height: 100%;
   border: solid 1px black;
 }
 
 .seed-money{
-  width: 60%;
+  width: 50%;
   height: 100%;
   border: solid 1px black;
 
 }
+
 /* 뉴스 */
 .news-container{
-  width: 20%;
+  width: 0%;
   height: 100%;
   border: 1px solid black;
 }
@@ -219,7 +329,10 @@ body,html{
     position: relative;
   }
   .A .modal,
-  .B .modal{
+  .B .modal,
+  .C .modal,
+  .D .modal,
+  .E .modal{
     position: absolute;
     background-color: rgb(255, 0, 0, 0.5);
     width: 100%;
@@ -231,16 +344,26 @@ body,html{
     align-items: center;
   }
   .A .modal .bg,
-  .B .modal .bg{
+  .B .modal .bg,
+  .C .modal .bg,
+  .D .modal .bg,
+  .E .modal .bg{
+    
     width: 100%;
     height: 100%;
   }
   .A .modalBox,
-  .B .modalBox {
+  .B .modalBox,
+  .C .modalBox,
+  .D .modalBox,
+  .E .modalBox {
     position: absolute;
   }
   .A .hidden,
-  .B .hidden {
+  .B .hidden,
+  .C .hidden,
+  .D .hidden,
+  .E .hidden{
     display: none;
   }
 
