@@ -1,0 +1,380 @@
+body,html{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
+}
+.full{
+  width: 100%;
+  height: 100%;
+}
+.row1{
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+}
+.row1-left{
+  display: flex;
+}
+.row1-right{
+  
+  width: 200px;
+  height: 100%;
+}
+.time-main{
+  width: 200px;
+  height: 100px;
+  border: solid 1px black;
+}
+.board{
+  width: 200px;
+  height: 100px;
+  border: solid 1px black;
+
+}
+
+.up-percent{
+  margin-left: -50px;
+  width: 240px;
+  height: 100%;
+  border: solid 1px black;
+  position: relative;
+}
+/* .up-percent div{
+  
+  text-align: center;
+  width: 240px;
+  height: 10px;
+} */
+.up-percent ol{
+
+  font-family: 'godic';
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -13px;
+
+  
+}
+.up-percent li{
+  
+  width: 75px;
+  height: 20px;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  text-align: left;
+
+}
+.up-percent li span{
+  float: right;
+}
+.list{
+  list-style: none;
+  
+}
+.list-title2
+{
+  font-family: 'godic';
+  text-align: center;
+  width: 240px;
+  height: 20px;
+  display: flex;
+
+}
+.list-title1{
+  font-family: 'godic';
+  width: 240px;
+  height: 20px;
+  font-size: large;
+  background-color: rgb(182, 250, 182);
+  height: 28px;
+  text-align: center;
+}
+.list-title2{
+  margin-top: 7px;
+  font-family: 'godic';
+  
+}
+.list-title2-span1{
+  /* margin-left: 30px; */
+  width: 120px;
+  text-align: center;
+}
+.list-title2-span2{
+  width: 60px;
+
+  /* margin-left: 15px; */
+}
+.list-title2-span3{
+  width: 60px;
+
+  /* margin-left: 5px; */
+}
+@font-face{
+  font-family: 'godic';
+  src: url(../style/NotoSansKR-Medium.otf) format('truetype');    
+}
+.list-flex {
+  display: flex;
+  margin-bottom: 3px;
+  
+}
+.list-flex li{
+  font-family: 'godic';
+  margin-top: -1px;
+  
+}
+.list-flex span{
+  font-family: 'digital';
+  height: 20px;
+  
+  margin-top: 2px;
+}
+.list-flex-per{
+  
+  width: 45px;
+  text-align: right;
+  font-size: small;
+}
+.list-flex-price{
+  width: 60px;
+  text-align: center;
+}
+
+.row2{
+  position: relative;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 350px;
+  border: solid 1px black;
+  /* background-color: #2880a0; */
+  background-color: white;
+}
+
+.ABCDE{
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+.ABCDE span{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+
+.row2 .A,.B,.C,.D,.E{
+  margin-top: auto;
+  width: 250px;
+  height: 270px;
+  
+  border-radius: 50px;
+}
+
+@keyframes x{
+  0% {transform: scale(1); opacity: 0;}
+  95% {transform: scale(5); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.row2 .A{
+  background-image: url(../img/경일_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
+.A .x,
+.B .x,
+.C .x,
+.D .x,
+.E .x{
+  /* border: 1px solid black; */
+  display: none;
+  width: 350px;
+  height: 370px;
+  position: absolute;
+  top: -60px;
+  left: -55px;
+  background-image: url(../img/엑스최총.png);
+  background-size: cover;
+  animation-name: x;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+.row2 .B{
+  background-image: url(../img/cm건설_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  
+}
+
+.row2 .C{
+  background-image: url(../img/jw은행_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  position: relative;
+}
+
+.row2 .D{
+  background-image: url(../img/전자_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.row2 .E{
+  background-image: url(../img/통신_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+@font-face{
+  font-family: 'digital';
+  src: url(../style/LAB디지털.ttf) format('truetype');    
+}
+
+.price{
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  /* border: solid 1px black; */
+  display: flex;
+  font-family: 'digital';
+}
+
+.icon{
+  width: 30px;
+  height: 50px;
+  /* border: solid 1px black; */
+  background-image: url(../img/pm_.png);
+  background-repeat: no-repeat;
+  background-position-x: 1px;
+  background-size: 100%;
+  background-position-y: 13px;
+
+}
+.iconPlus{
+  background-position-y: -75px;
+}
+.iconMinus{
+  background-position-y: -160px;
+}
+
+.how-price{
+  width: 50px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: left;
+  line-height: 50px;
+  font-size: 30px;
+}
+.now-price{
+  width: 70px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: right;
+  line-height: 50px;
+  font-size: 30px;
+  
+}
+
+.row3{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40%;
+  border: solid 1px black;
+  display: flex;
+
+}
+
+.chat{
+  width: 20%;
+  height: 100%;
+  border: solid 1px black;
+}
+
+.seed-money{
+  width: 60%;
+  height: 100%;
+  border: solid 1px black;
+
+}
+
+.news-container{
+  position: relative;
+  width: 20%;
+  height: 100%;
+  border: solid 1px black;
+}
+.news{
+  box-sizing: border-box;
+  position: absolute;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px 10px 0 0 ;
+  padding: 15px 20px;
+  bottom: -100px;
+  border: 1px solid;
+  transition: 0.3s ease-in-out;
+}
+
+.news.Show{
+  transform: translateY(-100px);
+}
+
+/* 모달 */
+  /* 모달 배경부분임 */
+  .row2 .A{
+    position: relative;
+    z-index: 0;
+  
+  }
+  .modal{
+    position: absolute;
+    background-color: rgb(255, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .modal .bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 255, 255, 0.258);
+  }
+  .modalBox {
+    position: absolute;
+  }
+  .hidden {
+    display: none;
+  }
+  
+  /* 지갑 표 */
+  .tb{
+    display: flex;
+    border: 1px solid black;
+  }
+  .closeBtn{
+    
+    z-index: 1;
+    
+  }

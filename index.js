@@ -1,34 +1,88 @@
-let a;
-function randomNum(){
-    let a = Math.floor(Math.random()*1100);
 
-    if (a>100 && a<200)
-        a=100;
-    else if(a<100)
-        a=0;
-    else if(a>200 && a<300)
-        a=200;
-    else if(a>300 && a<400)
-        a=300;
-    else if(a>400 && a<500)
-        a=400;
-    else if(a>500 && a<600)
-        a=500;
-    else if(a>600 && a<700)
-        a=600;
-    else if(a>700 && a<800)
-        a=700;
-    else if(a>800 && a<900)
-        a=800;
-    else if(a>900 && a<1000)
-        a=900;
-    else if(a>1000)
-        a=1000;
+let chartPrice1Arr=[];
+setInterval(()=>{
+  let chartPrice1 = window.localStorage.getItem("KI학원");
+    if(chartPrice1Arr.indexOf(chartPrice1)!==-1){
 
-    console.log(a);
+    }else{
+      chartPrice1Arr.push(chartPrice1);
+          console.log(chartPrice1Arr);
+        }
+},1000);
+// window.localStorage.clear();
+
+
+  // let chartPrice1 = window.localStorage.getItem("KI학원");
+  // // if(chartPrice1Arr.indexOf(chartPrice1)!==-1){
+
+  // //       }else{
+          
+  // //             console.log(chartPrice1Arr);
+  // //           }
+  //           chartPrice1Arr.push(chartPrice1);
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  let options= {
+    
+    series: [{
+      name: "현재가",
+      data: [2000],
+    }],
+  
+    chart: {
+      height: 310,
+      type: 'line',
+      zoom: {
+        enabled: false
+      }
+    },
+    markers: {
+     size: 6,
+    },
+    dataLabels: {
+      enabled: false
+    },
+    title: {
+        text: 'KI학원',
+        align: 'middle'
+    },
+    stroke: {
+      curve: 'straight'
+    },
+    grid: {
+      row: {
+        colors: ['white', 'transparent'],
+        opacity: 0.5
+      }, 
+    },
+    xaxis: {
+      categories: ['ROUND1', 'ROUND2', 'ROUND3', 'ROUND4', 'ROUND5',
+                     'ROUND6', 'ROUND7', 'ROUND8', 'ROUND9', 'ROUND10'],
+    }
+  }
+
+   let apex = new ApexCharts(document.querySelector("#lineChart"),options);
+
+  //  options.series[0].data.push(parseInt(chartPrice1Arr[count]));
+
+    let tempCount=0;
+
+    // setInterval(()=>{
+    function ab(){
+      if(tempCount!==count){
+        options.series[0].data.push(parseInt(chartPrice1Arr[count]) )
+        apex.updateOptions(options); // 이게 차트 그려주는거
+        tempCount=count;
+      }
+      else{
         
-    return a;
-}
+      }
+    }
+    // },1000)
 
-a = randomNum();
-console.log(a);
+    apex.render();
+  
+ 
+  });
+
