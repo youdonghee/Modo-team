@@ -55,8 +55,9 @@
                   <p>모달내용</p>
                 </div>
                 <div class="btn-wrap">
-                  <input type="number" class="data">
-                  <input type="button" onclick="getvalueInText(0);">
+                  <input type="number" class="data input" style="width: 50px;">
+                  <input type="button" onclick="getvalueInText(0);" value="매수">
+                  <input type="button" onclick="setvalueInText(0);" value="매도">
                   <button class="closeBtn">닫기</button>
                 </div>
               </div>
@@ -79,8 +80,9 @@
                   <p>모달내용</p>
                 </div>
                 <div class="btn-wrap">
-                  <input type="number" class="data">
-                  <input type="button" onclick="getvalueInText(1);">
+                  <input type="number" class="data input" style="width: 50px;">
+                  <input type="button" onclick="getvalueInText(1);" value="매수">
+                  <input type="button" onclick="setvalueInText(1);" value="매도">
                   <button class="closeBtn">닫기</button>
                 </div>
               </div>
@@ -145,75 +147,72 @@
       <div class="seed-money">
         <div class="rest-money">내 보유현금</div>
         <div class="wal-contain">
-          <div class="title tb">
-            <div class="name tb">주식명</div>
-            <div class="avg-price tb">평균단가</div>
-            <div class="vol tb">수량</div>
-            <div class="buy-price tb">총 매입가격</div>
-            <div class="plus-minus tb">평가손익</div>
-            <div class="plus-minus-percent tb">수익률</div>
-          </div>
-          <div class="body">
-            <div class="myA bodyTitle">
-              <div class="name">A주식</div>
-              <div class="avg-price">sdf</div>
-              <div class="vol">(n1)+(n2)</div>
-              <div class="buy-price">구입가격*(n)</div>
-              <div class="plus-minus">dsf</div>
-              <div class="plus-minus-percent">dsf</div>
+            <div class="title tb">
+                <div class="name tb">주식명</div>
+                <div class="avg-price tb">평균단가</div>
+                <div class="vol tb">수량</div>
+                <div class="buy-price tb">총 매입가격</div>
+                <div class="plus-minus percent tb">평가손익(수익률)</div>
+                <div class="all-money tb">총 평가금액</div>
             </div>
-  
-            <div class="myB bodyTitle">
-              <div class="name">B주식</div>
-              <div class="avg-price">d</div>
-              <div class="vol">d</div>
-              <div class="buy-price">2</div>
-              <div class="plus-minus">2</div>
-              <div class="plus-minus-percent">2</div>
-  
+                <div class="body">
+                <div class="myA bodyTitle fontS">
+                    <div class="name">A주식</div>
+                    <div class="avg-price">sdf</div>
+                    <div class="vol">(n1)+(n2)</div>
+                    <div class="buy-price">구입가격*(n)</div>
+                    <div class="plus-minus percent">dsf</div>
+                    <div class="all-money">dsf</div>
+                </div>
+
+                <div class="myB bodyTitle fontS">
+                    <div class="name">B주식</div>
+                    <div class="avg-price">d</div>
+                    <div class="vol">d</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myC bodyTitle fontS">
+                    <div class="name">C주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myD bodyTitle fontS">
+                    <div class="name">D주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myE bodyTitle fontS">
+                    <div class="name">E주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+
+                </div>
             </div>
-            <div class="myC bodyTitle">
-              <div class="name">C주식</div>
-              <div class="avg-price">2</div>
-              <div class="vol">2</div>
-              <div class="buy-price">2</div>
-              <div class="plus-minus">2</div>
-              <div class="plus-minus-percent">2</div>
-  
-            </div>
-            <div class="myD bodyTitle">
-              <div class="name">D주식</div>
-              <div class="avg-price">2</div>
-              <div class="vol">2</div>
-              <div class="buy-price">2</div>
-              <div class="plus-minus">2</div>
-              <div class="plus-minus-percent">2</div>
-  
-            </div>
-            <div class="myE bodyTitle">
-              <div class="name">E주식</div>
-              <div class="avg-price">2</div>
-              <div class="vol">2</div>
-              <div class="buy-price">2</div>
-              <div class="plus-minus">2</div>
-              <div class="plus-minus-percent">2</div>
-  
-  
-            </div>
-          </div>
         </div>
-
-
-      </div>
+    </div>
 
       <div class="news-container">
-        <div class="news" id="news">
-          <P>
-            뉴스 정보
-          </P>
-        </div>
+        뉴스정보
       </div>
-      
+
+
+      </div>
+
     </div>
 
   </div>

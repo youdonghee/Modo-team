@@ -58,23 +58,10 @@ timeStop.onclick = stopTimer;
 skip.onclick = ten;
 
 // 뉴스
-// let target = document.querySelector(".news");
-// let player = function player() {
-//   target.animate(
-//     [
-//       {
-//         transform : 'translateY(30px)',
-//         opacity: '0'
-//       },
-//       {
-//         transform : 'translate(0,0)',
-//         opacity: '1'
-//       }
-//     ], 1000
-//   )
-// }
 // 라운드 5분마다 팝업 1개씩 띄우기
 // 팝업은 10초후 사라지기
+
+
 
 // 매입 매도
 let aa = document.querySelectorAll('.f');
@@ -129,10 +116,28 @@ document.querySelector(".closeBtn").addEventListener("click", close);
 
 // document.querySelector(".bg").addEventListener("click", close);
 
-// 값 보내기
-function getvalueInText(i) {
-  let inputData = document.getElementsByClassName("data")[i].value;
-  let text = document.querySelectorAll(".vol")[i += 1].innerHTML=inputData
-}
-// let testnum = [];
-// testnum.push()
+// // 매수 매도 값 보내기
+// let buyNumArr = [0, 0]; // 총수량
+// let wallet = 10000;
+// wallet = document.querySelector(".rest-money").innerHTML = `내 보유현금 : ${wallet} 원`
+// let text = document.querySelectorAll(".vol")
+
+// function getvalueInText(i) {
+//   let inputData = document.getElementsByClassName("data")[i].value;
+
+//   if (inputData <= 0) {
+//     alert("1이상의 숫자만 넣어주세요")
+//   }
+//   else{
+//     buyNumArr[i] += parseInt(inputData);
+//     console.log(buyNumArr);
+//     text[i + 1].innerHTML=buyNumArr[i]
+//   }
+//   // 인풋밸류 담기
+// }
+// // 매수 조건 1. 1이상만 가능 2. 보유현금 보다 이상으로 구매할수없음
+// // 구매하려면 : 내 현금 > 현재가*수량 
+
+// function wall() {
+//   wallet
+// }
