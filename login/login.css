@@ -6,9 +6,10 @@ body{
     position: relative;
 }
 .backimage{
+    position: relative;
     width: 100vw;
     height: 100vh;
-    /* background-image: url(../다운로드.jpeg); */
+    background-image: url(../XP-HD-Wallpapers-022.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 1;
