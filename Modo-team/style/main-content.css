@@ -1,0 +1,32 @@
+
+.main-title{
+    width: 500px;
+    height: 30px;
+    float: right;
+}
+.title
+{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.main-content{
+    width: 700px;
+    height: 300px;
+    /* float: right; */
+}
+
+
+.row1,
+.row2,
+.row3{
+    width: 700px;
+    
+}
+
+.row1{
+    display: flex;
+    height: 50px;
+}
