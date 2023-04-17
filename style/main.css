@@ -430,3 +430,32 @@ body,html{
 .title div,.fontS div{
     font-size: 17px;
 }
+
+/* 뉴스 속보 */
+.popup {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  /* transition : 속성명(변화할 CSS 속성의 이름) 지속시간 타이밍함수 */
+  transition: all 0.5s ease; 
+}
+
+.popup.show {
+  bottom: 50px;
+  opacity: 1;
+}
+/* ** 추가 됨 */
+/* 라운드 */
+.row-middle{
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-95px, 0px);
+}
