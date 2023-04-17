@@ -374,7 +374,8 @@ body{
 .admin-addsub li > div{
     width: 68px;
     height: 20px;
-    border: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -434,9 +435,17 @@ body{
 .admin-listsub li > div{
     width: 80px;
     height: 20px;
-    border: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+
+.admin-position button{
+    width: 45px;
+    height: 20px;
+    line-height: 1px;
+
 }
