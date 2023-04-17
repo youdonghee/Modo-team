@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style/main.css">
+</head>
+
+<body>
+  <div class="full">
+    <div class="row1">
+      <div class="row1-left">
+        <div class="time-main">
+          <div id="time">남은 시간 :</div>
+          <button class="play">게임시작</button>
+          <button class="stop">일시정지</button>
+          <button class="ten">10초</button>
+        </div>
+
+        <div class="board">
+          <a href="#" target="_blank">게시판</a>
+        </div>
+      </div>
+
+      <div class="row1-right">
+        <div class="up-percent">
+          <div>
+            <ul>
+              <li>주식a 상승률</li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row2">
+
+      <div class="ABCDE">
+        <div>
+          <div class="A f">
+            <div class="x"></div>
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p>모달내용</p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" class="data input" style="width: 50px;">
+                  <input type="button" onclick="getvalueInText(0);" value="매수">
+                  <input type="button" onclick="setvalueInText(0);" value="매도">
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="B f">
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p>모달내용</p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" class="data input" style="width: 50px;">
+                  <input type="button" onclick="getvalueInText(1);" value="매수">
+                  <input type="button" onclick="setvalueInText(1);" value="매도">
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="C"></div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+
+        </div>
+
+
+        
+        <div>
+          <div class="D"></div>
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+        <div>
+          <div class="E"></div>
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+    <div class="row3">
+
+      <div class="chat">
+        주식 그래프
+        <!-- 스와이프 자리 -->
+      </div>
+
+      <div class="seed-money">
+        <div class="rest-money">내 보유현금</div>
+        <div class="wal-contain">
+            <div class="title tb">
+                <div class="name tb">주식명</div>
+                <div class="avg-price tb">평균단가</div>
+                <div class="vol tb">수량</div>
+                <div class="buy-price tb">총 매입가격</div>
+                <div class="plus-minus percent tb">평가손익(수익률)</div>
+                <div class="all-money tb">총 평가금액</div>
+            </div>
+                <div class="body">
+                <div class="myA bodyTitle fontS">
+                    <div class="name">A주식</div>
+                    <div class="avg-price">sdf</div>
+                    <div class="vol">(n1)+(n2)</div>
+                    <div class="buy-price">구입가격*(n)</div>
+                    <div class="plus-minus percent">dsf</div>
+                    <div class="all-money">dsf</div>
+                </div>
+
+                <div class="myB bodyTitle fontS">
+                    <div class="name">B주식</div>
+                    <div class="avg-price">d</div>
+                    <div class="vol">d</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myC bodyTitle fontS">
+                    <div class="name">C주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myD bodyTitle fontS">
+                    <div class="name">D주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+                </div>
+                <div class="myE bodyTitle fontS">
+                    <div class="name">E주식</div>
+                    <div class="avg-price">2</div>
+                    <div class="vol">2</div>
+                    <div class="buy-price">2</div>
+                    <div class="plus-minus percent">2</div>
+                    <div class="all-money">2</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="news-container">
+        뉴스정보
+      </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+<script src="/js-folder/main.js"></script>
+<script src="/js-folder/main2.js"></script>
+
+</html>
