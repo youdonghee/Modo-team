@@ -13,6 +13,7 @@ body{
     width: 100vw;
     height: 100vh;
     position: relative;
+    user-select: none;
 }
 
 
@@ -78,6 +79,7 @@ body{
     position: absolute;
     top: 70px;
     left: 30px;
+    cursor: pointer;
 }
 
 .outground .icon-text{
@@ -86,6 +88,7 @@ body{
     left: 141px;
     font-size: 22px;
     font-weight: 800;
+    cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
@@ -100,6 +103,15 @@ body{
     height: 586px;
     background-image: url(./로그인영역.png);
     display: none;
+}
+
+.background.popup{
+    display: block;
+}
+
+.background .login-drag{
+    width: 491px;
+    height: 34px;
 }
 
 .background p,
@@ -233,6 +245,15 @@ body{
     align-items: center;
     justify-content: space-evenly;
 }
+
+.sign-div .sign-drag,
+.admin-div .admin-drag{
+    position: absolute;
+    top: 0;
+    width: 500px;
+    height: 34px;
+}
+
 
 .sign-div h1{
     position: absolute;
@@ -402,7 +423,8 @@ body{
 }
 
 .x,
-.sign-x{
+.sign-x,
+.login-x{
     position: absolute;
     right: 10px;
     top: 9px;
@@ -412,7 +434,8 @@ body{
 }
 
 .x div,
-.sign-x div{
+.sign-x div,
+.login-x div{
     position: absolute;
     width: 20px;
     height: 3px;
@@ -421,11 +444,13 @@ body{
     top: 50%;
 }
 .x div:first-child,
-.sign-x div:first-child{
+.sign-x div:first-child,
+.login-x div:first-child{
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 .x div:last-child,
-.sign-x div:last-child{
+.sign-x div:last-child,
+.login-x div:last-child{
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
@@ -451,5 +476,70 @@ body{
     width: 45px;
     height: 20px;
     line-height: 1px;
+
+}
+
+/* 하단바 통째로 넣었을 경우
+.windows-bar{
+    position: absolute;
+    width: 1920px;
+    height: 40px;
+    box-sizing: border-box;
+    background-image: url(./하단_윈도우바.png);
+    bottom: 0;
+} */
+
+.windows-bar{
+    position: absolute;
+    width: 1920px;
+    height: 40px;
+    box-sizing: border-box;
+    bottom: 0;
+    display: flex;
+}
+
+.windows-bar .windowsbar-left{
+    width: 20%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_왼쪽.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.windows-bar .windowsbar-middle{
+    width: 60%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_중앙.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.windowsbar-left p{
+    position: absolute;
+    color: white;
+    top: 10px;
+    margin: 0;
+    left: 197px;
+}
+
+.windows-bar .windowsbar-right{
+    width: 20%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_오른쪽.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.windowsbar-right .time{
+    /* width: 100px;
+    height: 40px; */
+}
+
+.windows-bar .time{
+    position: absolute;
+    color: white;
+    right: 32px;
+
+    margin: 0;
+    font-size: 15px;
+    margin-top: 10px;
 
 }

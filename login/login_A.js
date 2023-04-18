@@ -1,12 +1,22 @@
 
 //-------- 게임아이콘, 이름 더블클릭 시 로그인 팝업이 뜬다.--------------------------------------------
-let gameIcon = document.querySelector(".game-icon");
-let iconText
+let gameIcon = document.querySelector(".game-icon");        //게임 아이콘 
+let iconText = document.querySelector(".icon-text");        //게임 텍스트
+let background = document.querySelector(".background");     //로그인 영역
+let loginX = document.querySelector(".login-x");            //로그인 영역 x버튼
 
+gameIcon.ondblclick = function(){       //게임아이콘 더블클릭 시 로그인 창이 뜬다.
+    // console.log("클릭돼");
+    background.classList.toggle("popup")
+}
 
+iconText.ondblclick = function(){       //게임 이름 더블 클릭 시 로그인 창이 뜬다.
+    background.classList.toggle("popup")
+}
 
-
-
+loginX.onclick = function(){            //로그인 영역의 x버튼을 한 번 클릭 시 로그인 창이 닫힌다.
+    background.classList.remove("popup")
+}
 //-------------------------------------------------------------------------------------------------
 
 
@@ -37,7 +47,7 @@ console.log(userData);
 
 
 
-//--------- 윈도우를 열면 로컬스토리지에 어드민 계정 생성 ---------------------------------------------
+//--------- 윈도우를 열면 로컬스토리지에 어드민 계정 생성 / 윈도우 시작 오디오 재생 --------------------
 window.onload = function () {
 
     // userData = JSON.parse(localStorage.getItem('유저'));
@@ -48,6 +58,10 @@ window.onload = function () {
         // userData = JSON.parse(localStorage.getItem('유저'));
         userData = localStorage.getItem('유저');
     }
+    
+    // let audio = new Audio('./BGM/Windows XP Startup.wav')
+
+    // audio.play();
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -806,3 +820,149 @@ adminadd()
 // }
 // adminadd()
 // //--------------------------------------------------------------------------------------------------
+
+
+
+//--------- 로그인 팝업 드래그이동 -------------------------------------------------------------------
+let loginTop = document.querySelector(".login-drag");       //로그인 상단 파란영역 (클릭될 영역)
+
+let loginPress = false;      //마우스 클릭 여부
+let loginStartX;             //마우스 클릭 시작지점 X좌표
+let loginStartY;             //마우스 클릭 시작지점 Y좌표
+
+loginTop.addEventListener('mousedown', function(e){         //로그인 상단 파란 바를 클릭 시 발생되는 이벤트
+    // console.log(e);
+    loginStartX = e.clientX;             //loginStartX에 마우스 클릭이 시작되는 X축의 좌표를 구한다.
+    loginStartY = e.clientY;             //loginStartY에 마우스 클릭이 시작되는 Y축의 좌표를 구한다.
+    // console.log(loginStartX)
+    // console.log(loginStartY)
+    loginPress = true;                  //이벤트가 동작되는 중
+})
+
+
+loginTop.addEventListener('mousemove', function(e){         //로그인 상단 파란 바를 클릭한 상태로 움직이면 발생되는 이벤트
+    if(!loginPress){                    //이벤트가 동작되지 않으면 값을 리턴한다.
+        return;
+    }                                   //이벤트가 동작중이면 하단의 코드들이 실행된다.
+    let posX = loginStartX - e.clientX; //이전좌표와 현재좌표의 차이값을 저장한다.
+    let posY = loginStartY - e.clientY;
+
+    loginStartX = e.clientX;            //이전좌표에 현재 좌표 값을 대입한다.
+    loginStartY = e.clientY;
+
+    background.style.left = (background.offsetLeft - posX) + "px";      //X축 이동.
+    background.style.top = (background.offsetTop - posY) + "px";        //Y축 이동.
+
+})
+
+
+loginTop.addEventListener('mouseup', function(){        //로그인 상단 파란 바를 클릭하다가 떼면 발생하는 이벤트
+    loginPress = false;                 //이벤트가 더 이상 동작하지 않음을 알린다.
+})
+
+//--------------------------------------------------------------------------------------------------
+
+
+
+//--------- 회원가입 팝업 드래그이동 -----------------------------------------------------------------
+let signTop = document.querySelector(".sign-drag")         //회원가입 상단 파란영역 (클릭될 영역)
+
+let signPress = false;      //마우스 클릭 여부
+let signStartX;             //마우스 클릭 시작지점 X좌표
+let signStartY;             //마우스 클릭 시작지점 Y좌표
+
+signTop.addEventListener('mousedown',function(e){
+    console.log("클릭");
+    signStartX = e.clientX;
+    signStartY = e.clientY;
+
+    signPress = true;
+})
+
+signTop.addEventListener('mousemove', function(e){
+
+    if(!signPress){
+        return;
+    }
+    let posX = signStartX - e.clientX;
+    let posY = signStartY - e.clientY;
+
+    signStartX = e.clientX;
+    signStartY = e.clientY;
+
+    signDiv.style.left = (signDiv.offsetLeft - posX) + "px";
+    signDiv.style.top = (signDiv.offsetTop - posY) + "px";
+})
+
+signTop.addEventListener('mouseup',function(){
+    signPress = false;
+})
+//--------------------------------------------------------------------------------------------------
+
+
+//--------- 어드민 팝업 드래그이동 -------------------------------------------------------------------
+let adminTop = document.querySelector(".admin-drag")         //어드민 상단 파란영역 (클릭될 영역)
+
+let adminPress = false;      //마우스 클릭 여부
+let adminStartX;             //마우스 클릭 시작지점 X좌표
+let adminStartY;             //마우스 클릭 시작지점 Y좌표
+
+adminTop.addEventListener('mousedown', function(e){
+    console.log("클릭");
+    adminStartX = e.clientX;
+    adminStartY = e.clientY;
+
+    adminPress = true;
+})
+
+adminTop.addEventListener('mousemove', function(e){
+    if(!adminPress){
+        return;
+    }
+    let posX = adminStartX - e.clientX;
+    let posY = adminStartY - e.clientY; 
+
+    adminStartX = e.clientX;
+    adminStartY = e.clientY;    
+
+    adminDiv.style.left = (adminDiv.offsetLeft - posX) + "px";
+    adminDiv.style.top = (adminDiv.offsetTop - posY) + "px";
+})
+
+adminTop.addEventListener('mouseup', function(){
+    adminPress = false;
+})
+//--------------------------------------------------------------------------------------------------
+
+
+
+let time = document.querySelector(".time");
+
+function now() {
+    const date = new Date();            //현재 시간 총 데이터
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let SnM = "";
+
+    if (hour < 12) {
+        SnM = "오전"
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+    }
+    else {
+        SnM = "오후"
+        hour -= 12;
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+    }
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    time.innerHTML = `${SnM} ${hour}:${minutes}`
+}
+now();
+setInterval(now, 1000);

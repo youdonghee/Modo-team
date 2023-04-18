@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <audio src="../BGM/Windows XP Startup.wav" autoplay></audio>
     <div class="backimage">
         <div class="backbox">
             <!-------폴더 박스 위의 텍스트 ----------------------------------------------------->
@@ -20,7 +21,7 @@
             <!-------게임아이콘, 게임 설명 영역 ------------------------------------------------->
             <div class="outground">
                 <p class="folder-subtext">세상에서 가장 재미있는 게임</p>
-                <img src="./게임 아이콘.png" alt="게임 아이콘">
+                <img class="game-icon" src="./게임 아이콘.png" alt="게임 아이콘">
                 <p class="icon-text">모 & 도</p>
             </div>
             <!-- -------------------------------------------------------------------------- -->
@@ -29,7 +30,13 @@
 
             <!-------- 로그인 화면 영역 -------------------------------------------------------->
             <div class="background">
-                <p>로그인을 진행해주세요!</p>
+                <div class="login-drag">
+                    <p>로그인을 진행해주세요!</p>
+                    <div class="login-x">             <!--로그인 팝업을 닫을 수 있는 X 버튼-->
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
                 <span>로그인</span>
                 <h1>모 & 도</h1>
                 <div class="login-input">
@@ -52,13 +59,15 @@
         </div>
         <!-- ------회원가입 영역 ------------------------------------------------------- -->
         <div class="sign-div">
-            <p>회원가입을 진행해주세요!</p>
+            <div class="sign-drag">
+                <p>회원가입을 진행해주세요!</p>
+                <div class="sign-x">             <!--어드민 팝업을 닫을 수 있는 X 버튼-->
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
             <span>회원가입</span>
             <h1>회원가입</h1>
-            <div class="sign-x">             <!--어드민 팝업을 닫을 수 있는 X 버튼-->
-                <div></div>
-                <div></div>
-            </div>
             <div class="sign-subdiv">
                 <div class="sign-id">
                     <!-- <label for="">아이디</label> -->
@@ -86,14 +95,16 @@
         <!-- -------------------------------------------------------------------------- -->
         <!-- ------어드민 영역 ------------------------------------------------------- -->
         <div class="admin-div">
-            <p>회원관리 팝업</p>
-            <span>회원정보</span>
             <div class="admin-position">
-                <h1>회원정보</h1>
-                <div class="x">             <!--어드민 팝업을 닫을 수 있는 X 버튼-->
-                    <div></div>
-                    <div></div>
+                <div class="admin-drag">
+                    <p>회원관리 팝업</p>
+                    <div class="x">             <!--어드민 팝업을 닫을 수 있는 X 버튼-->
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
+                <span>회원정보</span>
+                <h1>회원정보</h1>
                 <div class="admin-addNremove">
                     <h2>가입 승인</h2>
                     <div class="admin-addsub"></div>
@@ -102,6 +113,19 @@
                     <h2>회원 목록</h2>
                     <div class="admin-listsub"></div>
                 </div>
+            </div>
+        </div>
+        <!-- 하단 바 통째로 넣었을 경우 -->
+        <!-- <div class="windows-bar">
+            <p>주식게임 모 & 도</p>
+        </div> -->
+        <div class="windows-bar">
+            <div class="windowsbar-left">
+                <p>주식게임 모 & 도</p>
+            </div>
+            <div class="windowsbar-middle"></div>
+            <div class="windowsbar-right">
+                <div class="time"></div>
             </div>
         </div>
     </div>
