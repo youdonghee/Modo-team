@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }],
   
     chart: {
-      height: 300,
+      height: 250,
       type: 'line',
       zoom: {
         enabled: false
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }],
   
     chart: {
-      height: 300,
+      height: 250,
       type: 'line',
       zoom: {
         enabled: false
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }],
   
     chart: {
-      height: 300,
+      height: 250,
       type: 'line',
       zoom: {
         enabled: false
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }],
   
     chart: {
-      height: 300,
+      height: 250,
       type: 'line',
       zoom: {
         enabled: false
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }],
   
     chart: {
-      height: 300,
+      height: 250,
       type: 'line',
       zoom: {
         enabled: false
