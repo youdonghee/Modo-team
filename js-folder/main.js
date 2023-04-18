@@ -5,12 +5,6 @@ let interval;
 let fast = false;
 let isModal=false;
 let count=0;
-
-let isModal = false;
-let count = 1;
-
-let nobuy = true;
-
 // 타이머
 function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
   clearInterval(clearIntervalValue);
