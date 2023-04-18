@@ -8,6 +8,7 @@
   position: relative;
   z-index: 7;
 }
+
 .game-finish{
   display: none;
   width: 1000px;
@@ -15,7 +16,7 @@
   border: 5px solid black;
   position: absolute;
   transform: translate(-50%,-50%);
-  top: 30%;
+  top: 50%;
   left: 50%;
   z-index: 6;
   background-color: white;
@@ -24,25 +25,36 @@
   width: 1000px;
   text-align: center;
 }
+
+.game-finish h2{
+  margin: auto;
+  width: 440px;
+  text-align: left;
+}
 .calculate{
   margin: auto 0;
   width: 1000px;
   height: 250px;
-  border: 1px solid black;
+  font-family: 'godic';
+  /* border: 1px solid black; */
   text-align: center;
+  margin-top: 15px;
 }
 .having-josik,
 .total-money{
   margin: auto;
-  width: 500px;
+  width: 400px;
   height: 40px;
-  border: 1px solid black;
+  font-family: 'godic';
+  /* border: 1px solid black; */
   text-align: left;
+  line-height: 40px;
 }
 .total-money{
   height: 110px;
   text-align: center;
   line-height: 110px;
+  font-size: xx-large;
 }
 
 .full{

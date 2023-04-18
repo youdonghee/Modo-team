@@ -13,19 +13,29 @@ let resultArr=[];
 let josikName = ["KI학원","CM건설","JW은행","JY전자","DH통신","소지금"];
 let full = document.querySelector(".full");
 let accountArr= [];
-
+let sum=[];
+let totalMoney = document.querySelector(".total-money");
 window.localStorage.clear();
-// console.log(result2);
-
-// console.log(result3);
-
-// console.log(result4);
-
-// console.log(result5);
-
-// console.log(result6);
 
 
+const loadingText = document.getElementById('loading');
+
+let count1 = 0;
+const loadingInterval = setInterval(() => {
+  if (count1 === 0) {
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다.';
+    count1++;
+  } else if (count1 === 1) {
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다..';
+    count1++;
+  } else if(count1===2){
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다...';
+    count1++;
+  } else if(count1 === 3){
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다....';
+    count1=0;
+  }
+}, 500); 
 
 
 // 타이머
@@ -80,14 +90,33 @@ console.log(accountArr);
     console.log(i);
     console.log(index);
     console.log(accountArr);
+    
+    sum.push(resultArr[index]*accountArr[index]);
+    console.log(sum[index]);
+    setTimeout(() => {
 
-    i.innerHTML =`${josikName[index]}  현재가 :${resultArr[index]} 보유 수량 : ${accountArr[index]} 총 평가금액 : ${resultArr[index]*accountArr[index]}`;
+      i.innerHTML =`${josikName[index]} / 현재가 :${resultArr[index]} / 보유 수량 : ${accountArr[index]} / 총 평가금액 : ${sum[index]}`;
     
     if(index==5){
+      if(resultArr[index] == null){
+        resultArr[index] = 10000;
+        i.innerHTML = `${josikName[index]} : ${resultArr[index]}`
+      }
+      else{
       i.innerHTML = `${josikName[index]} : ${resultArr[index]}`
+      }
     }
+    loadingText.innerHTML="정산완료!"
+    loadingText.style.textAlign="center";
+    count1=4;
+    
+    
+    
+    totalMoney.innerHTML = `최종 소지금 : ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]+Number(resultArr[5])}`
+    // ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]}
+  }, 5000);
   })
-
+  
   }
 
 

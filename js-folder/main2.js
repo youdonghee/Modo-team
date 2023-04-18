@@ -239,8 +239,6 @@ function a() {
     window.localStorage.setItem("JY전자", sumA[3]);
     window.localStorage.setItem("DH통신", sumA[4]);
     
-
-
     // let map = new Map();
 
     let arr2 = [{name: "KI학원", value : arr[0]},
@@ -394,7 +392,6 @@ function a() {
 
 wallet.innerHTML = `내 보유현금 : ${money} 원`
 console.log(money);
-window.localStorage.setItem("소지금", money);
 
 // 매수
 function getvalueInText(i) {
@@ -410,11 +407,11 @@ function getvalueInText(i) {
         document.getElementsByClassName("data")[i].value = ""
     }
 
-
     else if (money >= nowPrice[i].innerHTML * inputData) {
         // 보유현금
         money = money - (nowPrice[i].innerHTML * inputData)
         wallet.innerHTML = `내 보유현금 : ${money} 원`
+        window.localStorage.setItem("소지금", money);
 
         // 수량
         buyNumArr[i] += Number(inputData);
@@ -547,9 +544,6 @@ function setvalueInText(i) {
     }
     close(i);
 }
-
-
-
 
 // 오류 
 // 상폐됐을떄 NaN 처리해주기
