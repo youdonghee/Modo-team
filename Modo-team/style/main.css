@@ -1,0 +1,572 @@
+body,html{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
+}
+.full{
+  width: 100%;
+  height: auto;
+  border-left: 3px solid rgb(0, 85, 229);
+  border-right: 3px solid rgb(0, 85, 229);
+  border-bottom: 3px solid rgb(0, 85, 229);
+  box-sizing: border-box;
+}
+.full-top{
+  width: 100%;
+  height: 30px;
+  background-image: url(../게임_상단바.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.row1{
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  /* border: solid 1px black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.row1-left{
+  display: flex;
+}
+.row1-right{
+  
+  width: 200px;
+  height: 100%;
+}
+.time-main{
+  position: relative;
+  width: 250px;
+  height: 180px;
+  border: solid 3px rgb(203, 203, 203);
+  margin-left: 50px;
+  border-radius: 10px;
+}
+.time-main h3{
+  position: absolute;
+  margin: 0;
+  top: -12px;
+  background: white;
+  margin-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.time-main #time{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.time-main .time-btn{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(0,-50%);
+}
+.board{
+  position: relative;
+  width: 200px;
+  height: 180px;
+  border: solid 3px rgb(203, 203, 203);
+  margin-left: 50px;
+  border-radius: 10px;
+
+}
+.board h3,
+.seed-box h3{
+  position: absolute;
+  margin: 0;
+  top: -12px;
+  background: white;
+  margin-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.board .board-img{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url(../게시판_아이콘.png);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+}
+
+.board p{
+  position: absolute;
+  width: 150px;
+  bottom: 10px;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%);
+}
+/* 라운드 */
+.row-middle{
+  width: 400px;
+  height: 180px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transform: translate(-95px, 0px); */
+}
+.row1-right {
+  width: 300px;
+  height: 180px;
+  margin-right: 50px;
+}
+.up-percent{
+  /* margin-left: -50px; */
+  width: 300px;
+  height: 180px;
+  border: solid 3px rgb(203, 203, 203);
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+/* .up-percent div{
+  
+  text-align: center;
+  width: 240px;
+  height: 10px;
+} */
+.up-percent ol{
+
+  font-family: 'godic';
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -1px;
+
+  
+}
+.up-percent li{
+  
+  width: 75px;
+  height: 20px;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  text-align: left;
+
+}
+.up-percent li span{
+  float: right;
+}
+.list{
+  list-style: none;
+  
+}
+.list-title2
+{
+  font-family: 'godic';
+  text-align: center;
+  width: 240px;
+  height: 20px;
+  display: flex;
+
+}
+.list-title1{
+  font-family: 'godic';
+  position: absolute;
+  left: 20px;
+  top: -16px;
+  font-size: large;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;  
+}
+.list-title2{
+  margin-top: 7px;
+  font-family: 'godic';
+  margin-left: 15px;
+  
+}
+.list-title2-span1{
+  /* margin-left: 30px; */
+  width: 120px;
+  text-align: center;
+}
+.list-title2-span2{
+  width: 60px;
+
+  /* margin-left: 15px; */
+}
+.list-title2-span3{
+  width: 60px;
+
+  /* margin-left: 5px; */
+}
+@font-face{
+  font-family: 'godic';
+  src: url(../style/NotoSansKR-Medium.otf) format('truetype');    
+}
+.list-flex {
+  display: flex;
+  margin-bottom: 3px;
+  
+}
+.list-flex li{
+  font-family: 'godic';
+  margin-top: -1px;
+  
+}
+.list-flex span{
+  font-family: 'digital';
+  height: 20px;
+  
+  margin-top: 2px;
+}
+.list-flex-per{
+  
+  width: 45px;
+  text-align: right;
+  font-size: small;
+}
+.list-flex-price{
+  width: 60px;
+  text-align: center;
+}
+
+.row2{
+  position: relative;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 320px;
+  /* border: solid 1px black; */
+  /* background-color: #2880a0; */
+  background-color: white;
+}
+
+.ABCDE{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+.ABCDE span{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+
+.row2 .A,.B,.C,.D,.E{
+  margin-top: auto;
+  width: 250px;
+  height: 270px;
+  
+  border-radius: 50px;
+}
+
+@keyframes x{
+  0% {transform: scale(1); opacity: 0;}
+  95% {transform: scale(5); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.row2 .A{
+  background-image: url(../img/경일_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
+.A .x,
+.B .x,
+.C .x,
+.D .x,
+.E .x{
+  /* border: 1px solid black; */
+  display: none;
+  width: 350px;
+  height: 370px;
+  position: absolute;
+  top: -60px;
+  left: -55px;
+  background-image: url(../img/엑스최총.png);
+  background-size: cover;
+  animation-name: x;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+.row2 .B{
+  background-image: url(../img/cm건설_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  
+}
+
+.row2 .C{
+  background-image: url(../img/jw은행_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  position: relative;
+}
+
+.row2 .D{
+  background-image: url(../img/전자_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.row2 .E{
+  background-image: url(../img/통신_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+@font-face{
+  font-family: 'digital';
+  src: url(../style/LAB디지털.ttf) format('truetype');    
+}
+
+.price{
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  /* border: solid 1px black; */
+  display: flex;
+  font-family: 'digital';
+}
+
+.icon{
+  width: 30px;
+  height: 50px;
+  /* border: solid 1px black; */
+  background-image: url(../img/pm_.png);
+  background-repeat: no-repeat;
+  background-position-x: 1px;
+  background-size: 100%;
+  background-position-y: 13px;
+
+}
+.iconPlus{
+  background-position-y: -75px;
+}
+.iconMinus{
+  background-position-y: -160px;
+}
+
+.how-price{
+  width: 50px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: left;
+  line-height: 50px;
+  font-size: 30px;
+}
+.now-price{
+  width: 70px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: right;
+  line-height: 50px;
+  font-size: 30px;
+  
+}
+
+.row3{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 350px;
+  /* border: solid 1px black; */
+  display: flex;
+
+}
+
+.chat{
+  position: absolute;
+  width: 50%;
+  height: 350px;
+}
+.chat .chat-box{
+  position: absolute;
+  width: 700px;
+  height: 300px;
+  border: solid 3px rgb(203, 203, 203);
+  border-radius: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.seed-money{
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  height: 350px;
+
+}
+
+.seed-money .seed-box{
+  position: absolute;
+  width: 900px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: solid 3px rgb(203, 203, 203);
+
+}
+.seed-box .rest-money{
+  position: absolute;
+  right: 45px;
+  top: 10px;
+  font-size: 20px;
+}
+/* 뉴스
+.news-container{
+  width: 0%;
+  height: 100%;
+  border: 1px solid black;
+} */
+
+/* 모달 */
+  /* 모달 배경부분임 */
+  .row2 .A, .row2 .B, .row2 .C, .row2 .D, .row2 .E{
+    position: relative;
+  }
+  .A .modal,
+  .B .modal,
+  .C .modal,
+  .D .modal,
+  .E .modal{
+    position: absolute;
+    background-color: rgb(255, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .A .modal .bg,
+  .B .modal .bg,
+  .C .modal .bg,
+  .D .modal .bg,
+  .E .modal .bg{
+    
+    width: 100%;
+    height: 100%;
+  }
+  .A .modalBox,
+  .B .modalBox,
+  .C .modalBox,
+  .D .modalBox,
+  .E .modalBox {
+    position: absolute;
+  }
+  .A .hidden,
+  .B .hidden,
+  .C .hidden,
+  .D .hidden,
+  .E .hidden{
+    display: none;
+  }
+
+/* 지갑 표 */
+/* .seed-money{
+  display: inline-block;
+}
+.seed-money .title{
+  display: flex;
+}
+.tb{
+  border: 1px solid black;
+}
+.seed-money .name{
+  width: 10%;
+  background-color: yellow;
+} */
+/* .seed-money .rest-money{
+  width: 100%;
+  height: 10%;
+} */
+.seed-money .wal-contain{
+  width: 100%;
+  height: 100%;
+}
+.seed-money .title > div,
+.seed-money .bodyTitle > div{
+  display: inline-block;
+  /* background-color: yellow; */
+  text-align: center;
+  padding: 9px 0;
+}
+/* .seed-money .body{
+  display: inline-block;
+} */
+.seed-money .title,
+.seed-money .name,
+.rest-money{
+  font-weight: 800;
+}
+.seed-money .name{
+  width: 15%;
+}
+.seed-money .avg-price{
+  width: 15%;
+}
+.seed-money .vol{
+  width: 10%;
+}
+.seed-money .buy-price{
+  width: 15%;
+}
+.seed-money .plus-minus{
+  width: 25%;
+}
+.seed-money .plus-minus-percent{
+  width: 20%;
+}
+.seed-money .all-money{
+  width: 20%;
+}
+.title,
+.bodyTitle{
+    font-size: 0;
+}
+.title div,.fontS div{
+    font-size: 17px;
+}
+.title{
+  margin-top: 40px;
+}
+/* 뉴스 속보 */
+.popup {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  /* transition : 속성명(변화할 CSS 속성의 이름) 지속시간 타이밍함수 */
+  transition: all 0.5s ease; 
+}
+
+.popup.show {
+  bottom: 50px;
+  opacity: 1;
+}

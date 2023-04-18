@@ -1,0 +1,627 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,html{
+  font-family: 'GmarketSansMedium';
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+body{
+  background-image: url(/login/배경화면_초원.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.full{
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  background-color: #efeee2;
+  border-left: 3px solid rgb(0, 85, 229);
+  border-right: 3px solid rgb(0, 85, 229);
+  border-bottom: 3px solid rgb(0, 85, 229);
+  box-sizing: border-box;
+  left: 50%;
+  transform: translate(-50%);
+}
+.full-top{
+  position: absolute;
+  z-index: 1;
+  width: 80%;
+  height: 30px;
+  background-image: url(../게임_상단바.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 50%;
+  transform: translate(-50%);
+}
+.full-top p{
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  font-size: 16px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+.row1{
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  box-sizing: border-box;
+  width: 95%;
+  height: 200px;
+  /* border: solid 1px black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.row1-left{
+  display: flex;
+}
+.row1-right{
+  
+  width: 200px;
+  height: 100%;
+}
+.time-main{
+  position: relative;
+  width: 250px;
+  height: 192px;
+  background-image: url(../영역_게임시간.png);
+}
+.time-main h3{
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  margin-left: 13px;
+  padding-right: 10px;
+}
+.time-main #time{
+  position: absolute;
+  top: 60px;
+  left: 20px;
+}
+
+.time-main .time-btn{
+  position: absolute;
+  top: 65%;
+  left: 10%;
+  transform: translate(0,-50%);
+}
+.time-btn .play,
+.time-btn .stop,
+.time-btn .ten{
+  cursor: pointer;
+}
+.board{
+  position: relative;
+  width: 210px;
+  height: 192px;
+  margin-left: 50px;
+  background-image: url(../영역_게시판.png);
+
+}
+.board .board-inner{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  top: 55%;
+  transform: translate(0,-50%);
+  
+
+}
+.board h3,
+.seed-box h3{
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  margin-left: 13px;
+  padding-right: 10px;
+}
+
+.board .board-img{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 10px;
+  background-image: url(../게시판_아이콘.png);
+  background-size: cover;
+
+}
+
+.board p{
+  position: absolute;
+  left: 70px;
+
+}
+/* 라운드 */
+.row-middle{
+  width: 490px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transform: translate(-95px, 0px); */
+  flex-direction: column;
+}
+.row-middle p{
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.row-middle div{
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+.row1-right {
+  width: 300px;
+  height: 192px;
+  margin-left: 50px;
+}
+.up-percent{
+  /* margin-left: -50px; */
+  width: 300px;
+  height: 192px;
+  background-image: url(../영역_주식등락률.png);
+  position: relative;
+  background-size: cover;
+
+}
+/* .up-percent div{
+  
+  text-align: center;
+  width: 240px;
+  height: 10px;
+} */
+.up-percent ol{
+
+  font-family: 'godic';
+  width: 200px;
+  height: 130px;
+  position: absolute;
+  margin: 0;
+  margin-top: 8px;
+  margin-left: -1px;
+  bottom: 5px;
+
+  
+}
+.up-percent li{
+  
+  width: 75px;
+  height: 20px;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  text-align: left;
+
+}
+.up-percent li span{
+  float: right;
+}
+.list{
+  list-style: none;
+  
+}
+.list-title2
+{
+  font-family: 'godic';
+  text-align: center;
+  width: 240px;
+  height: 20px;
+  display: flex;
+  margin-top: 7px;
+  margin-left: 15px;
+  position: absolute;
+  top: 25px;
+
+}
+.list-title1{
+  font-family: 'godic';
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  font-size: large;
+}
+
+.list-title2-span1{
+  /* margin-left: 30px; */
+  width: 120px;
+  text-align: center;
+}
+.list-title2-span2{
+  width: 60px;
+
+  /* margin-left: 15px; */
+}
+.list-title2-span3{
+  width: 60px;
+
+  /* margin-left: 5px; */
+}
+@font-face{
+  font-family: 'godic';
+  src: url(../style/NotoSansKR-Medium.otf) format('truetype');    
+}
+.list-flex {
+  display: flex;
+  margin-bottom: 3px;
+  
+}
+.list-flex li{
+  font-family: 'godic';
+  margin-top: -1px;
+  
+}
+.list-flex span{
+  font-family: 'digital';
+  height: 20px;
+  
+  margin-top: 2px;
+}
+.list-flex-per{
+  
+  width: 45px;
+  text-align: right;
+  font-size: small;
+}
+.list-flex-price{
+  width: 60px;
+  text-align: center;
+}
+
+.row2{
+  position: relative;
+  box-sizing: border-box;
+  width: 95%;
+  height: 330px;
+  top: 245px;
+  left: 50%;
+  transform: translate(-50%);
+  /* border: solid 1px black; */
+  /* background-color: #2880a0; */
+  background-color: white;
+  border: 3px solid #d2d2d2;
+  margin-top: 10px;
+}
+
+.ABCDE{
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+.ABCDE span{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+
+.row2 .A,.B,.C,.D,.E{
+  margin-top: auto;
+  width: 250px;
+  height: 270px;
+  
+  border-radius: 50px;
+}
+
+@keyframes x{
+  0% {transform: scale(1); opacity: 0;}
+  95% {transform: scale(5); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.row2 .A{
+  background-image: url(../img/경일_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
+.A .x,
+.B .x,
+.C .x,
+.D .x,
+.E .x{
+  /* border: 1px solid black; */
+  display: none;
+  width: 350px;
+  height: 370px;
+  position: absolute;
+  top: -60px;
+  left: -55px;
+  background-image: url(../img/엑스최총.png);
+  background-size: cover;
+  animation-name: x;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+.row2 .B{
+  background-image: url(../img/cm건설_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  
+}
+
+.row2 .C{
+  background-image: url(../img/jw은행_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  position: relative;
+}
+
+.row2 .D{
+  background-image: url(../img/전자_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.row2 .E{
+  background-image: url(../img/통신_검정.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+@font-face{
+  font-family: 'digital';
+  src: url(../style/LAB디지털.ttf) format('truetype');    
+}
+
+.price{
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  /* border: solid 1px black; */
+  display: flex;
+  font-family: 'digital';
+}
+
+.icon{
+  width: 30px;
+  height: 50px;
+  /* border: solid 1px black; */
+  background-image: url(../img/pm_.png);
+  background-repeat: no-repeat;
+  background-position-x: 1px;
+  background-size: 100%;
+  background-position-y: 13px;
+
+}
+.iconPlus{
+  background-position-y: -75px;
+}
+.iconMinus{
+  background-position-y: -160px;
+}
+
+.how-price{
+  width: 50px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: left;
+  line-height: 50px;
+  font-size: 30px;
+}
+.now-price{
+  width: 70px;
+  height: 50px;
+  /* border: solid 1px black; */
+  text-align: right;
+  line-height: 50px;
+  font-size: 30px;
+  
+}
+
+.row3{
+  position: relative;
+  top: 245px;
+  box-sizing: border-box;
+  width: 95%;
+  left: 50%;
+  transform: translate(-50%);
+  height: 350px;
+  /* border: solid 1px black; */
+  display: flex;
+
+}
+
+.chat{
+  position: absolute;
+  width: 50%;
+  height: 340px;
+}
+.chat .chat-box{
+  position: absolute;
+  width: 700px;
+  height: 300px;
+  border: solid 3px rgb(203, 203, 203);
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.seed-money{
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  height: 340px;
+
+}
+
+.seed-money .seed-box{
+  position: absolute;
+  width: 670px;
+  height: 306px;
+  right: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+  box-sizing: border-box;
+  background-image: url(../영역_보유금액.png);
+}
+.seed-box .rest-money{
+  position: absolute;
+  right: 45px;
+  top: 40px;
+  font-size: 20px;
+}
+/* 뉴스
+.news-container{
+  width: 0%;
+  height: 100%;
+  border: 1px solid black;
+} */
+
+/* 모달 */
+  /* 모달 배경부분임 */
+  .row2 .A, .row2 .B, .row2 .C, .row2 .D, .row2 .E{
+    position: relative;
+  }
+  .A .modal,
+  .B .modal,
+  .C .modal,
+  .D .modal,
+  .E .modal{
+    position: absolute;
+    background-color: rgb(255, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .A .modal .bg,
+  .B .modal .bg,
+  .C .modal .bg,
+  .D .modal .bg,
+  .E .modal .bg{
+    
+    width: 100%;
+    height: 100%;
+  }
+  .A .modalBox,
+  .B .modalBox,
+  .C .modalBox,
+  .D .modalBox,
+  .E .modalBox {
+    position: absolute;
+  }
+  .A .hidden,
+  .B .hidden,
+  .C .hidden,
+  .D .hidden,
+  .E .hidden{
+    display: none;
+  }
+
+/* 지갑 표 */
+/* .seed-money{
+  display: inline-block;
+}
+.seed-money .title{
+  display: flex;
+}
+.tb{
+  border: 1px solid black;
+}
+.seed-money .name{
+  width: 10%;
+  background-color: yellow;
+} */
+/* .seed-money .rest-money{
+  width: 100%;
+  height: 10%;
+} */
+.seed-money .wal-contain{
+  width: 100%;
+  height: auto;
+}
+.seed-money .title > div,
+.seed-money .bodyTitle > div{
+  display: inline-block;
+  /* background-color: yellow; */
+  text-align: center;
+  padding: 7px 0;
+}
+/* .seed-money .body{
+  display: inline-block;
+} */
+.seed-money .title,
+.seed-money .name,
+.rest-money{
+  font-weight: 800;
+}
+.seed-money .name{
+  width: 15%;
+}
+.seed-money .avg-price{
+  width: 15%;
+}
+.seed-money .vol{
+  width: 10%;
+}
+.seed-money .buy-price{
+  width: 15%;
+}
+.seed-money .plus-minus{
+  width: 25%;
+}
+.seed-money .plus-minus-percent{
+  width: 20%;
+}
+.seed-money .all-money{
+  width: 20%;
+}
+.title,
+.bodyTitle{
+    font-size: 0;
+}
+.title div,.fontS div{
+    font-size: 17px;
+}
+.title{
+  margin-top: 70px;
+}
+/* 뉴스 속보 */
+.popup {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  /* transition : 속성명(변화할 CSS 속성의 이름) 지속시간 타이밍함수 */
+  transition: all 0.5s ease; 
+}
+
+.popup.show {
+  bottom: 50px;
+  opacity: 1;
+}

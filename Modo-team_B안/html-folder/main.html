@@ -1,0 +1,440 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <style>
+    #lineChart,
+    #lineChart2,
+    #lineChart3,
+    #lineChart4,
+    #lineChart5 {
+      width: 650px;
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="full-top">
+    <p>멘트 입력</p>
+  </div>
+  <div class="full">
+    <div class="row1">
+      <div class="row1-left">
+        <div class="time-main">
+          <h3>게임시간</h3>
+          <div id="time">남은 시간 :</div>
+          <div class="time-btn">
+            <button class="play">게임시작</button>
+            <button class="stop">일시정지</button>
+            <button class="ten">10초</button>
+          </div>
+        </div>
+
+        <div class="board">
+          <h3>게시판</h3>
+          <div class="board-inner">
+            <div class="board-img"></div>
+            <p>게시판으로 이동</p>
+          </div>
+          <!-- <a href="#" target="_blank">게시판</a> -->
+        </div>
+
+        <div class="row1-right">
+          <div class="up-percent">
+            <div class="list-title1">주식 등락률</div>
+            <div class="list-title2">
+              <div class="list-title2-span1">종목명</div>
+              <div class="list-title2-span2">현재가</div>
+              <div class="list-title2-span3">등락률</div>
+  
+  
+            </div>
+  
+            <ol>
+              <div class="list-flex">
+                <div>1.&nbsp&nbsp</div>
+                <li class="list">KI학원</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+              </div>
+              <div class="list-flex">
+                <div>2.&nbsp&nbsp</div>
+                <li class="list">CM건설</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+              </div>
+              <div class="list-flex">
+                <div>3.&nbsp&nbsp</div>
+                <li class="list">JW은행</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+              </div>
+              <div class="list-flex">
+                <div>4.&nbsp&nbsp</div>
+                <li class="list">JY전자</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+              </div>
+              <div class="list-flex">
+                <div>5.&nbsp&nbsp</div>
+                <li class="list">DH통신</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+              </div>
+              <!-- <li class="list">CM건설<span>0%</span></li>
+                <li class="list">JW은행<span>0%</span></li>
+                <li class="list">JY전자<span>0%</span></li>
+                <li class="list">DH통신<span>0%</span></li> -->
+            </ol>
+  
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row-middle">
+        <p>MO & DO</p>
+        <div class="round">
+          ROUND 1 / 10
+        </div>
+      </div>
+
+
+      <!-- 원래 주식 등락률 자리 -->
+
+
+    </div>
+
+    <div class="row2">
+
+      <div class="ABCDE">
+        <div>
+
+          <div class="A f">
+            <div class="x"></div>
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p></p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" min="1" class="data input" style="width: 50px;">
+                  <input class="btn1" type="button" onclick="getvalueInText(0);" value="매수">
+                  <input class="btn2" type="button" onclick="setvalueInText(0);" value="매도">
+                  <!-- <input type="button" onclick="getvalueInText(0);" value="매수">
+                    <input type="button" onclick="setvalueInText(0);" value="매도"> -->
+                  <button class="closeBtn">닫기</button>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+
+
+        <div>
+          <div class="B f">
+            <div class="x"></div>
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p></p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" min="1" class="data input" style="width: 50px;">
+                  <input class="btn1" type="button" onclick="getvalueInText(1);" value="매수">
+                  <input class="btn2" type="button" onclick="setvalueInText(1);" value="매도">
+                  <!-- <input type="button" onclick="getvalueInText(1);" value="매수">
+                    <input type="button" onclick="setvalueInText(1);" value="매도"> -->
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+
+
+
+        <div>
+          <div class="C f">
+            <div class="x"></div>
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p></p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" min="1" class="data input" style="width: 50px;">
+                  <input class="btn1" type="button" onclick="getvalueInText(2);" value="매수">
+                  <input class="btn2" type="button" onclick="setvalueInText(2);" value="매도">
+                  <!-- <input type="button" onclick="getvalueInText(2);" value="매수">
+                  <input type="button" onclick="setvalueInText(2);" value="매도"> -->
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="D f">
+            <div class="x"></div>
+
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p></p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" min="1" class="data input" style="width: 50px;">
+                  <input class="btn1" type="button" onclick="getvalueInText(3);" value="매수">
+                  <input class="btn2" type="button" onclick="setvalueInText(3);" value="매도">
+                  <!-- <input type="button" onclick="getvalueInText(3);" value="매수">
+                  <input type="button" onclick="setvalueInText(3);" value="매도"> -->
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+        <div>
+          <div class="E f">
+            <div class="x"></div>
+
+            <div class="modal hidden">
+              <div class="bg"></div>
+              <div class="modalBox">
+                <div>
+                  <p></p>
+                </div>
+                <div class="btn-wrap">
+                  <input type="number" min="1" class="data input" style="width: 50px;">
+                  <input class="btn1" type="button" onclick="getvalueInText(4);" value="매수">
+                  <input class="btn2" type="button" onclick="setvalueInText(4);" value="매도">
+                  <!-- <input type="button" onclick="getvalueInText(4);" value="매수">
+                    <input type="button" onclick="setvalueInText(4);" value="매도"> -->
+                  <button class="closeBtn">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">
+            <div class="icon"></div>
+            <div class="how-price"></div>
+            <span>현재가</span>
+            <div class="now-price">2000</div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+    <div class="row3">
+
+      <div class="chat">
+        <div class="chat-box">
+
+          <!-- 스와이프 자리 -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div id="lineChart"></div>
+              </div>
+              <div class="swiper-slide">
+                <div id="lineChart2"></div>
+              </div>
+              <div class="swiper-slide">
+                <div id="lineChart3"></div>
+              </div>
+              <div class="swiper-slide">
+                <div id="lineChart4"></div>
+              </div>
+              <div class="swiper-slide">
+                <div id="lineChart5"></div>
+              </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="seed-money">
+        <div class="seed-box">
+          <h3>보유금액</h3>
+          <div class="rest-money">내 보유현금</div>
+          <div class="wal-contain">
+            <div class="title tb">
+              <div class="name tb">주식명</div>
+              <div class="avg-price tb">평균단가</div>
+              <div class="vol tb">수량</div>
+              <div class="buy-price tb">총 매입가격</div>
+              <div class="plus-minus percent tb">평가손익(수익률)</div>
+              <div class="all-money tb">총 평가금액</div>
+            </div>
+            <div class="body">
+              <div class="myA bodyTitle fontS">
+                <div class="name">A주식</div>
+                <div class="avg-price"></div>
+                <div class="vol"></div>
+                <div class="buy-price"></div>
+                <div class="plus-minus percent"></div>
+                <div class="all-money"></div>
+              </div>
+
+              <div class="myB bodyTitle fontS">
+                <div class="name">B주식</div>
+                <div class="avg-price"></div>
+                <div class="vol"></div>
+                <div class="buy-price"></div>
+                <div class="plus-minus percent"></div>
+                <div class="all-money"></div>
+
+              </div>
+              <div class="myC bodyTitle fontS">
+                <div class="name">C주식</div>
+                <div class="avg-price"></div>
+                <div class="vol"></div>
+                <div class="buy-price"></div>
+                <div class="plus-minus percent"></div>
+                <div class="all-money"></div>
+
+              </div>
+              <div class="myD bodyTitle fontS">
+                <div class="name">D주식</div>
+                <div class="avg-price"></div>
+                <div class="vol"></div>
+                <div class="buy-price"></div>
+                <div class="plus-minus percent"></div>
+                <div class="all-money"></div>
+
+              </div>
+              <div class="myE bodyTitle fontS">
+                <div class="name">E주식</div>
+                <div class="avg-price"></div>
+                <div class="vol"></div>
+                <div class="buy-price"></div>
+                <div class="plus-minus percent"></div>
+                <div class="all-money"></div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-container">
+      </div>
+
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+</body>
+<script src="../js-folder/main.js"></script>
+<script src="../js-folder/main2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
+<script src="../js-folder/index.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+</html>
