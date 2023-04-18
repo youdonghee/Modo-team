@@ -12,6 +12,7 @@ let havingjosik = document.querySelectorAll(".having-josik");
 let resultArr=[];
 let josikName = ["KI학원","CM건설","JW은행","JY전자","DH통신","소지금"];
 let full = document.querySelector(".full");
+let fullTop=document.querySelector(".full-top");
 let accountArr= [];
 let sum=[];
 let totalMoney = document.querySelector(".total-money");
@@ -45,6 +46,7 @@ function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
   timeout = timeoutValue;
   fast = fastValue;
 
+
 }
 
 function gameFinish(){
@@ -69,6 +71,7 @@ console.log(accountArr);
   body.style.zIndex="1000";
   body.style.backgroundColor= "#0000007d";
   full.style.display ="none";
+  fullTop.style.display="none";
 
   resultArr.push(result1);
   resultArr.push(result2);
@@ -87,9 +90,9 @@ console.log(accountArr);
   console.log(typeof(accountArr[5]));
 
   havingjosik.forEach(function(i,index){
-    console.log(i);
-    console.log(index);
-    console.log(accountArr);
+    // console.log(i);
+    // console.log(index);
+    // console.log(accountArr);
     
     sum.push(resultArr[index]*accountArr[index]);
     console.log(sum[index]);
@@ -116,12 +119,14 @@ console.log(accountArr);
     // ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]}
   }, 5000);
   })
-  
+    
   }
 
 
 
 function setTimer(time) {
+  let result7 = window.localStorage.getItem("소지금");
+  console.log(result7);
   if (!interval) {
     interval = setInterval(() => {
       min = parseInt(timeout / 60);
@@ -134,9 +139,9 @@ function setTimer(time) {
         a();
         count++;
         
-        roundCount++
+        roundCount++;
 
-        if(roundCount==2){
+        if(roundCount==5 || result7==0){ //라운드 설정
           return gameFinish();
         }
         document.querySelector(".round").innerHTML = `ROUND ${roundCount} `
@@ -219,22 +224,7 @@ let close = function (i) {
   }, 10)
 }
 
-// aa.forEach(function(i,index){
-//   i.onclick = function(){
-//     close(index)
-//   }
-// })
-
-  
-  // document.querySelector(".A").addEventListener("click", open(0));
-  // document.querySelector(".B").addEventListener("click", open(i));
-  
-// document.querySelector(".C").addEventListener("click", open);
-// document.querySelector(".D").addEventListener("click", open);
-// document.querySelector(".E").addEventListener("click", open);
 document.querySelector(".closeBtn").addEventListener("click", close);
-
-// document.querySelector(".bg").addEventListener("click", close);
 
 // **추가 된 내용
 

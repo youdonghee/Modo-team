@@ -17,9 +17,6 @@ let listPrice = document.querySelectorAll(".list-flex-price");
 let listPer = document.querySelectorAll(".list-flex-per");
 let randomNumber;
 
-let btn1 = document.querySelectorAll(".btn1");
-let btn2 = document.querySelectorAll(".btn2");
-
 let avgNummArr = [0, 0, 0, 0, 0]; // 평균단가
 let buyNumArr = [0, 0, 0, 0, 0]; // 총수량
 let priNumArr = [0, 0, 0, 0, 0]; // 총매입가격
@@ -33,6 +30,8 @@ let text = document.querySelectorAll(".vol") // 총수량
 let buyPrice = document.querySelectorAll(".buy-price") // 총매입가격
 let plus = document.querySelectorAll(".plus-minus") // 평가손익 (수익률)
 let allMon = document.querySelectorAll(".all-money") //총평가금액
+// let inputData;
+// let fullInputData; //풀매수 수량
 
 let money = 10000;
 
@@ -101,58 +100,58 @@ function finish(i) {
             imgA.style.backgroundColor = '#000000cc';
             imgX[i].style.display = "block";
             aa.forEach(function (i, index) {
-                if(i==0){
-                i.onclick = function (e) {
-                  e.preventDefault();
+                if (i == 0) {
+                    i.onclick = function (e) {
+                        e.preventDefault();
+                    }
                 }
-                }
-              })
+            })
             break;
         case 1:
             imgB.style.backgroundColor = '#000000cc';
             imgX[i].style.display = "block";
             aa.forEach(function (i, index) {
-                if(i==1){
-                i.onclick = function (e) {
-                  e.preventDefault();
+                if (i == 1) {
+                    i.onclick = function (e) {
+                        e.preventDefault();
+                    }
                 }
-                }
-              })
+            })
             break;
         case 2:
             imgC.style.backgroundColor = '#000000cc';
             imgX[i].style.display = "block";
 
             aa.forEach(function (i, index) {
-                if(i==2){
-                i.onclick = function (e) {
-                  e.preventDefault();
+                if (i == 2) {
+                    i.onclick = function (e) {
+                        e.preventDefault();
+                    }
                 }
-                }
-              })
-            
+            })
+
             break;
         case 3:
             imgD.style.backgroundColor = '#000000cc';
             imgX[i].style.display = "block";
             aa.forEach(function (i, index) {
-                if(i==3){
-                i.onclick = function (e) {
-                  e.preventDefault();
+                if (i == 3) {
+                    i.onclick = function (e) {
+                        e.preventDefault();
+                    }
                 }
-                }
-              })
+            })
             break;
         case 4:
             imgE.style.backgroundColor = '#000000cc';
             imgX[i].style.display = "block";
             aa.forEach(function (i, index) {
-                if(i==4){
-                i.onclick = function (e) {
-                  e.preventDefault();
+                if (i == 4) {
+                    i.onclick = function (e) {
+                        e.preventDefault();
+                    }
                 }
-                }
-              })
+            })
     }
 
 
@@ -189,13 +188,13 @@ function randomPrice() {
                     // console.log(randomNumber);
                     if (sumA[i] < randomNumber) {
                         randomNumber = sumA[i];
-                        console.log(typeof(sumA[i]));
+                        console.log(typeof (sumA[i]));
                     }
                     down(i);
                 }
                 // 0원이 되었을 때
                 if (sumA[i] == 0) {
-                    console.log(typeof(sumA[i]));
+                    console.log(typeof (sumA[i]));
                     bool[i] = false;
                     finish(i);
                 }
@@ -238,77 +237,67 @@ function a() {
     window.localStorage.setItem("JW은행", sumA[2]);
     window.localStorage.setItem("JY전자", sumA[3]);
     window.localStorage.setItem("DH통신", sumA[4]);
-    
+
+
+
     // let map = new Map();
 
-    let arr2 = [{name: "KI학원", value : arr[0]},
-                {name: "CM건설", value : arr[1]},
-                {name: "JW은행", value : arr[2]},
-                {name: "JY전자", value : arr[3]},
-                {name: "DH통신", value : arr[4]}]
+    let arr2 = [{ name: "KI학원", value: arr[0] },
+    { name: "CM건설", value: arr[1] },
+    { name: "JW은행", value: arr[2] },
+    { name: "JY전자", value: arr[3] },
+    { name: "DH통신", value: arr[4] }]
 
-    arr2.sort(function(a,b){
-    
+    arr2.sort(function (a, b) {
+
         return b.value - a.value;
     })
- 
-    list.forEach((e,i)=>{
+
+    list.forEach((e, i) => {
         e.innerHTML = arr2[i].name;
 
-        if(arr2[i].value<2000){
-            e.style.color ="blue";
+        if (arr2[i].value < 2000) {
+            e.style.color = "blue";
         }
-        else if(arr2[i].value==2000){
-            e.style.color ="black";
+        else if (arr2[i].value == 2000) {
+            e.style.color = "black";
         }
-        else if(arr2[i].value>2000){
-            e.style.color ="red";
+        else if (arr2[i].value > 2000) {
+            e.style.color = "red";
         }
     })
 
-    listPrice.forEach((e,i)=>{
-        
+    listPrice.forEach((e, i) => {
+
         e.innerHTML = arr2[i].value;
 
-        if(arr2[i].value<2000){
-            e.style.color ="blue";
+        if (arr2[i].value < 2000) {
+            e.style.color = "blue";
         }
-        else if(arr2[i].value==2000){
-            e.style.color ="black";
+        else if (arr2[i].value == 2000) {
+            e.style.color = "black";
         }
-        else if(arr2[i].value>2000){
-            e.style.color ="red";
+        else if (arr2[i].value > 2000) {
+            e.style.color = "red";
         }
     });
 
-    listPer.forEach((e,i)=>{
+    listPer.forEach((e, i) => {
         // let plusNum;
-        if((2000-arr2[i].value)<0){
-            e.innerHTML = "+"+-parseInt(((2000-arr2[i].value) / 2000) *100) + "%";
-            e.style.color ="red";
+        if ((2000 - arr2[i].value) < 0) {
+            e.innerHTML = "+" + -parseInt(((2000 - arr2[i].value) / 2000) * 100) + "%";
+            e.style.color = "red";
         }
-        else if((2000-arr2[i].value)>0){
-             e.innerHTML = -parseInt(((2000-arr2[i].value) / 2000) *100) + "%";
-             e.style.color ="blue";
-        // }}}
+        else if ((2000 - arr2[i].value) > 0) {
+            e.innerHTML = -parseInt(((2000 - arr2[i].value) / 2000) * 100) + "%";
+            e.style.color = "blue";
+            // }}}
         }
-        else if((2000-arr2[i].value)==0){
+        else if ((2000 - arr2[i].value) == 0) {
             e.innerHTML = "0%";
-             e.style.color ="black";
+            e.style.color = "black";
         }
-        // else if((2000-arr2[i].value)>0){
-
-        // }
-    });
-
-    // btn1.forEach(function(e,i){
-    //     getvalueInText(i);
-    // })
-
-    // btn2.forEach(function(e,i){
-    //     setvalueInText(i);
-
-    // })
+    })
 
     for (let i = 0; i < 5; i++) {
         if (nowPrice[i].innerHTML == "-") {
@@ -325,7 +314,7 @@ function a() {
         // 총평가금액
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
-        console.log(allMonArr[i]);
+        // console.log(allMonArr[i]);
 
 
         // 평가손익 (보유중인 주식의 현재가격 * 수량) - 매입총액 = 평가손익
@@ -349,6 +338,7 @@ function a() {
 
     //등락률 ((2000-현재가) / 2000) *100
 }
+
 // map.set('KI학원', arr[0]);
 // map.set('CM건설', arr[1]);
 // map.set('JW은행', arr[2]);
@@ -391,16 +381,21 @@ function a() {
 // 매수 매도 값 보내기
 
 wallet.innerHTML = `내 보유현금 : ${money} 원`
-console.log(money);
+
 
 // 매수
 function getvalueInText(i) {
-
+    console.log(inputData);
     // 함수로 만들기
+    // if (inputData == null) {
+    //     inputData = document.getElementsByClassName("data")[i].value;
+    // }
+
     let inputData = document.getElementsByClassName("data")[i].value;
+
     if (inputData <= 0) {
         alert("1이상의 숫자만 넣어주세요")
-       
+
         document.getElementsByClassName("data")[i].value = ""
     } else if (!Number.isInteger(parseFloat(inputData))) { //Number.isInteger() 함수는 입력된 값이 정수인지를 체크 // parseFloat() 함수는 문자열을 부동소수점 수로 변환
         alert("소수점 안돼")
@@ -422,11 +417,11 @@ function getvalueInText(i) {
         console.log(buyNumArr[3]);
         console.log(buyNumArr[4]);
 
-        window.localStorage.setItem("수량",buyNumArr[0]);
-        window.localStorage.setItem("수량1",buyNumArr[1]);
-        window.localStorage.setItem("수량2",buyNumArr[2]);
-        window.localStorage.setItem("수량3",buyNumArr[3]);
-        window.localStorage.setItem("수량4",buyNumArr[4]);
+        window.localStorage.setItem("수량", buyNumArr[0]);
+        window.localStorage.setItem("수량1", buyNumArr[1]);
+        window.localStorage.setItem("수량2", buyNumArr[2]);
+        window.localStorage.setItem("수량3", buyNumArr[3]);
+        window.localStorage.setItem("수량4", buyNumArr[4]);
 
         // 총 매입가격
         priNumArr[i] += nowPrice[i].innerHTML * inputData;
@@ -436,11 +431,6 @@ function getvalueInText(i) {
         avgNummArr[i] = Math.floor(priNumArr[i] / buyNumArr[i]);
         avg[i + 1].innerHTML = avgNummArr[i];
 
-        // if(buyNumArr[i] == 0){
-        //     priNumArr[i].innerHTML=0;
-        //     plusArr[i].innerHTML=0;
-
-        // }
         // 평가손익 (보유중인 주식의 현재가격 * 수량) - 매입총액 = 평가손익
         plusArr[i] = (nowPrice[i].innerHTML * buyNumArr[i]) - priNumArr[i]
         plus[i + 1].innerHTML = plusArr[i];
@@ -478,10 +468,12 @@ function getvalueInText(i) {
 function setvalueInText(i) {
 
     // 함수로 만들기
+
     let inputData = document.getElementsByClassName("data")[i].value;
+    
     if (inputData <= 0) {
         alert("1이상의 숫자만 넣어주세요")
-        
+
         document.getElementsByClassName("data")[i].value = ""
     } else if (!Number.isInteger(parseFloat(inputData))) { //Number.isInteger() 함수는 입력된 값이 정수인지를 체크 // parseFloat() 함수는 문자열을 부동소수점 수로 변환
         alert("소수점 안돼")
@@ -537,15 +529,33 @@ function setvalueInText(i) {
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
         document.getElementsByClassName("data")[i].value = ""
-        alert(`${inputData} 개 매도 하였습니다`)
+        alert(`${inputData} 개 매도 하였습니다`);
     }
     else {
         alert("돈 없어")
     }
     close(i);
 }
-
-// 오류 
-// 상폐됐을떄 NaN 처리해주기
-
-// 매수 매도 했을때 닫아주기
+// // 풀매수
+// function fullget(i) {
+//     fullInputData = ~~(money / nowPrice[i].innerHTML);
+//     if ( 0 >= money || (nowPrice[i].innerHTML * fullInputData) > money ) {
+//         inputData = document.getElementsByClassName("data")[i].value;
+//         alert(`상남자 특 ${fullInputData}개 풀매수 함`)
+//         inputData = fullInputData;
+//         getvalueInText(i)
+//     }
+// }
+// // 풀매도
+// function fullset(i) {
+//     console.log(buyNumArr[i]);
+//     if (buyNumArr[i] == 0) {
+//         alert("매도할거 없음")
+//     }else{
+//         inputData = document.getElementsByClassName("data")[i].value;
+//         fullInputData = buyNumArr[i];
+//         inputData = fullInputData;
+//         alert(`상남자 특 ${fullInputData}개 풀매도 함`)
+//         setvalueInText(i)
+//     }
+// }
