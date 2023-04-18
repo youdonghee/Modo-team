@@ -6,6 +6,7 @@ let fast = false;
 let isModal = false;
 let count = 1;
 
+let nobuy = true;
 
 // 타이머
 function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
@@ -84,13 +85,19 @@ let open = function (i) {
 }
 // 클릭
 aa.forEach(function (i, index) {
-  i.onclick = function () {
+  if (nobuy) {
+    i.onclick = function () {
     open(index);
+    console.log(nobuy);
+    console.log(typeof(nobuy)); 
+    }
   }
 })
+
 bb.forEach(function (i, index) {
   i.onclick = function () {
     close(index);
+    console.log("닫혀?");
   }
 })
 

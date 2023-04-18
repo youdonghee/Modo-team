@@ -161,6 +161,8 @@ function randomPrice() {
                 if (sumA[i] == 0) {
 
                     bool[i] = false;
+
+
                     finish(i);
                 }
 
@@ -271,7 +273,10 @@ function a() {
     // })
 
     for (let i = 0; i < 5; i++) {
-
+        // **** 상폐됐을때 0원으로 바꾸기
+        if (nowPrice[i].innerHTML === "-") {
+            nowPrice[i].innerHTML = 0;
+        }
         // 평가손익 (보유중인 주식의 현재가격 * 수량) - 매입총액 = 평가손익
         plusArr[i] = (nowPrice[i].innerHTML * buyNumArr[i]) - priNumArr[i]
         plus[i + 1].innerHTML = plusArr[i];
@@ -374,11 +379,11 @@ function getvalueInText(i) {
         buyNumArr[i] += Number(inputData);
         text[i + 1].innerHTML = buyNumArr[i]
 
-        // 총 매입가격
+        // 총 매입가격 : 평단가*수량
         priNumArr[i] += nowPrice[i].innerHTML * inputData;
         buyPrice[i + 1].innerHTML = priNumArr[i]
 
-        // 평균단가 총매입가격 / 총 수량
+        // 평균단가: 총매입가격 / 총 수량
         avgNummArr[i] = Math.floor(priNumArr[i] / buyNumArr[i]);
         avg[i + 1].innerHTML = avgNummArr[i];
 
@@ -470,6 +475,8 @@ function setvalueInText(i) {
         // 평가손익 (보유중인 주식의 현재가격 * 수량) - 매입총액 = 평가손익
         plusArr[i] = (nowPrice[i].innerHTML * buyNumArr[i]) - priNumArr[i]
         plus[i + 1].innerHTML = plusArr[i];
+        console.log(nowPrice[i]);
+        console.log(sumA[i]);
 
         // 수익률 (현재가 - 평균매입가격 / 평균매입가격) * 100 = 수익률 
         if (avgNummArr[i] !== 0) { //분모가 0일때 무한으로 출력이됨 방지해줌
@@ -493,6 +500,5 @@ function setvalueInText(i) {
 
 
 // 오류 
-// 상폐됐을떄 NaN 처리해주기
 
-// 매수 매도 했을때 닫아주기
+// 전량매수 전량매도 만들기

@@ -116,9 +116,10 @@ body,html{
 
   /* margin-left: 5px; */
 }
+/* ****글씨체 넣어주기 */
 @font-face{
   font-family: 'godic';
-  src: url(../style/NotoSansKR-Medium.otf) format('truetype');    
+  src: url(../style/LAB디지털.ttf) format('truetype');    
 }
 .list-flex {
   display: flex;
