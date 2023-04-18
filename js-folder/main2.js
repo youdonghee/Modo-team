@@ -30,7 +30,7 @@ let text = document.querySelectorAll(".vol") // 총수량
 let buyPrice = document.querySelectorAll(".buy-price") // 총매입가격
 let plus = document.querySelectorAll(".plus-minus") // 평가손익 (수익률)
 let allMon = document.querySelectorAll(".all-money") //총평가금액
-let inputData;
+let inputData = null;
 let fullInputData; //풀매수 수량
 
 let money = 10000;
@@ -449,6 +449,7 @@ function getvalueInText(i) {
     }
     console.log("dd");
     close(i);
+    inputData = null;
 }
 // 평가손익, 총평가금액은 매수매도 했을대도 바꿔지고 라운드가 끝났을때도 바꿔주기
 
@@ -463,8 +464,8 @@ function getvalueInText(i) {
 
 // 조건 : 매도할때 (현재가 * 수량) <= 총평가금액
 function setvalueInText(i) {
-
     // 함수로 만들기
+    console.log(inputData);
     if (inputData == null) {
         inputData = document.getElementsByClassName("data")[i].value;
     }
@@ -532,15 +533,20 @@ function setvalueInText(i) {
         alert("돈 없어")
     }
     close(i);
+    inputData = null;
 }
 // 풀매수
 function fullget(i) {
+    // inputData = document.getElementsByClassName("data")[i].value;
     fullInputData = ~~(money / nowPrice[i].innerHTML);
-    if ( 0 >= money || (nowPrice[i].innerHTML * fullInputData) > money ) {
-        inputData = document.getElementsByClassName("data")[i].value;
+    if (fullInputData == 0) {
+        alert("돈 없어")
+    }else{
         alert(`상남자 특 ${fullInputData}개 풀매수 함`)
         inputData = fullInputData;
         getvalueInText(i)
+        inputData = null;
+        fullInputData = null;
     }
 }
 // 풀매도
@@ -549,10 +555,11 @@ function fullset(i) {
     if (buyNumArr[i] == 0) {
         alert("매도할거 없음")
     }else{
-        inputData = document.getElementsByClassName("data")[i].value;
+        // inputData = document.getElementsByClassName("data")[i].value;
         fullInputData = buyNumArr[i];
         inputData = fullInputData;
         alert(`상남자 특 ${fullInputData}개 풀매도 함`)
         setvalueInText(i)
+        inputData = null;
     }
 }
