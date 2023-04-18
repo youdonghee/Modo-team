@@ -8,13 +8,14 @@ let chartPrice1Arr5=[];
 
 setInterval(()=>{
   let chartPrice1 = window.localStorage.getItem("KI학원");
+  // console.log(chartPrice1);
     if(chartPrice1Arr.indexOf(chartPrice1)!==-1){
 
     }else{
       chartPrice1Arr.push(chartPrice1);
           console.log(chartPrice1Arr);
         }
-},2000);
+},1000);
 
 setInterval(()=>{
   let chartPrice2 = window.localStorage.getItem("CM건설");
@@ -23,7 +24,7 @@ setInterval(()=>{
     }else{
       chartPrice1Arr2.push(chartPrice2);
         }
-},2000);
+},1000);
 
 setInterval(()=>{
   let chartPrice3 = window.localStorage.getItem("JW은행");
@@ -33,7 +34,7 @@ setInterval(()=>{
       chartPrice1Arr3.push(chartPrice3);
           
         }
-},2000);
+},1000);
 
 setInterval(()=>{
   let chartPrice4 = window.localStorage.getItem("JY전자");
@@ -43,7 +44,7 @@ setInterval(()=>{
       chartPrice1Arr4.push(chartPrice4);
 
         }
-},2000);
+},1000);
 
 setInterval(()=>{
   let chartPrice5 = window.localStorage.getItem("DH통신");
@@ -53,7 +54,7 @@ setInterval(()=>{
       chartPrice1Arr5.push(chartPrice5);
           
         }
-},2000);
+},1000);
 
 
 // window.localStorage.clear();

@@ -5,6 +5,29 @@ let interval;
 let fast = false;
 let isModal=false;
 let count=0;
+let roundCount = 1;
+let body= document.querySelector(".body");
+let gamefinish = document.querySelector(".game-finish");
+let havingjosik = document.querySelectorAll(".having-josik");
+let resultArr=[];
+let josikName = ["KI학원","CM건설","JW은행","JY전자","DH통신","소지금"];
+let full = document.querySelector(".full");
+let accountArr= [];
+
+window.localStorage.clear();
+// console.log(result2);
+
+// console.log(result3);
+
+// console.log(result4);
+
+// console.log(result5);
+
+// console.log(result6);
+
+
+
+
 // 타이머
 function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
   clearInterval(clearIntervalValue);
@@ -14,6 +37,61 @@ function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
 
 
 }
+
+function gameFinish(){
+
+let result1 = window.localStorage.getItem("KI학원");
+let result2 = window.localStorage.getItem("CM건설");
+let result3 = window.localStorage.getItem("JW은행");
+let result4 = window.localStorage.getItem("JY전자");
+let result5 = window.localStorage.getItem("DH통신");
+let result6 = window.localStorage.getItem("소지금");
+
+let account1 = window.localStorage.getItem("수량");
+let account2 = window.localStorage.getItem("수량1");
+let account3 = window.localStorage.getItem("수량2");
+let account4 = window.localStorage.getItem("수량3");
+let account5 = window.localStorage.getItem("수량4");
+
+console.log(accountArr);
+
+  stopTimer();
+  gamefinish.style.display="block";
+  body.style.zIndex="1000";
+  body.style.backgroundColor= "#0000007d";
+  full.style.display ="none";
+
+  resultArr.push(result1);
+  resultArr.push(result2);
+  resultArr.push(result3);
+  resultArr.push(result4);
+  resultArr.push(result5);
+  resultArr.push(result6);
+
+  accountArr.push(Number(account1));
+  accountArr.push(Number(account2));
+  accountArr.push(Number(account3));
+  accountArr.push(Number(account4));
+  accountArr.push(Number(account5));
+  accountArr.push(1);
+  console.log(typeof(accountArr[0]));
+  console.log(typeof(accountArr[5]));
+
+  havingjosik.forEach(function(i,index){
+    console.log(i);
+    console.log(index);
+    console.log(accountArr);
+
+    i.innerHTML =`${josikName[index]}  현재가 :${resultArr[index]} 보유 수량 : ${accountArr[index]} 총 평가금액 : ${resultArr[index]*accountArr[index]}`;
+    
+    if(index==5){
+      i.innerHTML = `${josikName[index]} : ${resultArr[index]}`
+    }
+  })
+
+  }
+
+
 
 function setTimer(time) {
   if (!interval) {
@@ -27,8 +105,15 @@ function setTimer(time) {
         reset(interval, null, null, false)
         a();
         count++;
-        document.querySelector(".round").innerHTML = `ROUND ${count} `
+        
+        roundCount++
+
+        if(roundCount==2){
+          return gameFinish();
+        }
+        document.querySelector(".round").innerHTML = `ROUND ${roundCount} `
         timer();
+        
       }
     }, time);
   }
@@ -72,22 +157,26 @@ let bb = document.querySelectorAll('.closeBtn')
 // console.log(aa); // A f, B f 담기고
 
 let open = function (i) {
-  if(isModal){
+  if (isModal) {
 
-  }else{
-    isModal=true
+  } else {
+    isModal = true
     let a = document.querySelectorAll(".modal");
     console.log(a);
     a[i].classList.remove("hidden");
   }
 }
 // 클릭
-aa.forEach(function(i,index){
-  i.onclick = function(){
+
+aa.forEach(function (i, index) {
+  
+  i.onclick = function () {
     open(index);
+    
   }
 })
-bb.forEach(function (i,index) {
+
+bb.forEach(function (i, index) {
   i.onclick = function () {
     close(index);
   }
@@ -97,9 +186,9 @@ bb.forEach(function (i,index) {
 let close = function (i) {
   let a = document.querySelectorAll(".modal");
   a[i].classList.add("hidden");
-  setTimeout(()=>{
-    isModal=false
-  },10)
+  setTimeout(() => {
+    isModal = false
+  }, 10)
 }
 
 // aa.forEach(function(i,index){
@@ -108,10 +197,10 @@ let close = function (i) {
 //   }
 // })
 
-
-// document.querySelector(".A").addEventListener("click", open(0));
-// document.querySelector(".B").addEventListener("click", open(i));
-
+  
+  // document.querySelector(".A").addEventListener("click", open(0));
+  // document.querySelector(".B").addEventListener("click", open(i));
+  
 // document.querySelector(".C").addEventListener("click", open);
 // document.querySelector(".D").addEventListener("click", open);
 // document.querySelector(".E").addEventListener("click", open);
