@@ -667,3 +667,22 @@ body{
 .fontstyle{
   font-family: 'GmarketSansMedium';
 }
+
+.btn-wrap{
+  display: flex;
+  flex-direction: column;
+}
+.btn-wrap .input{
+  width: 95px;
+  height: 20px;
+}
+.btn-wrap .btn1{
+  width: 50px;
+  height: 25px;
+}
+.btn-wrap div{
+  margin-top: 5px;
+}
+.btn-wrap .closeBtn{
+  width: 100%;
+}

@@ -108,7 +108,7 @@ function setTimer(time) {
         
         roundCount++
 
-        if(roundCount==2){
+        if(roundCount==10){ //라운드 설정
           return gameFinish();
         }
         document.querySelector(".round").innerHTML = `ROUND ${roundCount} `
@@ -191,22 +191,7 @@ let close = function (i) {
   }, 10)
 }
 
-// aa.forEach(function(i,index){
-//   i.onclick = function(){
-//     close(index)
-//   }
-// })
-
-  
-  // document.querySelector(".A").addEventListener("click", open(0));
-  // document.querySelector(".B").addEventListener("click", open(i));
-  
-// document.querySelector(".C").addEventListener("click", open);
-// document.querySelector(".D").addEventListener("click", open);
-// document.querySelector(".E").addEventListener("click", open);
 document.querySelector(".closeBtn").addEventListener("click", close);
-
-// document.querySelector(".bg").addEventListener("click", close);
 
 // **추가 된 내용
 
