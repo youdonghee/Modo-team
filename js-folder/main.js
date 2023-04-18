@@ -3,6 +3,9 @@ let min;
 let sec;
 let interval;
 let fast = false;
+let isModal=false;
+let count=0;
+
 let isModal = false;
 let count = 1;
 
@@ -14,6 +17,7 @@ function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
   interval = interValue;
   timeout = timeoutValue;
   fast = fastValue;
+
 
 }
 
@@ -74,30 +78,24 @@ let bb = document.querySelectorAll('.closeBtn')
 // console.log(aa); // A f, B f 담기고
 
 let open = function (i) {
-  if (isModal) {
+  if(isModal){
 
-  } else {
-    isModal = true
+  }else{
+    isModal=true
     let a = document.querySelectorAll(".modal");
     console.log(a);
     a[i].classList.remove("hidden");
   }
 }
 // 클릭
-aa.forEach(function (i, index) {
-  if (nobuy) {
-    i.onclick = function () {
+aa.forEach(function(i,index){
+  i.onclick = function(){
     open(index);
-    console.log(nobuy);
-    console.log(typeof(nobuy)); 
-    }
   }
 })
-
-bb.forEach(function (i, index) {
+bb.forEach(function (i,index) {
   i.onclick = function () {
     close(index);
-    console.log("닫혀?");
   }
 })
 
@@ -105,9 +103,9 @@ bb.forEach(function (i, index) {
 let close = function (i) {
   let a = document.querySelectorAll(".modal");
   a[i].classList.add("hidden");
-  setTimeout(() => {
-    isModal = false
-  }, 10)
+  setTimeout(()=>{
+    isModal=false
+  },10)
 }
 
 // aa.forEach(function(i,index){
