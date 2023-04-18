@@ -1,6 +1,7 @@
 <!--  -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +46,26 @@
 
 </style>
 </head>
-<body>
+
+<body class="body">
+  <div class="game-finish">
+    <h1>모든 라운드가 진행되어 장이 마감되었습니다.</h1>
+    <h2>보유한 주식과 소지금을 정산중입니다...</h2>
+
+    <div class ="calculate">
+      <div class="having-josik">KI학원</div>
+      <div class="having-josik">CM건설</div>
+      <div class="having-josik">JW은행</div>
+      <div class="having-josik">JY전자</div>
+      <div class="having-josik">DH통신</div>
+      <div class="having-josik">소지금</div>
+    </div>
+
+    <div class="total-money">
+      =총 소지금
+    </div>
+
+  </div>
   <div class="full">
     <div class="row1">
       <div class="row1-left">
@@ -55,15 +75,19 @@
           <button class="stop">일시정지</button>
           <button class="ten">10초</button>
         </div>
-  
+
         <div class="board">
           <a href="#" target="_blank">게시판</a>
         </div>
       </div>
 
-      <div class ="row1-round"></div>
+      <!-- ** 수정 됨 추가해줌 -->
+      <div class="row-middle">
+        <div class="round">
+          ROUND 1 / 10
+        </div>
+      </div>
 
-  
       <div class="row1-right">
         <div class="up-percent">
           <div class="list-title1">주식 상승률 순위</div>
@@ -74,35 +98,40 @@
             
 
           </div>
-          
-            <ol>
-              <div class="list-flex">
-                <div>1.&nbsp&nbsp</div><li class="list">KI학원</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
-              </div>
-              <div class="list-flex">
-                <div>2.&nbsp&nbsp</div><li class="list">CM건설</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
-              </div>
-              <div class="list-flex">
-                <div>3.&nbsp&nbsp</div><li class="list">JW은행</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
-              </div>
-              <div class="list-flex">
-                <div>4.&nbsp&nbsp</div><li class="list">JY전자</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
-              </div>
-              <div class="list-flex">
-                <div>5.&nbsp&nbsp</div><li class="list">DH통신</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
-              </div>
-              <!-- <li class="list">CM건설<span>0%</span></li>
+
+          <ol>
+            <div class="list-flex">
+              <div>1.&nbsp&nbsp</div>
+              <li class="list">KI학원</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+            </div>
+            <div class="list-flex">
+              <div>2.&nbsp&nbsp</div>
+              <li class="list">CM건설</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+            </div>
+            <div class="list-flex">
+              <div>3.&nbsp&nbsp</div>
+              <li class="list">JW은행</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+            </div>
+            <div class="list-flex">
+              <div>4.&nbsp&nbsp</div>
+              <li class="list">JY전자</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+            </div>
+            <div class="list-flex">
+              <div>5.&nbsp&nbsp</div>
+              <li class="list">DH통신</li><span class="list-flex-price">2000</span><span class="list-flex-per">0%</span>
+            </div>
+            <!-- <li class="list">CM건설<span>0%</span></li>
               <li class="list">JW은행<span>0%</span></li>
               <li class="list">JY전자<span>0%</span></li>
               <li class="list">DH통신<span>0%</span></li> -->
-            </ol>
-            
+          </ol>
+
         </div>
       </div>
 
 
     </div>
-  
+
     <div class="row2">
   
       <div class="ABCDE">
@@ -271,12 +300,12 @@
   
   
     </div>
-  
-  
+
+
     <div class="row3">
-  
+
       <div class="chat">
-        
+       
         <!-- 스와이프 자리 -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
@@ -297,75 +326,71 @@
       <div class="seed-money">
         <div class="rest-money">내 보유현금</div>
         <div class="wal-contain">
-            <div class="title tb">
-                <div class="name tb">주식명</div>
-                <div class="avg-price tb">평균단가</div>
-                <div class="vol tb">수량</div>
-                <div class="buy-price tb">총 매입가격</div>
-                <div class="plus-minus percent tb">평가손익(수익률)</div>
-                <div class="all-money tb">총 평가금액</div>
+          <div class="title tb">
+            <div class="name tb">주식명</div>
+            <div class="avg-price tb">평균단가</div>
+            <div class="vol tb">수량</div>
+            <div class="buy-price tb">총 매입가격</div>
+            <div class="plus-minus percent tb">평가손익(수익률)</div>
+            <div class="all-money tb">총 평가금액</div>
+          </div>
+          <div class="body">
+            <div class="myA bodyTitle fontS">
+              <div class="name">A주식</div>
+              <div class="avg-price"></div>
+              <div class="vol"></div>
+              <div class="buy-price"></div>
+              <div class="plus-minus percent"></div>
+              <div class="all-money"></div>
             </div>
-                <div class="body">
-                <div class="myA bodyTitle fontS">
-                    <div class="name">A주식</div>
-                    <div class="avg-price"></div>
-                    <div class="vol"></div>
-                    <div class="buy-price"></div>
-                    <div class="plus-minus percent"></div>
-                    <div class="all-money"></div>
-                </div>
 
-                <div class="myB bodyTitle fontS">
-                    <div class="name">B주식</div>
-                    <div class="avg-price"></div>
-                    <div class="vol"></div>
-                    <div class="buy-price"></div>
-                    <div class="plus-minus percent"></div>
-                    <div class="all-money"></div>
+            <div class="myB bodyTitle fontS">
+              <div class="name">B주식</div>
+              <div class="avg-price"></div>
+              <div class="vol"></div>
+              <div class="buy-price"></div>
+              <div class="plus-minus percent"></div>
+              <div class="all-money"></div>
 
-                </div>
-                <div class="myC bodyTitle fontS">
-                    <div class="name">C주식</div>
-                    <div class="avg-price"></div>
-                    <div class="vol"></div>
-                    <div class="buy-price"></div>
-                    <div class="plus-minus percent"></div>
-                    <div class="all-money"></div>
-
-                </div>
-                <div class="myD bodyTitle fontS">
-                    <div class="name">D주식</div>
-                    <div class="avg-price"></div>
-                    <div class="vol"></div>
-                    <div class="buy-price"></div>
-                    <div class="plus-minus percent"></div>
-                    <div class="all-money"></div>
-
-                </div>
-                <div class="myE bodyTitle fontS">
-                    <div class="name">E주식</div>
-                    <div class="avg-price"></div>
-                    <div class="vol"></div>
-                    <div class="buy-price"></div>
-                    <div class="plus-minus percent"></div>
-                    <div class="all-money"></div>
-
-
-                </div>
             </div>
+            <div class="myC bodyTitle fontS">
+              <div class="name">C주식</div>
+              <div class="avg-price"></div>
+              <div class="vol"></div>
+              <div class="buy-price"></div>
+              <div class="plus-minus percent"></div>
+              <div class="all-money"></div>
+
+            </div>
+            <div class="myD bodyTitle fontS">
+              <div class="name">D주식</div>
+              <div class="avg-price"></div>
+              <div class="vol"></div>
+              <div class="buy-price"></div>
+              <div class="plus-minus percent"></div>
+              <div class="all-money"></div>
+
+            </div>
+            <div class="myE bodyTitle fontS">
+              <div class="name">E주식</div>
+              <div class="avg-price"></div>
+              <div class="vol"></div>
+              <div class="buy-price"></div>
+              <div class="plus-minus percent"></div>
+              <div class="all-money"></div>
+
+
+            </div>
+          </div>
         </div>
-    </div>
-
-      <div class="news-container">
-        뉴스정보
       </div>
 
 
-      </div>
 
     </div>
 
   </div>
+  
 
 
 </body>
@@ -373,6 +398,8 @@
 <script src="../js-folder/main2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 <script src="../js-folder/index.js"></script>
+
+
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
