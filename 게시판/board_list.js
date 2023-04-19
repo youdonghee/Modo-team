@@ -1,17 +1,13 @@
 let userData = '[{"key" : "value"}]';
 userData = window.localStorage.getItem("로그인");
 console.log(userData);
-
+let boardCounter=1;
 let signUp = document.querySelector(".signUp");
-let list1 = document.querySelectorAll(".list1");
+let list1;
 let written = document.querySelector(".written");
 let backbtn = document.querySelector(".back-btn");
 
-signUp.onclick = function () {
-  written.style.display = "none";
-  boardText.style.display = "none";
-  content.style.display = "block";
-};
+
 
 const boardText = document.querySelector(".board-text");
 const submit = document.querySelector(".submit");
@@ -19,60 +15,98 @@ const boardTitle = document.querySelector(".main-title");
 const boardContent = document.querySelector(".main-content");
 const content = document.querySelector(".content");
 
+signUp.onclick = function () {
+    written.style.display = "none";
+    boardText.style.display = "none";
+    content.style.display = "block";
+  };
+
+console.log(list1);
 // 페이지가 다 렌더 됬을때 실행되는 자동으로 실행
 // 페이지가 처음 렌더 되었을 때 board라는 키값을 가진 데이터를 찾음
 // 없으면 게시글이 없는거고, 있으면 게시글을 화면에 넣어줌
-document.addEventListener("DOMContentLoaded", () => {
-  // 게시글 있는지 확인함
-  if (localStorage.getItem("board")) {
-    // 게시글 데이터 가져옴
-    const board = getDataFromLocalStorage();
-    // 게시글 데이터 화면에 뿌려줌
-    let index = location.hash.replace("#", "");
-    getBoardList(board, index);
-  }
-});
+render()
+function render() {
+    document.addEventListener("DOMContentLoaded", () => {
+      // 게시글 있는지 확인함
+      if (localStorage.getItem("board")) {
+        // 게시글 데이터 가져옴
+        const board = getDataFromLocalStorage();
+        // 게시글 데이터 화면에 뿌려줌
+        let index = location.hash.replace("#", "");
+        getBoardList(board, index);
+      }
+    });  
+}
+let boardContentArr = [];
+let boardTitleDataArr = [];
+let boardContentDataArr = [];
 
+//등록하기를 눌렀을 때
 submit.onclick = (event) => {
-  event.preventDefault();
+
+  // 작성한 제목이랑 내용을 
   const boardTitleData = boardTitle.value;
   const boardContentData = boardContent.value;
 
-  const data = new Date().toISOString().substring(0, 10);
-  const board = createBoard(2, data, boardTitleData);
+  boardTitleDataArr.push(boardTitleData);
+  boardContentDataArr.push(boardContentData);
 
+  const data = new Date().toISOString().substring(0, 10);
+  const board = createBoard(1, data, boardTitleData);
+  
   // 조립한 게시글 내용을 게시글 목록에 넣어줌
   boardText.appendChild(board);
-
+  
   written.style.display = "none";
   boardText.style.display = "block";
   content.style.display = "none";
+
+  boardContentArr.push(boardContentData);
+
+  console.log(boardContentArr);
+  render()
 };
 
+
+
 // 게시글 내용들을 조립?하는 느낌
-let boardCounter = 2;
-const createBoard = (num, date, title) => {
+
+
+const createBoard = (num, date, title) => { // title은 내가 입력한 제목
+   
+   boardCounter= boardCounter + num;
   const board = document.createElement("div");
   const titleSpan = document.createElement("span");
-  const arr = [
-    document.createElement("div"),
-    document.createElement("div"),
-    document.createElement("div"),
-    document.createElement("div"),
-    document.createElement("div"),
-    document.createElement("div"),
-    document.createElement("div"),
+
+    let div01 =document.createElement("div")
+    let div02 =document.createElement("div")
+    let div03 =document.createElement("div")
+    let div04 =document.createElement("div")
+    let div05 =document.createElement("div")
+    let div06 =document.createElement("div")
+    let div07 =document.createElement("div")
+
+  const arr = [  // 목록에 div 7개 생성
+    div01,div02,div03,div04,div05,div06,div07
   ];
 
+ 
+
+  // 각각 div 에 넣어주고
   titleSpan.innerHTML = title;
-  arr[0].innerHTML = boardCounter++;
+  console.log("여기는 2가 맞아"+boardCounter);
+  arr[0].innerHTML = board.length;
   arr[1].innerHTML = date;
-  arr[2].appendChild(titleSpan);
+//   arr[2].appendChild(titleSpan);
+//   arr[2].innerHTML = title;
+  div03.append(titleSpan);
   arr[3].innerHTML = "";
   arr[4].innerHTML = 0;
   arr[5].innerHTML = 0;
   arr[6].innerHTML = 0;
 
+  // 클래스명도 넣어주고
   board.classList.add("board-list");
   titleSpan.classList.add("list1");
   arr[0].classList.add("number");
@@ -83,13 +117,19 @@ const createBoard = (num, date, title) => {
   arr[5].classList.add("sym");
   arr[6].classList.add("em");
 
-  arr.forEach((v) => {
+  
+  // 위에 정보들 표시
+  arr.forEach((v,index) => {
+    
     board.appendChild(v);
+    console.log(document.querySelectorAll('.list1'));
+    // location.reload();
+    listRender();
   });
 
   // 로컬스토리지에 넣을 게시글 데이터 목록에 객체임 [{}]
   const boardData = {
-    num: num,
+    num: Number(board.length),
     date: date,
     title: title,
     writer: "이충민",
@@ -99,11 +139,12 @@ const createBoard = (num, date, title) => {
   };
 
   // 로컬스토리지에 데이터 저장
+  let stringboardDate = JSON.stringify(boardData);
   saveDataToLocalStorage(boardData);
-
+  render()
   return board;
+  
 };
-
 // 가져온 게시글 데이터를 조립해줘야 함
 // 게시글 리스트가 [{},{}] 이렇게 있는데 이거를 이제 반복문 돌려서
 // 게시글 수 만큼 조립을 해서 화면에 넣어줄거임
@@ -148,8 +189,36 @@ const getBoardList = (data, index) => {
     });
 
     boardText.appendChild(board);
+
+    listRender()
+    
   }
+  render()
 };
+
+function listRender() {
+
+        list1=document.querySelectorAll('.list1');
+        console.log(list1);
+        
+        list1.forEach(function (i, index) {
+        console.log(i);
+
+        i.onclick = function () {
+        console.log("나 클릭됨");
+        
+        content.style.display = "none";
+        boardText.style.display = "none";
+        written.style.display = "block";
+
+        console.log(boardContentArr);
+        document.querySelectorAll(".written-content").innerHTML = boardContentArr[i];
+        //클릭했을때 제목 -> written-title 연결시켜주고
+        // 내용 -> written-content 연결해주고
+        // 글쓴이 -> written-writer 연결해주기
+      };
+    });
+}
 
 // 로컬스토리지에 데이터 저장 => 게시글이 생성 될 때마다 실행될 거임
 // 데이터를 받음 => 객체 형태임 => 객체 형태 그대로 넣어주는데
@@ -162,15 +231,25 @@ function saveDataToLocalStorage(data) {
     // 기존 게시글 목록을 가져옴
     // JSON.parse로 원래의 형태로 바꿔줄거임 => [{},{}]
     const boardList = JSON.parse(localStorage.getItem("board"));
+
+    
     // 기존 게시글 목록에 새로운 게시글을 넣어줌
     // 배열안에 새로운 게시글 데이터 객체를 넣음
     boardList.push(data);
+
+    console.log(boardList);
+    console.log(document.querySelectorAll('.list1'));
+
     // 다시 로컬스토리지의 추가된 게시글을 업데이트
     localStorage.setItem("board", JSON.stringify(boardList));
   } else {
     // 처음 게시글을 작성할 때 실행
     localStorage.setItem("board", JSON.stringify([data]));
+
+
   }
+
+  
 }
 
 // board라는 키값을 가진 data를 찾아옴 => 게시글 리스트 [{}]
@@ -178,21 +257,6 @@ function getDataFromLocalStorage() {
   const data = localStorage.getItem("board");
   return data;
 }
-
-list1.forEach(function (i, index) {
-  i.onclick = function () {
-    console.log("클릭");
-    content.style.display = "none";
-    boardText.style.display = "none";
-    written.style.display = "block";
-  };
-});
-
-// list1[i].onclick = function () {
-//   content.style.display = "none";
-//   boardText.style.display = "none";
-//   written.style.display = "block";
-// };
 
 
 backbtn.onclick = function () {
