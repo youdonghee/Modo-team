@@ -16,6 +16,7 @@ body,html{
   position: relative;
   z-index: 7;
 }
+
 .game-finish{
   display: none;
   width: 1000px;
@@ -23,7 +24,7 @@ body,html{
   border: 5px solid black;
   position: absolute;
   transform: translate(-50%,-50%);
-  top: 30%;
+  top: 50%;
   left: 50%;
   z-index: 6;
   background-color: white;
@@ -32,29 +33,40 @@ body,html{
   width: 1000px;
   text-align: center;
 }
+
+.game-finish h2{
+  margin: auto;
+  width: 440px;
+  text-align: left;
+}
 .calculate{
   margin: auto 0;
   width: 1000px;
   height: 250px;
-  border: 1px solid black;
+  font-family: 'godic';
+  /* border: 1px solid black; */
   text-align: center;
+  margin-top: 15px;
 }
 .having-josik,
 .total-money{
   margin: auto;
-  width: 500px;
+  width: 630px;
   height: 40px;
-  border: 1px solid black;
+  font-family: 'godic';
+  /* border: 1px solid black; */
   text-align: left;
+  line-height: 40px;
 }
 .total-money{
   height: 110px;
   text-align: center;
   line-height: 110px;
+  font-size: xx-large;
 }
 
 body{
-  background-image: url(../img/배경화면_초원.jpeg);
+  background-image: url(../img/배경화면_초원.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -76,7 +88,7 @@ body{
   z-index: 1;
   width: 80%;
   height: 30px;
-  background-image: url(../img/게임_상단바.png);
+  background-image: url(../img/게임_상단바.png);
   background-repeat: no-repeat;
   background-size: cover;
   left: 50%;
@@ -117,7 +129,8 @@ body{
   position: relative;
   width: 250px;
   height: 192px;
-  background-image: url(../img/영역_게임시간.png);
+  background-image: url(../img/영역_게임시간.png);
+  
 }
 .time-main h3{
   position: absolute;
@@ -148,7 +161,7 @@ body{
   width: 210px;
   height: 192px;
   margin-left: 50px;
-  background-image: url(../img/영역_게시판.png);
+  background-image: url(../img/영역_게시판.png);
 
 }
 .board .board-inner{
@@ -160,6 +173,7 @@ body{
   height: 50px;
   top: 55%;
   transform: translate(0,-50%);
+  
   
 
 }
@@ -177,7 +191,7 @@ body{
   width: 50px;
   height: 50px;
   left: 10px;
-  background-image: url(../img/게시판_아이콘.png);
+  background-image: url(../img/게시판_아이콘.png);
   background-size: cover;
 
 }
@@ -218,7 +232,7 @@ body{
   /* margin-left: -50px; */
   width: 300px;
   height: 192px;
-  background-image: url(../img/영역_주식등락률.png);
+  background-image: url(../img/영역_게시판.png);
   position: relative;
   background-size: cover;
 
@@ -517,7 +531,7 @@ body{
   top: 50%;
   transform: translate(0,-50%);
   box-sizing: border-box;
-  background-image: url(../img/영역_보유금액.png);
+  background-image: url(../img/영역_보유금액.png);
 }
 .seed-box .rest-money{
   position: absolute;
@@ -662,6 +676,9 @@ body{
 .popup.show {
   bottom: 50px;
   opacity: 1;
+}
+.popup.none {
+  display: none;
 }
 
 .fontstyle{

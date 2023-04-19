@@ -5,27 +5,39 @@ let interval;
 let fast = false;
 let isModal=false;
 let count=0;
-let roundCount = 1;
+let roundCount = 0;
 let body= document.querySelector(".body");
 let gamefinish = document.querySelector(".game-finish");
 let havingjosik = document.querySelectorAll(".having-josik");
 let resultArr=[];
 let josikName = ["KI학원","CM건설","JW은행","JY전자","DH통신","소지금"];
 let full = document.querySelector(".full");
+let fullTop=document.querySelector(".full-top");
 let accountArr= [];
-
+let sum=[];
+let totalMoney = document.querySelector(".total-money");
+let ment = document.querySelector(".ment");
 window.localStorage.clear();
-// console.log(result2);
-
-// console.log(result3);
-
-// console.log(result4);
-
-// console.log(result5);
-
-// console.log(result6);
 
 
+const loadingText = document.getElementById('loading');
+
+let count1 = 0;
+const loadingInterval = setInterval(() => {
+  if (count1 === 0) {
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다.';
+    count1++;
+  } else if (count1 === 1) {
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다..';
+    count1++;
+  } else if(count1===2){
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다...';
+    count1++;
+  } else if(count1 === 3){
+    loadingText.innerHTML = '보유한 주식과 소지금을 정산중입니다....';
+    count1=0;
+  }
+}, 500); 
 
 
 // 타이머
@@ -38,8 +50,8 @@ function reset(clearIntervalValue, interValue, timeoutValue, fastValue) {
 
 }
 
-function gameFinish(){
-
+function gameFinish(num){
+// console.log(num);
 let result1 = window.localStorage.getItem("KI학원");
 let result2 = window.localStorage.getItem("CM건설");
 let result3 = window.localStorage.getItem("JW은행");
@@ -53,13 +65,24 @@ let account3 = window.localStorage.getItem("수량2");
 let account4 = window.localStorage.getItem("수량3");
 let account5 = window.localStorage.getItem("수량4");
 
-console.log(accountArr);
+// console.log(accountArr);
 
-  stopTimer();
+  
   gamefinish.style.display="block";
   body.style.zIndex="1000";
   body.style.backgroundColor= "#0000007d";
   full.style.display ="none";
+  fullTop.style.display="none";
+  
+  if(num==1){
+  // console.log(typeof(num));
+  ment.innerHTML = "모든 라운드가 진행되어 장이 마감되었습니다.";
+  }
+
+  if(num==2){
+    // console.log(typeof(num));
+    ment.innerHTML = "소지금이 모두 소진되어 게임이 종료되었습니다."
+  }
 
   resultArr.push(result1);
   resultArr.push(result2);
@@ -74,26 +97,48 @@ console.log(accountArr);
   accountArr.push(Number(account4));
   accountArr.push(Number(account5));
   accountArr.push(1);
-  console.log(typeof(accountArr[0]));
-  console.log(typeof(accountArr[5]));
+  // console.log(typeof(accountArr[0]));
+  // console.log(typeof(accountArr[5]));
 
   havingjosik.forEach(function(i,index){
-    console.log(i);
-    console.log(index);
-    console.log(accountArr);
+    // console.log(i);
+    // console.log(index);
+    // console.log(accountArr);
+    
+    sum.push(resultArr[index]*accountArr[index]);
+    console.log(sum[index]);
+    setTimeout(() => {
 
-    i.innerHTML =`${josikName[index]}  현재가 :${resultArr[index]} 보유 수량 : ${accountArr[index]} 총 평가금액 : ${resultArr[index]*accountArr[index]}`;
+      i.innerHTML =`${josikName[index]} / 현재가 :${resultArr[index]} / 보유 수량 : ${accountArr[index]} / 총 평가금액 : ${sum[index]}`;
     
     if(index==5){
+      if(resultArr[index] == null){
+        resultArr[index] = 10000;
+        i.innerHTML = `${josikName[index]} : ${resultArr[index]}`
+      }
+      else{
       i.innerHTML = `${josikName[index]} : ${resultArr[index]}`
+      }
     }
+    loadingText.innerHTML="정산완료!"
+    loadingText.style.textAlign="center";
+    count1=4;
+    
+    
+    
+    totalMoney.innerHTML = `최종 소지금 : ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]+Number(resultArr[5])}`
+    // ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]}
+  }, 5000);
   })
-
+    
   }
-
-
+  
 
 function setTimer(time) {
+  // let result7 = window.localStorage.getItem("소지금");
+  // console.log(result7);
+  // console.log(money);
+  
   if (!interval) {
     interval = setInterval(() => {
       min = parseInt(timeout / 60);
@@ -106,14 +151,33 @@ function setTimer(time) {
         a();
         count++;
         
-        roundCount++
+        roundCount++;
 
-        if(roundCount==10){ //라운드 설정
-          return gameFinish();
+        if(roundCount==3){ //라운드 설정
+          createPopup(1);
+
+          document.querySelector(".round").innerHTML = "ROUND OVER";
+          stopTimer();
+          
+          console.log("aa");
+          setTimeout(() => {
+            console.log("jj");
+            return gameFinish(1);
+            
+          }, 5000);
         }
-        document.querySelector(".round").innerHTML = `ROUND ${roundCount} `
+        else if((money+Mon)==0){
+          createPopup(1);
+          document.querySelector(".round").innerHTML = "ROUND OVER";
+          stopTimer();
+          setTimeout(() => {
+            return gameFinish(2);
+          }, 5000);
+        }
+        else{
+        document.querySelector(".round").innerHTML = `ROUND ${(roundCount+1)} / 10 `
         timer();
-        
+        }
       }
     }, time);
   }
@@ -121,7 +185,8 @@ function setTimer(time) {
 
 function timer() {
   if (interval == 1) return;
-  if (timeout == null) timeout = 10;
+  if (timeout == null) timeout = 300;
+  createPopup(0);
   setTimer(1000);
 }
 function stopTimer() {
@@ -137,12 +202,13 @@ function ten() {
   reset(interval, null, 10, true)
   setTimer(1000);
 }
+
 const play = document.querySelector(".play");
 const timeStop = document.querySelector(".stop");
 const skip = document.querySelector(".ten");
 
 play.onclick = timer;
-timeStop.onclick = stopTimer;
+// timeStop.onclick = stopTimer;
 skip.onclick = ten;
 
 // 뉴스
@@ -162,7 +228,7 @@ let open = function (i) {
   } else {
     isModal = true
     let a = document.querySelectorAll(".modal");
-    console.log(a);
+    // console.log(a);
     a[i].classList.remove("hidden");
   }
 }
@@ -208,22 +274,39 @@ const popupContents = [
 const popupDuration = 5000;
 
 // 팝업 반복 시간 (10초) 6분은 (360000)
-let popTime = 10000;
+let popTime;
 
 // 팝업 생성 함수
-function createPopup() {
-  // 랜덤으로 팝업 내용 선택
+function createPopup(num) {
+  console.log(num);
+  if (num == 0) {
+    popTime = 10000;
+  }
+   // 랜덤으로 팝업 내용 선택
   const randomIndex = Math.floor(Math.random() * popupContents.length);
   const content = popupContents[randomIndex];
 
   // 팝업 요소 생성
   const popup = document.createElement("div"); //div 만들고
   popup.classList.add("popup"); // 클래스 이름 popup
-  popup.textContent = content; // textContent : text 콘텐츠 계속 변경
 
+  popup.textContent = content; // textContent : text 콘텐츠 계속 변경
+  
+  
   // 팝업을 body 요소에 추가
   document.body.appendChild(popup);
+  
+  
+  
+  
+  if(num==1)
+  {
+    // popup.classList.add("none");
+    // return;
+    popTime = 1000000000000000;
 
+  } 
+  else{
   // 팝업 애니메이션 시작
   setTimeout(() => {
     popup.classList.add("show");
@@ -236,7 +319,12 @@ function createPopup() {
       document.body.removeChild(popup);
     }, 1000);
   }, popupDuration);
+  } 
 }
 
 // 주기적으로 팝업 생성
-setInterval(createPopup, popTime);
+
+// setInterval(() => {
+//   let i;
+//   createPopup(i)
+// }, popTime);

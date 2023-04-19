@@ -226,11 +226,14 @@ function randomPrice() {
 
 }
 let arr = new Array(5).fill(0);
-
+let Mon ;
 // 주식 상승률 순위 js
 function a() {
     // console.log(sumA[0]);
     arr = randomPrice();
+    
+    
+    
     window.localStorage.setItem("KI학원", sumA[0]);
     window.localStorage.setItem("CM건설", sumA[1]);
     window.localStorage.setItem("JW은행", sumA[2]);
@@ -298,6 +301,8 @@ function a() {
         }
     })
 
+   
+
     for (let i = 0; i < 5; i++) {
         if (nowPrice[i].innerHTML == "-") {
             nowPrice[i].innerHTML = 0;
@@ -313,7 +318,7 @@ function a() {
         // 총평가금액
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
-        console.log(allMonArr[i]);
+        // console.log(allMonArr[i]);
 
 
         // 평가손익 (보유중인 주식의 현재가격 * 수량) - 매입총액 = 평가손익
@@ -333,7 +338,12 @@ function a() {
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
 
+        
+        
+        
     }
+        Mon= Number(allMonArr[0]+ allMonArr[1] + allMonArr[2]+ allMonArr[3]+ allMonArr[4]);
+        console.log(Mon);
 
     //등락률 ((2000-현재가) / 2000) *100
 }
@@ -380,12 +390,11 @@ function a() {
 // 매수 매도 값 보내기
 
 wallet.innerHTML = `내 보유현금 : ${money} 원`
-window.localStorage.setItem("소지금", money);
+
 
 // 매수
 function getvalueInText(i) {
-    console.log(inputData);
-    // 함수로 만들기
+        // 함수로 만들기
     if (inputData == null) {
         inputData = document.getElementsByClassName("data")[i].value;
     }
@@ -398,20 +407,20 @@ function getvalueInText(i) {
         document.getElementsByClassName("data")[i].value = ""
     }
 
-
     else if (money >= nowPrice[i].innerHTML * inputData) {
         // 보유현금
         money = money - (nowPrice[i].innerHTML * inputData)
         wallet.innerHTML = `내 보유현금 : ${money} 원`
+        window.localStorage.setItem("소지금", money);
 
         // 수량
         buyNumArr[i] += Number(inputData);
         text[i + 1].innerHTML = buyNumArr[i];
-        console.log(buyNumArr[0]);
-        console.log(buyNumArr[1]);
-        console.log(buyNumArr[2]);
-        console.log(buyNumArr[3]);
-        console.log(buyNumArr[4]);
+        // console.log(buyNumArr[0]);
+        // console.log(buyNumArr[1]);
+        // console.log(buyNumArr[2]);
+        // console.log(buyNumArr[3]);
+        // console.log(buyNumArr[4]);
 
         window.localStorage.setItem("수량", buyNumArr[0]);
         window.localStorage.setItem("수량1", buyNumArr[1]);
@@ -438,7 +447,7 @@ function getvalueInText(i) {
         // 총평가금액
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
-        console.log(allMonArr[i]);
+        // console.log(allMonArr[i]);
         document.getElementsByClassName("data")[i].value = ""
         alert(`${inputData} 개 매수 하였습니다`)
     }
@@ -446,7 +455,7 @@ function getvalueInText(i) {
         document.getElementsByClassName("data")[i].value = ""
         alert("돈 없어")
     }
-    console.log("dd");
+    // console.log("dd");
     close(i);
     inputData = null;
 }
@@ -526,7 +535,7 @@ function setvalueInText(i) {
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
         document.getElementsByClassName("data")[i].value = ""
-        alert(`${inputData} 개 매도 하였습니다`)
+        alert(`${inputData} 개 매도 하였습니다`);
     }
     else {
         alert("돈 없어")
