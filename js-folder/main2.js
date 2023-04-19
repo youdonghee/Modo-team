@@ -32,7 +32,6 @@ let plus = document.querySelectorAll(".plus-minus") // 평가손익 (수익률)
 let allMon = document.querySelectorAll(".all-money") //총평가금액
 let inputData = null;
 let fullInputData; //풀매수 수량
-
 let money = 10000;
 
 // console.log(icon);
