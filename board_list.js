@@ -3,7 +3,7 @@ userData = window.localStorage.getItem("로그인");
 console.log(userData);
 
 let signUp = document.querySelector(".signUp");
-let list1 = document.querySelector(".list1");
+let list1 = document.querySelectorAll(".list1");
 let written = document.querySelector(".written");
 let backbtn = document.querySelector(".back-btn");
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 게시글 데이터 가져옴
     const board = getDataFromLocalStorage();
     // 게시글 데이터 화면에 뿌려줌
-    let index = location.hash.replace("#","");
+    let index = location.hash.replace("#", "");
     getBoardList(board, index);
   }
 });
@@ -107,9 +107,9 @@ const createBoard = (num, date, title) => {
 // 가져온 게시글 데이터를 조립해줘야 함
 // 게시글 리스트가 [{},{}] 이렇게 있는데 이거를 이제 반복문 돌려서
 // 게시글 수 만큼 조립을 해서 화면에 넣어줄거임
-const getBoardList = (data,index) => {
+const getBoardList = (data, index) => {
   let boardData = JSON.parse(data);
-  boardData = boardData.slice(index * 10,10);
+  boardData = boardData.slice(index * 10, 10);
   // 현재 갯수에서 index * 10 단위로 자르고 그 뒤에 10개를 가져온다.
   for (let i = 0; i < boardData.length; i++) {
     const board = document.createElement("div");
@@ -179,7 +179,15 @@ function getDataFromLocalStorage() {
   return data;
 }
 
-list1.onclick = function () {
+list1.forEach(function (i, index) {
+  i.onclick = function () {
+    content.style.display = "none";
+    boardText.style.display = "none";
+    written.style.display = "block";
+  };
+});
+
+list1[0].onclick = function () {
   content.style.display = "none";
   boardText.style.display = "none";
   written.style.display = "block";
