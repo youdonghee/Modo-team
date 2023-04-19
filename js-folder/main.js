@@ -154,8 +154,8 @@ function setTimer(time) {
         roundCount++;
 
         if(roundCount==3){ //라운드 설정
-          createPopup(1);
-
+          // createPopup(1);
+          removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
           stopTimer();
           
@@ -167,7 +167,8 @@ function setTimer(time) {
           }, 5000);
         }
         else if((money+Mon)==0){
-          createPopup(1);
+          // createPopup(1);
+          removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
           stopTimer();
           setTimeout(() => {
@@ -186,7 +187,8 @@ function setTimer(time) {
 function timer() {
   if (interval == 1) return;
   if (timeout == null) timeout = 300;
-  createPopup(0);
+  // 주기적으로 팝업 생성
+  setInterval(createPopup(),popTime)
   setTimer(1000);
 }
 function stopTimer() {
@@ -274,14 +276,18 @@ const popupContents = [
 const popupDuration = 5000;
 
 // 팝업 반복 시간 (10초) 6분은 (360000)
-let popTime;
+let popTime = 10000;
 
+
+
+function removePopup() {
+  setTimeout(() => {
+    clearInterval(createPopup())
+  }, 1000);
+}
 // 팝업 생성 함수
-function createPopup(num) {
-  console.log(num);
-  if (num == 0) {
-    popTime = 10000;
-  }
+function createPopup() {
+
    // 랜덤으로 팝업 내용 선택
   const randomIndex = Math.floor(Math.random() * popupContents.length);
   const content = popupContents[randomIndex];
@@ -289,24 +295,12 @@ function createPopup(num) {
   // 팝업 요소 생성
   const popup = document.createElement("div"); //div 만들고
   popup.classList.add("popup"); // 클래스 이름 popup
-
   popup.textContent = content; // textContent : text 콘텐츠 계속 변경
   
   
   // 팝업을 body 요소에 추가
   document.body.appendChild(popup);
   
-  
-  
-  
-  if(num==1)
-  {
-    // popup.classList.add("none");
-    // return;
-    popTime = 1000000000000000;
-
-  } 
-  else{
   // 팝업 애니메이션 시작
   setTimeout(() => {
     popup.classList.add("show");
@@ -319,12 +313,8 @@ function createPopup(num) {
       document.body.removeChild(popup);
     }, 1000);
   }, popupDuration);
-  } 
+  
 }
 
-// 주기적으로 팝업 생성
-
-// setInterval(() => {
-//   let i;
-//   createPopup(i)
-// }, popTime);
+// // 주기적으로 팝업 생성
+// setInterval(createPopup(),popTime)
