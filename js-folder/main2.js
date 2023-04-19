@@ -30,8 +30,8 @@ let text = document.querySelectorAll(".vol") // 총수량
 let buyPrice = document.querySelectorAll(".buy-price") // 총매입가격
 let plus = document.querySelectorAll(".plus-minus") // 평가손익 (수익률)
 let allMon = document.querySelectorAll(".all-money") //총평가금액
-// let inputData;
-// let fullInputData; //풀매수 수량
+let inputData = null;
+let fullInputData; //풀매수 수량
 
 let money = 10000;
 
@@ -227,11 +227,14 @@ function randomPrice() {
 
 }
 let arr = new Array(5).fill(0);
-
+let Mon ;
 // 주식 상승률 순위 js
 function a() {
     // console.log(sumA[0]);
     arr = randomPrice();
+    
+    
+    
     window.localStorage.setItem("KI학원", sumA[0]);
     window.localStorage.setItem("CM건설", sumA[1]);
     window.localStorage.setItem("JW은행", sumA[2]);
@@ -299,6 +302,8 @@ function a() {
         }
     })
 
+   
+
     for (let i = 0; i < 5; i++) {
         if (nowPrice[i].innerHTML == "-") {
             nowPrice[i].innerHTML = 0;
@@ -334,7 +339,12 @@ function a() {
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
 
+        
+        
+        
     }
+        Mon= Number(allMonArr[0]+ allMonArr[1] + allMonArr[2]+ allMonArr[3]+ allMonArr[4]);
+        console.log(Mon);
 
     //등락률 ((2000-현재가) / 2000) *100
 }
@@ -385,14 +395,10 @@ wallet.innerHTML = `내 보유현금 : ${money} 원`
 
 // 매수
 function getvalueInText(i) {
-    console.log(inputData);
-    // 함수로 만들기
-    // if (inputData == null) {
-    //     inputData = document.getElementsByClassName("data")[i].value;
-    // }
-
-    let inputData = document.getElementsByClassName("data")[i].value;
-
+        // 함수로 만들기
+    if (inputData == null) {
+        inputData = document.getElementsByClassName("data")[i].value;
+    }
     if (inputData <= 0) {
         alert("1이상의 숫자만 넣어주세요")
 
@@ -411,11 +417,11 @@ function getvalueInText(i) {
         // 수량
         buyNumArr[i] += Number(inputData);
         text[i + 1].innerHTML = buyNumArr[i];
-        console.log(buyNumArr[0]);
-        console.log(buyNumArr[1]);
-        console.log(buyNumArr[2]);
-        console.log(buyNumArr[3]);
-        console.log(buyNumArr[4]);
+        // console.log(buyNumArr[0]);
+        // console.log(buyNumArr[1]);
+        // console.log(buyNumArr[2]);
+        // console.log(buyNumArr[3]);
+        // console.log(buyNumArr[4]);
 
         window.localStorage.setItem("수량", buyNumArr[0]);
         window.localStorage.setItem("수량1", buyNumArr[1]);
@@ -442,7 +448,7 @@ function getvalueInText(i) {
         // 총평가금액
         allMonArr[i] = (priNumArr[i] + plusArr[i])
         allMon[i + 1].innerHTML = allMonArr[i];
-        console.log(allMonArr[i]);
+        // console.log(allMonArr[i]);
         document.getElementsByClassName("data")[i].value = ""
         alert(`${inputData} 개 매수 하였습니다`)
     }
@@ -450,8 +456,9 @@ function getvalueInText(i) {
         document.getElementsByClassName("data")[i].value = ""
         alert("돈 없어")
     }
-    console.log("dd");
+    // console.log("dd");
     close(i);
+    inputData = null;
 }
 // 평가손익, 총평가금액은 매수매도 했을대도 바꿔지고 라운드가 끝났을때도 바꿔주기
 
@@ -466,11 +473,11 @@ function getvalueInText(i) {
 
 // 조건 : 매도할때 (현재가 * 수량) <= 총평가금액
 function setvalueInText(i) {
-
     // 함수로 만들기
-
-    let inputData = document.getElementsByClassName("data")[i].value;
-    
+    console.log(inputData);
+    if (inputData == null) {
+        inputData = document.getElementsByClassName("data")[i].value;
+    }
     if (inputData <= 0) {
         alert("1이상의 숫자만 넣어주세요")
 
@@ -535,27 +542,33 @@ function setvalueInText(i) {
         alert("돈 없어")
     }
     close(i);
+    inputData = null;
 }
-// // 풀매수
-// function fullget(i) {
-//     fullInputData = ~~(money / nowPrice[i].innerHTML);
-//     if ( 0 >= money || (nowPrice[i].innerHTML * fullInputData) > money ) {
-//         inputData = document.getElementsByClassName("data")[i].value;
-//         alert(`상남자 특 ${fullInputData}개 풀매수 함`)
-//         inputData = fullInputData;
-//         getvalueInText(i)
-//     }
-// }
-// // 풀매도
-// function fullset(i) {
-//     console.log(buyNumArr[i]);
-//     if (buyNumArr[i] == 0) {
-//         alert("매도할거 없음")
-//     }else{
-//         inputData = document.getElementsByClassName("data")[i].value;
-//         fullInputData = buyNumArr[i];
-//         inputData = fullInputData;
-//         alert(`상남자 특 ${fullInputData}개 풀매도 함`)
-//         setvalueInText(i)
-//     }
-// }
+// 풀매수
+function fullget(i) {
+    // inputData = document.getElementsByClassName("data")[i].value;
+    fullInputData = ~~(money / nowPrice[i].innerHTML);
+    if (fullInputData == 0) {
+        alert("돈 없어")
+    }else{
+        alert(`상남자 특 ${fullInputData}개 풀매수 함`)
+        inputData = fullInputData;
+        getvalueInText(i)
+        inputData = null;
+        fullInputData = null;
+    }
+}
+// 풀매도
+function fullset(i) {
+    console.log(buyNumArr[i]);
+    if (buyNumArr[i] == 0) {
+        alert("매도할거 없음")
+    }else{
+        // inputData = document.getElementsByClassName("data")[i].value;
+        fullInputData = buyNumArr[i];
+        inputData = fullInputData;
+        alert(`상남자 특 ${fullInputData}개 풀매도 함`)
+        setvalueInText(i)
+        inputData = null;
+    }
+}

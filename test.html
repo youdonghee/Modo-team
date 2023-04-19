@@ -1,80 +1,16 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>게임 알림 팝업</title>
-    <style>
-        /* 팝업 스타일 */
-        .popup {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            /* transition : 속성명(변화할 CSS 속성의 이름) 지속시간 타이밍함수 */
-            transition: all 0.5s ease; 
-        }
-
-        .popup.show {
-            bottom: 50px;
-            opacity: 1;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
+    
 </body>
-    <script>
-        // 팝업 내용을 담은 배열
-        const popupContents = [
-            "Level 1 cleared!",
-            "You have a new message!",
-            "Game over! Try again?",
-            "You found a hidden treasure!"
-        ];
-
-        // 팝업 애니메이션 지속시간 
-        const popupDuration = 5000;
-
-        // 팝업 반복 시간 (10초)
-        let popTime = 10000;
-
-        // 팝업 생성 함수
-        function createPopup() {
-            // 랜덤으로 팝업 내용 선택
-            const randomIndex = Math.floor(Math.random() * popupContents.length);
-            const content = popupContents[randomIndex];
-
-            // 팝업 요소 생성
-            const popup = document.createElement("div"); //div 만들고
-            popup.classList.add("popup"); // 클래스 이름 popup
-            popup.textContent = content; // textContent : text 콘텐츠 계속 변경
-
-            // 팝업을 body 요소에 추가
-            document.body.appendChild(popup);
-
-            // 팝업 애니메이션 시작
-            setTimeout(() => {
-                popup.classList.add("show");
-            }, 100);
-
-            // 팝업 삭제
-            setTimeout(() => {
-                popup.classList.remove("show");
-                setTimeout(() => {
-                    document.body.removeChild(popup);
-                }, 1000);
-            }, popupDuration);
-        }
-
-        // 주기적으로 팝업 생성
-        setInterval(createPopup, popTime);
-
-    </script>
-
+<script>
+    let a = ~~(1000 / 2000);
+    console.log(a);
+</script>
 </html>

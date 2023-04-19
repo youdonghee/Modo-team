@@ -677,6 +677,9 @@ body{
   bottom: 50px;
   opacity: 1;
 }
+.popup.none {
+  display: none;
+}
 
 .fontstyle{
   font-family: 'GmarketSansMedium';
