@@ -8,6 +8,9 @@ let loginX = document.querySelector(".login-x");            //로그인 영역 x
 gameIcon.ondblclick = function(){       //게임아이콘 더블클릭 시 로그인 창이 뜬다.
     // console.log("클릭돼");
     background.classList.toggle("popup")
+    const audio = new Audio();
+    audio.src = "../BGM/Windows XP Startup.wav";
+    audio.play();
 }
 
 iconText.ondblclick = function(){       //게임 이름 더블 클릭 시 로그인 창이 뜬다.
@@ -935,7 +938,7 @@ adminTop.addEventListener('mouseup', function(){
 //--------------------------------------------------------------------------------------------------
 
 
-
+//--------- 윈도우바 우측 현재시간간 ------------------------------------------------------------------
 let time = document.querySelector(".time");
 
 function now() {
@@ -966,3 +969,4 @@ function now() {
 }
 now();
 setInterval(now, 1000);
+//--------------------------------------------------------------------------------------------------
