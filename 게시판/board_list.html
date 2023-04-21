@@ -64,6 +64,7 @@
         <span class="logout">로그아웃</span>
       </div>
       <div class="board-text">
+      
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -73,32 +74,34 @@
           <div class="sym">공감</div>
           <div class="em">비공감</div>
         </div>
-        <div class ="board-list">
-          <div class="number">1</div>
-          <div class="day">2023-04-17</div>
-          <div class="list"><span class="list1">JY전자는 왜 맨날 떨어지냐?</span></div>
-          <div class="writer">이재영</div>
-          <div class="view">3</div>
-          <div class="sym">2</div>
-          <div class="em">0</div>
+        <div class="board-board">
+          <!-- <div class ="board-list"> -->
+           <!-- <div class="number">1</div>
+            <div class="day">2023-04-17</div>
+            <div class="list"><span class="list1">JY전자는 왜 맨날 떨어지냐?</span></div>
+            <div class="writer">이재영</div>
+            <div class="view">3</div>
+            <div class="sym">2</div>
+            <div class="em">0</div> -->
+          <!-- </div> -->
         </div>
 
       </div>
         <div class="written">
           <!-- 게시글 내용 -->
           <div class="written-row1">
-              <div class="written-title">글제목</div>
+              <div class="written-title"></div>
               <div class="vses">
-                  <div class="written-view">조회 3</div>
-                  <div class="written-sym">공감 2</div>
+                  <div class="written-view">조회 0</div>
+                  <div class="written-sym">공감 0</div>
                   <div class="written-em">비공감 0</div>
                   <div class="written-singo">신고</div>
               </div>
           </div>
   
           <div class="written-row2">
-              <div class="written-writer">이재영</div>
-              <div class="written-day">2023-04-17</div>  
+              <div class="written-writer"></div>
+              <div class="written-day"></div>  
           </div>
           
           <div class="written-row3">
@@ -139,13 +142,15 @@
 
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">
-        <div class="page_btn" onclick="before()"><</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div class="page_btn1" onclick="next()">></div>
+        <div class="page_btn" onclick="before()">&laquo;</div>
+        <div class="page-nummain" style="display: flex; width: 100%; justify-content: center;">
+          <div class="page-num">1</div>
+          <!-- <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div> -->
+        </div>
+        <div class="page_btn1" onclick="next()">&raquo;</div>
       </div>
       <!-- ------------------------------------------------------------------------------------------------- -->
     </div>
