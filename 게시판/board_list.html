@@ -63,7 +63,8 @@
         <!-- -----로그아웃 버튼------------------------------------- -->
         <span class="logout">로그아웃</span>
       </div>
-      <div class="board-text">
+      <!-- 게시판 전체 -->
+      <div class="board-text" id="post-list">
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -126,14 +127,15 @@
       <div class="content">
         <div class="row1">
           <div class="title">제목</div>
-          <input class="main-title" type="text">
+          <input class="main-title" type="text" id="title">
 
         </div>
         <div class="row2">
-          <input class="main-content" type="text">
+          <input class="main-content" type="text" id="content">
         </div>
         <div class="row3">
-          <button class="submit">등록하기</button>
+          <button class="submit" onclick="addPost()">등록하기</button>
+          <button class="updateBtn" onclick="addPost()">수정하기</button>
         </div>
       </div>
 
@@ -152,6 +154,6 @@
   </div>
 </div>
 </body>
-<script src="./board_list.js"></script>
-
+<!-- <script src="./board_list.js"></script> -->
+<script src="./boardTest.js"></script>
 </html>

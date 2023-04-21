@@ -1,34 +1,36 @@
 let userData = '[{"key" : "value"}]';
 userData = window.localStorage.getItem("로그인");
-console.log(userData);
-let boardCounter=1;
+
 let signUp = document.querySelector(".signUp");
+
+let boardCounter=1;
 let list1;
-let written = document.querySelector(".written");
+let written = document.querySelector(".written"); //게시글 전체
 let backbtn = document.querySelector(".back-btn");
 
 
 
-const boardText = document.querySelector(".board-text");
+const boardText = document.querySelector(".board-text"); //게시판 전체
 const submit = document.querySelector(".submit");
 const boardTitle = document.querySelector(".main-title");
 const boardContent = document.querySelector(".main-content");
 const content = document.querySelector(".content");
 
+// 게시글 쓰면 나오게
 signUp.onclick = function () {
     written.style.display = "none";
     boardText.style.display = "none";
     content.style.display = "block";
   };
 
-console.log(list1);
+
 // 페이지가 다 렌더 됬을때 실행되는 자동으로 실행
 // 페이지가 처음 렌더 되었을 때 board라는 키값을 가진 데이터를 찾음
 // 없으면 게시글이 없는거고, 있으면 게시글을 화면에 넣어줌
-render()
+
 function render() {
     document.addEventListener("DOMContentLoaded", () => {
-      // 게시글 있는지 확인함
+      // 게시글 있는지 확인함 게시글이 있으면 게시글을 가져와
       if (localStorage.getItem("board")) {
         // 게시글 데이터 가져옴
         const board = getDataFromLocalStorage();
@@ -38,12 +40,17 @@ function render() {
       }
     });  
 }
+// board라는 키값을 가진 data를 찾아옴 => 게시글 리스트 [{}]
+function getDataFromLocalStorage() {
+  const data = localStorage.getItem("board");
+  return data;
+}
 let boardContentArr = [];
 let boardTitleDataArr = [];
 let boardContentDataArr = [];
 
 //등록하기를 눌렀을 때
-submit.onclick = (event) => {
+submit.onclick = () => {
 
   // 작성한 제목이랑 내용을 
   const boardTitleData = boardTitle.value;
@@ -53,7 +60,7 @@ submit.onclick = (event) => {
   boardContentDataArr.push(boardContentData);
 
   const data = new Date().toISOString().substring(0, 10);
-  const board = createBoard(1, data, boardTitleData);
+  const board = createBoard(1, data, boardTitleData); // num, 날짜 , 타이틀
   
   // 조립한 게시글 내용을 게시글 목록에 넣어줌
   boardText.appendChild(board);
@@ -74,11 +81,12 @@ submit.onclick = (event) => {
 
 
 const createBoard = (num, date, title) => { // title은 내가 입력한 제목
-   
-   boardCounter= boardCounter + num;
-  const board = document.createElement("div");
-  const titleSpan = document.createElement("span");
+  
+  const board = document.createElement("div"); //div 만들어줌 
+  const titleSpan = document.createElement("span"); // span 만들어줌 -> title 들어감
+  titleSpan.innerHTML = title;
 
+    //div 만들어줌 
     let div01 =document.createElement("div")
     let div02 =document.createElement("div")
     let div03 =document.createElement("div")
@@ -87,16 +95,10 @@ const createBoard = (num, date, title) => { // title은 내가 입력한 제목
     let div06 =document.createElement("div")
     let div07 =document.createElement("div")
 
-  const arr = [  // 목록에 div 7개 생성
-    div01,div02,div03,div04,div05,div06,div07
-  ];
+  // 목록에 div 7개 생성
+  const arr = [div01,div02,div03,div04,div05,div06,div07];
 
- 
-
-  // 각각 div 에 넣어주고
-  titleSpan.innerHTML = title;
-  console.log("여기는 2가 맞아"+boardCounter);
-  arr[0].innerHTML = board.length;
+  arr[0].innerHTML = num; //div01 글번호
   arr[1].innerHTML = date;
 //   arr[2].appendChild(titleSpan);
 //   arr[2].innerHTML = title;
@@ -252,11 +254,7 @@ function saveDataToLocalStorage(data) {
   
 }
 
-// board라는 키값을 가진 data를 찾아옴 => 게시글 리스트 [{}]
-function getDataFromLocalStorage() {
-  const data = localStorage.getItem("board");
-  return data;
-}
+
 
 
 backbtn.onclick = function () {
