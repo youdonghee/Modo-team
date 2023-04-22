@@ -64,7 +64,7 @@
         <span class="logout">로그아웃</span>
       </div>
       <!-- 게시판 전체 -->
-      <div class="board-text" id="post-list">
+      <div class="board-text">
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -74,21 +74,18 @@
           <div class="sym">공감</div>
           <div class="em">비공감</div>
         </div>
-        <div class="board-list">
-          <div class="number">1</div>
-          <div class="day">2023-04-17</div>
-          <div class="list"><span class="list1">JY전자는 왜 맨날 떨어지냐?</span></div>
-          <div class="writer">이재영</div>
-          <div class="view">0</div>
-          <div class="sym">0</div>
-          <div class="em">0</div>
-        </div>
+        <!-- 글 목록 그려주는곳 -->
+        <div class="board-box" id="board-list"></div>
 
       </div>
         <div class="written">
           <!-- 게시글 내용 -->
           <div class="written-row1">
               <div class="written-title">글제목</div>
+              <div class="written-title hide">
+                <input type="text" id="Retitle">
+              </div>
+              
               <div class="vses">
                   <div class="written-view">조회 3</div>
                   <div class="written-sym">공감 2</div>
@@ -104,6 +101,9 @@
           
           <div class="written-row3">
               <div class="written-content">JW전자는 맨날 떨어지네 언제 올라가냐</div>
+              <div>
+              <input type="text" id="Recontent">
+              </div>
           </div>
   
           <div class="written-row4">
@@ -121,7 +121,6 @@
           
         
         </div>
-       
 
       <!-- 게시글 등록 부분 -->
       <div class="content">

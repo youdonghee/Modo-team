@@ -11,6 +11,7 @@ const submit = document.querySelector(".submit");
 const boardTitle = document.querySelector(".main-title");
 const boardContent = document.querySelector(".main-content");
 const contentSelect = document.querySelector(".content");
+const content = document.querySelector(".content");
 
 let index;
 if (localStorage.getItem('posts')) {
@@ -19,9 +20,9 @@ if (localStorage.getItem('posts')) {
   index = 0;
 }
 
-// window.onload = function() {
-//   showPostList()
-// }
+window.onload = function() {
+  showPostList()
+}
 
 // 게시글 등록하기 누르면 글쓰는 화면 뜨게
 signUp.onclick = function () {
@@ -30,19 +31,23 @@ signUp.onclick = function () {
   contentSelect.style.display = "block";
 };
 
-//   // 객체에 추가되는거 확인함!! 
+//  객체에 추가
 function addPost() {
   let title = document.getElementById("title").value;
   let content = document.getElementById("content").value;
+  let date = new Date().toISOString().substring(0, 10)
+  let myname = "유동희"
   // 새로운 게시물을 만듭니다.
   var post = {
     title: title,
     content: content,
-    index: index
+    index: index,
+    date : date,
+    myname : myname
   };
 
   // localStorage에서 이전 게시물 목록을 가져옵니다.
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   // 새로운 게시물을 배열에 추가합니다.
   posts.push(post);
@@ -65,7 +70,8 @@ function showPostList() {
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   // 게시물 목록을 보여줍니다.
-  var list = document.getElementById("post-list");
+  // board-titile 밑에
+  var list = document.getElementById("board-list");
 
   list.innerHTML = "";
 
@@ -73,7 +79,9 @@ function showPostList() {
     var post = posts[i];
 
     var board = list.children[i] || document.createElement("div");
-    var titleSpan = board.children[0] || document.createElement("span");
+    // span = post.title
+    // var titleSpan = board.children[0] || document.createElement("span");
+    var titleSpan = document.createElement("span");
     titleSpan.textContent = post.title;
 
     //div 만들어줌 
@@ -88,16 +96,12 @@ function showPostList() {
     // 목록에 div 7개 생성
     const arr = [div01, div02, div03, div04, div05, div06, div07];
 
-    arr[0].innerHTML = post.index + 1; //div01 글번호
-    console.log(arr[0]);
-    console.log(post.index);
-    arr[1].innerHTML = new Date().toISOString().substring(0, 10); //날짜
-    //const data = new Date().toISOString().substring(0, 10);
-
+    arr[0].innerHTML = (i+1); //div01 글번호
+    arr[1].innerHTML = post.date; //날짜
     arr[2].appendChild(titleSpan);
-    arr[2].innerHTML = title;
+    arr[2].innerHTML = post.title;
     div03.append(titleSpan);
-    arr[3].innerHTML = ""; //글쓴이
+    arr[3].innerHTML = post.myname //글쓴이
     arr[4].innerHTML = 0;
     arr[5].innerHTML = 0;
     arr[6].innerHTML = 0;
@@ -113,99 +117,110 @@ function showPostList() {
     arr[5].classList.add("sym");
     arr[6].classList.add("em");
 
+    // arr element 만큼 추가해줌
+    arr.forEach((v,index) => {
+      board.appendChild(v);
+    });
+
+    // 제목클릭하면 보여주기
     titleSpan.onclick = (function (post) { // 클로저 활용
       return function () {
         showPost(post);
       };
     })(post);
-    board.appendChild(titleSpan);
+
     list.appendChild(board);
   }
 }
 
 // 게시물 클릭하면 보여주기
 function showPost(post) {
-  // localStorage에서 저장된 게시물을 가져옵니다.
-  var title = post.title;
-  var content = post.content;
-  // // 게시물 클릭하면 수정버튼 뜨고 글쓰기 버튼 사라짐
-  // let updateBtn = document.querySelector(".updateBtn")
-  // updateBtn.style.display = "block"
-  // // 삭제버튼
-  // let deleteBtn = document.querySelector(".deleteBtn")
-  // deleteBtn.style.display = "block"
-  // let addBtn = document.querySelector(".signUp");
-  // addBtn.style.display = "none";
-  // // 화면에 게시물을 보여줍니다.
-  // var titleInput = document.getElementById("title");
-  // var contentInput = document.getElementById("content");
-  // titleInput.value = title;
-  // contentInput.value = content;
-  // document.querySelector(".showtitle").innerHTML = "제목 : " + title;
-  // document.querySelector(".showcontent").innerHTML = "내용 : " + content;
+  content.style.display = "none";
+  boardText.style.display = "none";
+  written.style.display = "block";
 
-  // // 수정 버튼누르면 
-  // updateBtn.onclick = function () {
-  //   updatePost(post);
-  // };
-  // // 삭제 버튼누르면
-  // deleteBtn.onclick = function () {
-  //   deletePost(post);
-  // }
+  // localStorage에서 저장된 게시물을 가져옵니다.
+  let title = post.title;
+  let postcontent = post.content;
+
+  // 숨겨논 인풋 벨류에도 값을 담아줌
+  let titleInput = document.getElementById("Retitle");
+  titleInput.value = title;
+  let contentInput = document.getElementById("Recontent");
+  contentInput.value = postcontent;
+
+  // 게시물 클릭하면 수정버튼 뜨고 글쓰기 버튼 사라짐
+  let updateBtn = document.querySelector(".retouch")
+  // 삭제버튼
+  let deleteBtn = document.querySelector(".delete")
+
+  document.querySelector(".written-title").innerHTML = "글제목 : " + title;
+  document.querySelector(".written-content").innerHTML = postcontent;
+  document.querySelector(".written-day").innerHTML = post.date
+  document.querySelector(".written-writer").innerHTML = post.myname
+
+  // 뒤로가기 버튼 누르면 
+  backbtn.onclick = function () {
+    written.style.display = "none";
+    boardText.style.display = "block";
+    content.style.display = "none";
+  };
+
+  // 수정 버튼누르면 
+  updateBtn.onclick = function () {
+    updatePost(post);
+  };
+  // 삭제 버튼누르면
+  deleteBtn.onclick = function () {
+    deletePost(post);
+  }
 };
 
 
 
-// // 게시물 수정하기
-// function updatePost(post) {
-//   var title = document.getElementById("title").value; //제목값
-//   var content = document.getElementById("content").value; //내용
-//   // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
-//   var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
-// // newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
-//   posts.map((a)=>{
-//     if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
-//       var b = {...a};
-//       b.title=title
-//       b.content=content;
-//       posts[posts.indexOf(a)] = b;
-//       localStorage.setItem("posts", JSON.stringify(posts));
-//     }
-//   })
-//   document.querySelector(".showtitle").innerHTML = "제목 : " + title;
-//   document.querySelector(".showcontent").innerHTML = "내용 : " + content;
-//   document.getElementById("title").value = ""
-//   document.getElementById("content").value = ""
-//   let updateBtn = document.querySelector(".updateBtn")
-//   updateBtn.style.display="none"
-//   let deleteBtn = document.querySelector(".deleteBtn")
-//   deleteBtn.style.display="none"
-//   let addBtn = document.querySelector(".signUp");
-//   addBtn.style.display = "block";
-//   showPostList();
-// }
+// 게시물 수정하기
+function updatePost(post) {
+  var title = document.getElementById("Retitle").value; //제목값
+  var content = document.getElementById("Recontent").value; //내용
 
-// // 게시물 삭제
-// function deletePost(post) {
-//   // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
-//   var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
-// // newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
-//   posts.map((a)=>{
-//     if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
-//       posts.splice(posts.indexOf(a),1)
-//       localStorage.setItem("posts", JSON.stringify(posts));
-//     }
-//   })
-//   document.querySelector(".showtitle").innerHTML = "";
-//   document.querySelector(".showcontent").innerHTML = "";
-//   document.getElementById("title").value = ""
-//   document.getElementById("content").value = ""
-//   let updateBtn = document.querySelector(".updateBtn")
-//   updateBtn.style.display="none"
-//   let deleteBtn = document.querySelector(".deleteBtn")
-//   deleteBtn.style.display="none"
-//   let addBtn = document.querySelector(".signUp");
-//   addBtn.style.display = "block";
-//   showPostList();
-// }
+  // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
+  let posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
+  // map 으로 원본값은 냅두고 값을 바꿔준다
+  posts.map((a)=>{
+    if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
+      let b = {...a};
+      b.title=title
+      b.content=content;
+      posts[posts.indexOf(a)] = b;
+      localStorage.setItem("posts", JSON.stringify(posts));
+    }
+  })
+  document.querySelector(".written-title").innerHTML = "제목 : " + title;
+  document.querySelector(".written-content").innerHTML = "내용 : " + content;
+
+  showPostList();
+}
+
+// 게시물 삭제
+function deletePost(post) {
+  // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
+  var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
+// newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
+  posts.map((a)=>{
+    if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
+      posts.splice(posts.indexOf(a),1)
+      localStorage.setItem("posts", JSON.stringify(posts));
+    }
+  })
+  document.querySelector(".written-title").innerHTML = "";
+  document.querySelector(".written-content").innerHTML = "";
+  document.getElementById("Retitle").value = ""
+  document.getElementById("Recontent").value = ""
+
+  written.style.display = "none";
+  boardText.style.display = "block";
+  contentSelect.style.display = "none";
+
+  showPostList();
+}
 

@@ -1,6 +1,7 @@
-@font-face {        /* 폰트 - 넥슨 Lv.2 고딕 */
+@font-face {        
+  /* 폰트 - 넥슨 Lv.2 고딕 */
   font-family: 'NEXON Lv2 Gothic';
-  src: url('../style/NEXON\ Lv2\ Gothic.woff') format('woff');
+  src: url('../style/NEXON\ Lv2\ Gothic.woff') ;
   font-weight: normal;
   font-style: normal;
 }
@@ -389,4 +390,12 @@ body{
 }
 .list1{
   cursor: pointer;
+}
+
+
+
+.hide{
+  /* display: none; */
+  width: 411px;
+  height: 26px;
 }
