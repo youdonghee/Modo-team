@@ -43,7 +43,9 @@ function addPost() {
     content: content,
     index: index,
     date : date,
-    myname : myname
+    myname : myname,
+    view: 0,
+    like: 0
   };
 
   // localStorage에서 이전 게시물 목록을 가져옵니다.
@@ -77,13 +79,11 @@ function showPostList() {
 
   for (var i = 0; i < posts.length; i++) {
     var post = posts[i];
-
     var board = list.children[i] || document.createElement("div");
     // span = post.title
     // var titleSpan = board.children[0] || document.createElement("span");
     var titleSpan = document.createElement("span");
     titleSpan.textContent = post.title;
-
     //div 만들어줌 
     let div01 = document.createElement("div")
     let div02 = document.createElement("div")
@@ -92,20 +92,17 @@ function showPostList() {
     let div05 = document.createElement("div")
     let div06 = document.createElement("div")
     let div07 = document.createElement("div")
-
     // 목록에 div 7개 생성
     const arr = [div01, div02, div03, div04, div05, div06, div07];
-
     arr[0].innerHTML = (i+1); //div01 글번호
     arr[1].innerHTML = post.date; //날짜
     arr[2].appendChild(titleSpan);
     arr[2].innerHTML = post.title;
     div03.append(titleSpan);
     arr[3].innerHTML = post.myname //글쓴이
-    arr[4].innerHTML = 0;
-    arr[5].innerHTML = 0;
-    arr[6].innerHTML = 0;
-
+    arr[4].innerHTML = post.view;
+    arr[5].innerHTML = post.like;
+    arr[6].innerHTML = "";
     // 클래스명도 넣어주고
     board.classList.add("board-list");
     titleSpan.classList.add("list1");
@@ -116,20 +113,28 @@ function showPostList() {
     arr[4].classList.add("view");
     arr[5].classList.add("sym");
     arr[6].classList.add("em");
-
     // arr element 만큼 추가해줌
     arr.forEach((v,index) => {
       board.appendChild(v);
     });
-
     // 제목클릭하면 보여주기
     titleSpan.onclick = (function (post) { // 클로저 활용
       return function () {
+        post.view += 1
+        arr[4].innerHTML = post.view;
+        localStorage.setItem("posts", JSON.stringify(posts));
         showPost(post);
       };
     })(post);
-
     list.appendChild(board);
+
+    document.querySelector(".written-sym2").onclick = function(){
+      console.log("삭제")
+      let a = post.like += 1;
+      post.like = a;
+      window.localStorage.setItem("posts", JSON.stringify(posts));
+      showPostList();
+    }
   }
 }
 
@@ -198,6 +203,10 @@ function updatePost(post) {
   document.querySelector(".written-title").innerHTML = "제목 : " + title;
   document.querySelector(".written-content").innerHTML = "내용 : " + content;
 
+  written.style.display = "none";
+  boardText.style.display = "block";
+  contentSelect.style.display = "none";
+
   showPostList();
 }
 
@@ -213,6 +222,8 @@ function deletePost(post) {
     }
   })
   document.querySelector(".written-title").innerHTML = "";
+
+
   document.querySelector(".written-content").innerHTML = "";
   document.getElementById("Retitle").value = ""
   document.getElementById("Recontent").value = ""
