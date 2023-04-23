@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .updateBtn ,.deleteBtn{
+      display: none;
+    }
+    .btn{
+      display: flex;
+    }
+    .post-list a{
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 할일 : 제목에 공백 못넣게 하기 -->
+  <div class="btn">
+    <input type="text" id="title">
+    <input type="text" id="content">
+    <input type="button" value="글쓰기" onclick="addPost()" class="subBtn">
+    <input type="button" value="삭제하기" class="deleteBtn">
+    <input type="button" value="수정하기" class="updateBtn">
+  </div>
+
+
+  <div class="showtitle" id="showtitle">
+    제목 :
+  </div>
+  <div class="showcontent" id="showcontent">
+    내용 :
+  </div>
+
+  <div id="post-list">
+    게시물 목록
+  </div>
+</body>
+<script>
+  let index;
+if (localStorage.getItem('posts')) {
+   index=JSON.parse(localStorage.getItem('posts')).length;
+  
+}else{
+  index=0;
+}
+window.onload = function() {
+  showPostList()
+}
+
+  // 객체에 추가되는거 확인함!! 
+  function addPost() {
+    let title = document.getElementById("title").value;
+    let content = document.getElementById("content").value;
+    // 새로운 게시물을 만듭니다.
+    var post = {
+      title: title,
+      content: content,
+      index: index
+    };
+
+    // localStorage에서 이전 게시물 목록을 가져옵니다.
+    var posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+    // 새로운 게시물을 배열에 추가합니다.
+    posts.push(post);
+
+    // 배열을 다시 localStorage에 저장합니다.
+    localStorage.setItem("posts", JSON.stringify(posts));
+
+    // 글을쓰면 목록 초기화 시켜주기
+    showPostList();
+    index++;
+    // let show = document.querySelector(".showtitle").innerHTML = title
+    // let show2 = document.querySelector(".showcontent").innerHTML = content
+  }
+
+// 게시글 목록
+  function showPostList() {
+    // localStorage에서 저장된 게시물 목록을 가져옵니다.
+    var posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+    // 게시물 목록을 보여줍니다.
+    var list = document.getElementById("post-list");
+    list.innerHTML = "";
+    for (var i = 0; i < posts.length; i++) {
+      var post = posts[i];
+      var li = list.children[i] || document.createElement("li");
+      var a = li.children[0] || document.createElement("a");
+      list.style.listStyle= "none";
+      a.href = "#";
+      a.textContent = post.title;
+      a.onclick = (function (post) { // 클로저 활용
+        return function () {
+          showPost(post);
+        };
+      })(post);
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  }
+
+// 게시물 클릭하면 보여주기
+  function showPost(post) {
+    // localStorage에서 저장된 게시물을 가져옵니다.
+    var title = post.title;
+    var content = post.content;
+    // 게시물 클릭하면 수정버튼 뜨고 글쓰기 버튼 사라짐
+    let updateBtn = document.querySelector(".updateBtn")
+    updateBtn.style.display="block"
+    // 삭제버튼
+    let deleteBtn = document.querySelector(".deleteBtn")
+    deleteBtn.style.display="block"
+    let addBtn = document.querySelector(".subBtn");
+    addBtn.style.display = "none";
+    // 화면에 게시물을 보여줍니다.
+    var titleInput = document.getElementById("title");
+    var contentInput = document.getElementById("content");
+    titleInput.value = title;
+    contentInput.value = content;
+    document.querySelector(".showtitle").innerHTML = "제목 : " + title;
+    document.querySelector(".showcontent").innerHTML = "내용 : " + content;
+
+    // 수정 버튼누르면 
+    updateBtn.onclick = function () {
+    updatePost(post);
+    };
+  // 삭제 버튼누르면
+    deleteBtn.onclick = function () {
+      deletePost(post);
+    }
+  };
+
+
+
+// 게시물 수정하기
+function updatePost(post) {
+  var title = document.getElementById("title").value; //제목값
+  var content = document.getElementById("content").value; //내용
+  // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
+  var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
+// newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
+  posts.map((a)=>{
+    if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
+      var b = {...a};
+      b.title=title
+      b.content=content;
+      posts[posts.indexOf(a)] = b;
+      localStorage.setItem("posts", JSON.stringify(posts));
+    }
+  })
+  document.querySelector(".showtitle").innerHTML = "제목 : " + title;
+  document.querySelector(".showcontent").innerHTML = "내용 : " + content;
+  document.getElementById("title").value = ""
+  document.getElementById("content").value = ""
+  
+  let updateBtn = document.querySelector(".updateBtn")
+  updateBtn.style.display="none"
+  let deleteBtn = document.querySelector(".deleteBtn")
+  deleteBtn.style.display="none"
+  let addBtn = document.querySelector(".subBtn");
+  addBtn.style.display = "block";
+  showPostList();
+}
+
+// 게시물 삭제
+function deletePost(post) {
+  // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
+  var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
+// newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
+  posts.map((a)=>{
+    if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
+      posts.splice(posts.indexOf(a),1)
+      localStorage.setItem("posts", JSON.stringify(posts));
+    }
+  })
+  document.querySelector(".showtitle").innerHTML = "";
+  document.querySelector(".showcontent").innerHTML = "";
+  document.getElementById("title").value = ""
+  document.getElementById("content").value = ""
+  let updateBtn = document.querySelector(".updateBtn")
+  updateBtn.style.display="none"
+  let deleteBtn = document.querySelector(".deleteBtn")
+  deleteBtn.style.display="none"
+  let addBtn = document.querySelector(".subBtn");
+  addBtn.style.display = "block";
+  showPostList();
+}
+
+
+
+</script>
+
+</html>

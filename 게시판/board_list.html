@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,7 @@
           <p>등록</p>
         </div>
         <div class="add-sub">
-          <p class="boardadd-btn">게시글 등록하기</p>
+          <p class="signUp">게시글 등록하기</p>
         </div>
       </div>
       <!-- ----------------------------------------------------------------- -->
@@ -54,73 +55,104 @@
     </div>
     <!-- ------------------------------------------------------------------------------------------------- -->
 
-    <!-- -------자유게시판 목록----------------------------------------------------------------------------- -->
-    <div class="board-ground ">
+    <!-- -------게시판 영역 ----------------------------------------------------------------------------- -->
+    <div class="board-ground">
       <div class="board-top">
         <!-- -----자유게시판 타이틀------------------------------------>
         <h1>자유게시판</h1>
         <!-- -----로그아웃 버튼------------------------------------- -->
         <span class="logout">로그아웃</span>
       </div>
-      <div class="board-bottom"></div>
+      <!-- 게시판 전체 -->
+      <div class="board-text">
+        <div class ="board-title">
+          <div class="number">글번호</div>
+          <div class="day">날짜</div>
+          <div class="list-title">제목</div>
+          <div class="writer">글쓴이</div>
+          <div class="view">조회</div>
+          <div class="sym">공감</div>
+          <div class="em">비공감</div>
+        </div>
+        <!-- 글 목록 그려주는곳 -->
+        <div class="board-box" id="board-list"></div>
+
+      </div>
+        <div class="written">
+          <!-- 게시글 내용 -->
+          <div class="written-row1">
+              <div class="written-title">글제목</div>
+              <div class="written-title hide">
+                <input type="text" id="Retitle">
+              </div>
+              
+              <div class="vses">
+                  <div class="written-view">조회 3</div>
+                  <div class="written-sym">공감 2</div>
+                  <div class="written-em">비공감 0</div>
+                  <div class="written-singo">신고</div>
+              </div>
+          </div>
+  
+          <div class="written-row2">
+              <div class="written-writer">이재영</div>
+              <div class="written-day">2023-04-17</div>  
+          </div>
+          
+          <div class="written-row3">
+              <div class="written-content">JW전자는 맨날 떨어지네 언제 올라가냐</div>
+              <div>
+              <input type="text" id="Recontent">
+              </div>
+          </div>
+  
+          <div class="written-row4">
+              <div class="se">
+                  <div class="written-sym2">공감버튼</div>
+                  <div class="written-em2">비공감버튼</div>
+              </div>
+              <div class="rd">
+                  <div class="retouch">수정</div>
+                  <div class="delete">삭제</div>
+              </div>
+              
+          </div>
+          <button class="back-btn">뒤로가기</button>
+          
+        
+        </div>
+
+      <!-- 게시글 등록 부분 -->
+      <div class="content">
+        <div class="row1">
+          <div class="title">제목</div>
+          <input class="main-title" type="text" id="title">
+
+        </div>
+        <div class="row2">
+          <input class="main-content" type="text" id="content">
+        </div>
+        <div class="row3">
+          <button class="submit" onclick="addPost()">등록하기</button>
+          <button class="updateBtn" onclick="addPost()">수정하기</button>
+        </div>
+      </div>
+
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">
-        <div class="page-moving"><</div>
+        <div class="page_btn" onclick="before()"><</div>
         <div>1</div>
         <div>2</div>
         <div>3</div>
         <div>4</div>
         <div>5</div>
-        <div class="page-moving">></div>
+        <div class="page_btn1" onclick="next()">></div>
       </div>
       <!-- ------------------------------------------------------------------------------------------------- -->
     </div>
-
-    <!-------- 자유게시판 등록 -------------------------------------------------------->
-    <div class="board-add">
-      <div class="add-top">
-        <div class="triangle"></div>
-        <p class="add-sub">제목을 입력하세요!</p>
-        <div class="addtop-line"></div>
-        <p class="addinput-title">제목</p>
-        <input id="addTitle-input" type="text">
-      </div>
-      <div class="add-bottom">
-        <div class="triangle"></div>
-        <p class="add-sub">내용을 입력하세요!</p>
-        <textarea name="main" id="main"></textarea>
-        <!-- <input type="text"> -->
-        <div class="addtop-line"></div>
-      </div>
-      <div class="add-btn">등록</div>
-    </div>
-    <!-- ------------------------------------------------------------------------- -->
-    
-    <!-------- 자유게시판 상세 -------------------------------------------------------->
-    <div class="board-text popup">
-      <div class="text-box">
-        <div class="text-top">
-          <div class="text-title"></div>
-          <div class="title-sub">  
-            <div class="text-nick"></div>
-            <div class="text-view"></div>
-            <div class="text-like"></div>
-          </div>
-        </div>
-        <div class="text-inner">
-          <div class="text-board"></div>
-        </div>
-        <div class="text-btn">
-          <div class="like">공감</div>
-          <div class="edit">수정</div>
-          <div class="remove">삭제</div>
-          <div class="closer">닫기</div>
-        </div>
-      </div>
-    </div>
-    <!-- ------------------------------------------------------------------------- -->
-    
+  </div>
+</div>
 </body>
-<script src="./board_list.js"></script>
-
+<!-- <script src="./board_list.js"></script> -->
+<script src="./boardTest.js"></script>
 </html>
