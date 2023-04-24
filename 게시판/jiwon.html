@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자유게시판</title>
+  <link rel="stylesheet" href="./jiwon.css">
+</head>
+
+<body>
+  <div class="backbox"> <!-- 배경 폴더 박스 영역-->
+    <p></p>
+    <!-- -------게시판 메뉴 ------------------------------------------------- -->
+    <div class="menu">
+      <!-- -----게시글 순서 ------------------------------------------------- -->
+      <div class="post-order">
+        <div class="postorder-title">
+          <p>게시글 순서</p>
+        </div>
+        <div class="postorder-sub">
+          <p class="">등록순</p>
+          <p class="">조회수순</p>
+          <p class="">공감순</p>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+
+      <!-- -----게시글 등록 ------------------------------------------------- -->
+      <div class="add">
+        <div class="add-title">
+          <p>등록</p>
+        </div>
+        <div class="add-sub">
+          <p class="boardadd-btn">게시글 등록하기</p>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+
+      <!-- -----게시글 검색 ------------------------------------------------- -->
+      <div class="search">
+        <div class="search-title">
+          <p>검색</p>
+        </div>
+        <div class="search-sub">
+          <input type="text">
+          <button>검색</button>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+      <div class=""></div>
+      <div class=""></div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------- -->
+
+    <!-- -------자유게시판 목록----------------------------------------------------------------------------- -->
+    <div class="board-ground ">
+      <div class="board-top">
+        <!-- -----자유게시판 타이틀------------------------------------>
+        <h1>자유게시판</h1>
+        <!-- -----로그아웃 버튼------------------------------------- -->
+        <span class="logout">로그아웃</span>
+      </div>
+      <div class="board-bottom"></div>
+      <!-- 페이지네이션 영역 -->
+      <div class="page-nation">
+        <div class="page-moving"><</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div class="page-moving">></div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------------- -->
+    </div>
+
+    <!-------- 자유게시판 등록 -------------------------------------------------------->
+    <div class="board-add">
+      <div class="add-top">
+        <div class="triangle"></div>
+        <p class="add-sub">제목을 입력하세요!</p>
+        <div class="addtop-line"></div>
+        <p class="addinput-title">제목</p>
+        <input id="addTitle-input" type="text">
+      </div>
+      <div class="add-bottom">
+        <div class="triangle"></div>
+        <p class="add-sub">내용을 입력하세요!</p>
+        <textarea name="main" id="main"></textarea>
+        <!-- <input type="text"> -->
+        <div class="addtop-line"></div>
+      </div>
+      <div class="add-btn">등록</div>
+    </div>
+    <!-- ------------------------------------------------------------------------- -->
+    
+    <!-------- 자유게시판 상세 -------------------------------------------------------->
+    <div class="board-text popup">
+      <div class="text-box">
+        <div class="text-top">
+          <div class="text-title"></div>
+          <div class="title-sub">  
+            <div class="text-nick"></div>
+            <div class="text-view"></div>
+            <div class="text-like"></div>
+          </div>
+        </div>
+        <div class="text-inner">
+          <div class="text-board"></div>
+        </div>
+        <div class="text-btn">
+          <div class="like">공감</div>
+          <div class="edit">수정</div>
+          <div class="remove">삭제</div>
+          <div class="closer">닫기</div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------------------------------------------------------------- -->
+    
+</body>
+<script src="./jiwon.js"></script>
+
+</html>

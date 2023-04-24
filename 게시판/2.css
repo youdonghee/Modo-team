@@ -1,7 +1,6 @@
-@font-face {        
-    /* 폰트 - 넥슨 Lv.2 고딕 */
+@font-face {        /* 폰트 - 넥슨 Lv.2 고딕 */
     font-family: 'NEXON Lv2 Gothic';
-    src: url('../style/NEXON\ Lv2\ Gothic.woff') ;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
   }
@@ -196,12 +195,13 @@
     bottom: 20px;
   }
   
-  .page-nation .page_btn,.page_btn1{
+  .page-nation div{
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 31px;
     border-radius: 50%;
+    /* margin-right: 10px; */
     cursor: pointer;
   }
   
@@ -223,23 +223,22 @@
     line-height: 30px;
   }
   
-  .main-content,
-  .inputContent{
-    width: 693px;
+  .main-content{
+    width: 700px;
     height: 300px;
     float: right;
     border: 1px solid black;
   }
   .row1,
   .row2,
-  .row3,
-  .inputContent{
+  .row3{
     width: 700px;
+    
   }
   
   .row3{
     
-    text-align: right;
+    text-align: left;
   }
   .submit{
     margin-top: 10px;
@@ -253,6 +252,7 @@
   .board-list{
     display: flex;
     /* display: none; */
+    
   }
   
   .number,
@@ -267,12 +267,9 @@
     line-height: 34px;
     border: 1px solid black;
     text-align: center;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
   }
   .number{
-    width: 57px;
+    width: 50px;
   }
   .day{
     width: 150px;
@@ -294,7 +291,7 @@
   }
   
   .em{
-    width: 55px;
+    width: 45px;
   }
   
   
@@ -317,26 +314,23 @@
   }
   
   .written-title{
-      width: 400px;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+      width: 270px;
       /* border: 1px solid black; */
-      /* text-align: center; */
+      text-align: center;
   }
   
   .written-view{
-      width: 80px;
+      width: 50px;
       /* border: 1px solid black; */
       text-align: center;
   }
   .written-sym{
-      width: 80px;
+      width: 50px;
       /* border: 1px solid black; */
       text-align: center;
   }
   .written-em{
-      width: 80px;
+      width: 70px;
       /* border: 1px solid black; */
       text-align: center;
   }
@@ -362,9 +356,6 @@
       height: 290px;
       border-top: 1px solid black;
       border-bottom: 1px solid black;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
       
   
   }
@@ -384,8 +375,7 @@
   .written-sym2,
   .written-em2,
   .retouch,
-  .delete,
-  .firstRetouch{
+  .delete{
       width: 100px;
       /* border: 1px solid black; */
       text-align: center;
@@ -401,132 +391,15 @@
   .list1{
     cursor: pointer;
   }
-  
-  .written.popup,
-  .board-text.popup,
-  .content.popup
-  {
-    display: block;
-  }
+.text {
+  width: 635px;
+}
 
-  .written,
-  .board-text,
-  .content
-  {
-    display: none;
-  }
-  
-  .hide{
-    display: none;
-    /* width: 411px; */
-    /* height: 26px; */
-  }
-  .page-num{
-    display: flex;
-    text-align: center;
-    line-height: 31px;
-  }
-  .num{
-    margin: 0 10px;
-  }
+.text1 {
+  width: 635px;
+  height: 500px;
+}
 
-  .add-bottom{
-    position: absolute;
-    width: 90%;
-    top: 130px;
-    left: 50%;
-    transform: translate(-50%);
-    height: 400px;
-  }
-
-  .add-top{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 90%;
-    height: 130px;
-  }
-
-  .add-top input{
-    position: absolute;
-    top: 70px;
-    left: 100px;
-    width: 500px;
-    height: 25px;
-    border: 1px solid rgb(179, 179, 179);
-  }
-
-  .add-bottom textarea{
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 90%;
-    height: 230px;
-    border: 1px solid rgb(179, 179, 179);
-    vertical-align: top;
-    resize: none;
-  }
-  
-    .content .triangle{
-    position: absolute;
-    top: 24px;
-    left: 30px;
-    width: 0;
-    height: 0;
-    border-top: 7px solid transparent;
-    border-left: 7px solid transparent;
-    border-bottom: 7px solid darkblue;
-    border-right: 7px solid darkblue;
-  }
-
-    .content .add-sub{
-    position: absolute;
-    top: 20px;
-    left: 58px;
-    font-size: 20px;
-    color: darkblue;
-    margin: 0;
-    
-  }
-
-    .content .addtop-line{
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    width: 55%;
-    box-sizing: border-box;
-    border: 1px solid darkblue;
-  }
-
-  .content .addinput-title{
-    position: absolute;
-    top: 70px;
-    left: 38px;
-    font-size: 25px;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: 3px;
-  }
-
-  .submit,
-  .updateBtn{
-    width: 80px;
-    height: 30px;
-    font-size: 17px;
-    line-height: 30px;
-    /* font-weight: 700; */
-    letter-spacing: 2px;
-    text-align: center;
-    border-radius: 10px;
-    bottom: -480px;
-    position: absolute;
-    right: 64px;
-    cursor: pointer;
-    background-image: url(./게시판_등록\ 버튼.png);
-  }
-
-  /* .submit
-  {
-    right: 145px;
-  } */
+.btn {
+  margin-left: 587px;
+}

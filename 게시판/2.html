@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>자유게시판</title>
-  <link rel="stylesheet" href="./board_list.css">
+  <link rel="stylesheet" href="./2.css">
 </head>
 
 <body>
@@ -44,8 +44,8 @@
           <p>검색</p>
         </div>
         <div class="search-sub">
-          <input type="text" id="search-input">
-          <button class="search-btn">검색</button>
+          <input type="text">
+          <button>검색</button>
         </div>
       </div>
       <!-- ----------------------------------------------------------------- -->
@@ -62,8 +62,8 @@
         <!-- -----로그아웃 버튼------------------------------------- -->
         <span class="logout">로그아웃</span>
       </div>
-      <!-- 게시판 전체 -->
-      <div class="board-text popup">
+      <div class="board-text">
+      
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -73,46 +73,47 @@
           <div class="sym">공감</div>
           <div class="em">비공감</div>
         </div>
-        <!-- 글 목록 그려주는곳 -->
-        <div class="board-box" id="board-list"></div>
+        <div class="board-board">
+          <!-- <div class ="board-list"> -->
+           <!-- <div class="number">1</div>
+            <div class="day">2023-04-17</div>
+            <div class="list"><span class="list1">JY전자는 왜 맨날 떨어지냐?</span></div>
+            <div class="writer">이재영</div>
+            <div class="view">3</div>
+            <div class="sym">2</div>
+            <div class="em">0</div> -->
+          <!-- </div> -->
+        </div>
 
       </div>
         <div class="written">
           <!-- 게시글 내용 -->
           <div class="written-row1">
-              <div class="written-title">제목</div>
-              <div class="inputTitle hide show1">
-                제목 : <input type="text" id="Retitle" style="width: 350px;">
-              </div>
-              
+              <div class="written-title"></div>
               <div class="vses">
-                  <div class="written-view">조회 3</div>
-                  <div class="written-sym">공감 2</div>
+                  <div class="written-view">조회 0</div>
+                  <div class="written-sym">공감 0</div>
                   <div class="written-em">비공감 0</div>
                   <div class="written-singo">신고</div>
               </div>
           </div>
   
           <div class="written-row2">
-              <div class="written-writer">이재영</div>
-              <div class="written-day">2023-04-17</div>  
+              <div class="written-writer"></div>
+              <div class="written-day"></div>  
           </div>
           
           <div class="written-row3">
-              <div class="writtenContent">JW전자는 맨날 떨어지네 언제 올라가냐</div>
-              <div class="inputContent hide show2">
-              <textarea class="main-content" type="text" id="Recontent" style="resize: none;"> </textarea>
-              </div>
+              <div class="written-content">JW전자는 맨날 떨어지네 언제 올라가냐</div>
           </div>
   
           <div class="written-row4">
               <div class="se">
-                  <div class="written-sym2">공감버튼</div>
-                  <div class="written-em2">비공감버튼</div>
+                  <div class="written-sym2"><button id="like-btn">공감</button></div>
+                  <div class="written-em2"><button id="hate-btn">비공감</button></div>
               </div>
               <div class="rd">
-                  <div class="firstRetouch">수정</div>
-                  <div class="retouch hide">수정</div>
+                  <div class="retouch">수정</div>
                   <div class="delete">삭제</div>
               </div>
               
@@ -121,58 +122,40 @@
           
         
         </div>
+       
 
       <!-- 게시글 등록 부분 -->
       <div class="content">
-        <!-- <div class="row1">
-          <div class="title">제목</div>
-          <input class="main-title" type="text" id="title">
+        <div class ="row1">
+            <div class="title">제목</div>
+            <input class="main-title" type="text">
 
-        </div> -->
-        <div class="add-top">
-            <div class="triangle"></div>
-            <p class="add-sub">제목을 입력하세요!</p>
-            <div class="addtop-line"></div>
-            <p class="addinput-title">제목</p>
-            <input id="title" type="text">
         </div>
-        <!-- <div class="row2">
-          <textarea class="main-content" type="text" id="content" style="resize: none;" ></textarea>
-        </div> -->
-        <div class="add-bottom">
-            <div class="triangle"></div>
-            <p class="add-sub">내용을 입력하세요!</p>
-            <textarea  class="main-content" type="text" id="content" style="resize: none;"></textarea>
-            <!-- <input type="text"> -->
-            <div class="addtop-line"></div>
+        <div class="row2">
+            <input class="main-content" type="text">
         </div>
-        <div class="submit" onclick="addPost()">등록</div>
-        <!-- <div  class="updateBtn" onclick="addPost()">수정</div> -->
-        
-    <!-- <div class="row3">
-      <button class="submit" onclick="addPost()">등록하기</button>
-      <button class="updateBtn" onclick="addPost()">수정하기</button>
-      
-    </div> -->
-</div>
+        <div class="row3">
+            <button class="submit">등록하기</button>
+        </div>
+      </div>
 
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">
-        <div class="page_btn" onclick="before()"><</div>
-        <div class="page-num">
-          <div class="num">1</div>
-          <div class="num">2</div>
-          <div class="num">3</div>
-          <div class="num">4</div>
-          <div class="num">5</div>
+        <div class="page_btn" onclick="before()">&laquo;</div>
+        <div class="page-nummain" style="display: flex; width: 100%; justify-content: center;">
+          <div class="page-num">1</div>
+          <!-- <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div> -->
         </div>
-        <div class="page_btn1" onclick="next()">></div>
+        <div class="page_btn1" onclick="next()">&raquo;</div>
       </div>
       <!-- ------------------------------------------------------------------------------------------------- -->
     </div>
   </div>
 </div>
 </body>
-<!-- <script src="./board_list.js"></script> -->
-<script src="./boardTest.js"></script>
+<script src="./2.js"></script>
+
 </html>

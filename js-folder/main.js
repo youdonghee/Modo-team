@@ -17,7 +17,11 @@ let accountArr= [];
 let sum=[];
 let totalMoney = document.querySelector(".total-money");
 let ment = document.querySelector(".ment");
-window.localStorage.clear();
+// window.localStorage.clear();
+
+let w = window.localStorage.getItem("로그인");
+let Jsonw = JSON.parse(w);
+console.log(Jsonw);
 
 
 const loadingText = document.getElementById('loading');
@@ -153,7 +157,7 @@ function setTimer(time) {
         
         roundCount++;
 
-        if(roundCount==3){ //라운드 설정
+        if(roundCount==10){ //라운드 설정
           // createPopup(1);
           removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
