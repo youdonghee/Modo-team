@@ -139,28 +139,18 @@ function showPostList(page) {
       list.appendChild(board); 
     }
 
-  }
-}
-
-searchBtn.onclick = function () {
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
-  let searchInput = document.getElementById("search-input");
-  let valueArr = document.getElementsByClassName("board-list");
-  console.log("클릭")
-  console.log(searchInput)
-
-  for (let i = 0; i < valueArr.length; i++) {
-    let InputValue = searchInput.value
-    if(posts[i].title.includes(InputValue)){
-      console.log("있음");
-      valueArr[i].style.display = "flex";
+    searchBtn.onclick = function () {
+      let searchInput = document.getElementById("search-input").value;
+      if(posts[i].title.includes(searchInput)){
+        list.innerHTML = "";
+        // 일치하는것만 뽑아서 local 에 담아주고 다시 그려주기
+        // list.style.display = "flex";
+      }
     }
-    else{ 
-      console.log("없음");
-      valueArr[i].style.display = "none";
-    } 
   }
 }
+
+
 
 // 게시물 클릭하면 보여주기
 function showPost(post) {
@@ -199,6 +189,7 @@ function showPost(post) {
     written.style.display = "none";
     boardText.style.display = "block";
     content.style.display = "none";
+    updateBtn()
     showPostList(1);
   };
   // 수정1 버튼누르면
@@ -222,7 +213,6 @@ function showPost(post) {
     writtenTitle.style.display = "block"
     writtenContent.style.display = "block"
     updatePost(post);
-
   };
   // 삭제 버튼누르면
   deleteBtn.onclick = function () {

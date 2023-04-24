@@ -163,10 +163,6 @@ body{
   height: 400px;
   top:100px;
   position: absolute;
-  border: 1px solid black;
-
-
-  /* display: none; */
 }
 .content{
   top:100px;
@@ -225,7 +221,7 @@ body{
 
 .main-content,
 .inputContent{
-  width: 700px;
+  width: 693px;
   height: 300px;
   float: right;
   border: 1px solid black;
