@@ -436,9 +436,7 @@ body{
 }
 .x{
     right: 18px;
-    top:10px;
 }
-
 .x div,
 .sign-x div,
 .login-x div{
@@ -535,10 +533,10 @@ body{
     background-size: cover;
 }
 
-/* .windowsbar-right .time{
-    width: 100px;
-    height: 40px;
-} */
+.windowsbar-right .time{
+    /* width: 100px;
+    height: 40px; */
+}
 
 .windows-bar .time{
     position: absolute;
