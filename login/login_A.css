@@ -1,0 +1,547 @@
+@font-face {
+    font-family: 'GmarketSansMedium_nomal';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+html,
+body{
+    font-family: 'GmarketSansMedium_nomal';
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    user-select: none;
+}
+
+
+.backimage{             /* 초원 배경화면 영역*/
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(./배경화면_초원.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.backbox{               /* 폴더 영역 백그라운드 영역 - 이미지 넣기*/
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    background-image: url(./배경화면.png);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.backbox .top-text{
+    position: absolute;
+    top:4px;
+    left: 43px;
+    font-size: 18px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+.backbox .bottom-text{
+    position: absolute;
+    top: 112px;
+    left: 101px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+/*---------- 폴더 내, 텍스트, 아이콘 영역 -------------------------------------------------------------- */
+.outground{
+    position: absolute;
+    width: 450px;
+    height: 200px;
+    top: 130px;
+    left: 10px;
+}
+
+.outground .folder-subtext{
+    position: absolute;
+    left: 10px;
+
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.outground img{
+    position: absolute;
+    top: 70px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.outground .icon-text{
+    position: absolute;
+    top: 65px;
+    left: 141px;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* ---------- 로그인 입력 영역 ----------------------------------------------------------  */
+.background{
+    position: absolute;
+    right: 54px;
+    top: 68px;
+    width: 492px;
+    height: 586px;
+    background-image: url(./로그인영역.png);
+    display: none;
+}
+
+.background.popup{
+    display: block;
+}
+
+.background .login-drag{
+    width: 491px;
+    height: 34px;
+}
+
+.background p,
+.sign-div p,
+.admin-div p{
+    color: white;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.background p{
+    position: absolute;
+    top: 8px;
+    left: 11px;
+}
+
+.background span,
+.sign-div span,
+.admin-div span{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.background span{
+    position: absolute;
+    top: 75px;
+    left: 42px;
+}
+
+.background h1{
+    font-size: 57px;
+    margin: 0;
+    padding: 0%;
+    position: absolute;
+    top: 107px;
+    left: 50%;
+    transform: translate(-50%);
+    letter-spacing: 3px;
+}
+
+.background .id-div,
+.background .pw-div{
+    width: 300px;
+    height: 50px;
+}
+
+.background .id-div{
+    position: absolute;
+    top: 250px;
+}
+.background .pw-div{
+    position: absolute;
+    top: 300px;
+}
+
+.background label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.background input{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+}
+
+
+.login-input{
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.login-signup{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 400px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-signup .login-btn,
+.login-signup .signup-btn{
+    width: 120px;
+    height: 50px;
+    background-image: url(./로그인\,\ 회원가입\ 버튼.png);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* -----------회원가입 팝업 창 ------------------------------------------------------------------------- */
+.sign-div,
+.admin-div{
+    width: 500px;
+    height: 700px;
+    position: absolute;
+    top: 60%;
+    transform: translate(0, -50%);
+    display: none;
+}
+
+.sign-div{
+    left: 15%;
+    background-image: url(./회원가입\ 영역.png);
+}
+
+.sign-div.popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sign-div .sign-drag,
+.admin-div .admin-drag{
+    position: absolute;
+    top: 0;
+    width: 500px;
+    height: 34px;
+}
+
+
+.sign-div h1{
+    position: absolute;
+    font-size: 36px;
+    letter-spacing: 10px;
+    top: 111px;
+}
+
+.sign-div p,
+.admin-div p{
+    position: absolute;
+    top: 7px;
+    left: 11px;
+}
+
+.sign-div span,
+.admin-div span{
+    position: absolute;
+    top: 71px;
+    left: 37px;
+}
+
+
+.sign-subdiv{
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.sign-subdiv input{
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.sign-subdiv .sign-idbtn,
+.sign-subdiv .sign-nickbtn{
+    width: 85px;
+    height: 45px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #efeee2;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.sign-pw{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-add{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    bottom: 90px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    cursor: pointer;
+    background-image: url(./회원가입\ 창_회원가입\ 버튼.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-div .pw1-subtext,
+.sign-div .pw2-subtext,
+.sign-div .id-subtext,
+.sign-div .nick-subtext{
+    width: 100%;
+    height: 30px;
+    font-size: 13px;
+}
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* -----------어드민 팝업 창 ------------------------------------------------------------------------- */
+.admin-div{
+    right: 5%;
+    background-image: url(./어드민\ 영역.png);
+    display: none;
+    /* display: block; */
+}
+
+.admin-div.popup{
+    display: block;
+}
+
+.admin-position{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.admin-position h1{
+    position: absolute;
+    font-size: 36px;
+    letter-spacing: 10px;
+    top: 117px;
+    margin: 0;
+}
+
+.admin-addNremove,
+.admin-listremove{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 350px;
+}
+
+.admin-addNremove{
+    top: 175px;
+    height: 190px;
+}
+
+.admin-listremove{
+    top: 413px;
+    height: 221px;
+}
+
+.admin-div ul{
+    margin: 0;
+    margin-top: 30px;
+    padding: 0;
+}
+
+
+
+
+.admin-addsub li > div{
+    width: 68px;
+    height: 20px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.admin-addNremove .approve{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+.admin-position h2{
+    position: absolute;
+    padding-left: 20px;
+    margin: 0;
+    top: -14px;
+    left: 9px;
+}
+
+.x,
+.sign-x,
+.login-x{
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.x div,
+.sign-x div,
+.login-x div{
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+}
+.x div:first-child,
+.sign-x div:first-child,
+.login-x div:first-child{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.x div:last-child,
+.sign-x div:last-child,
+.login-x div:last-child{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.admin-listsub{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.admin-listsub li > div{
+    width: 80px;
+    height: 20px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.admin-position button{
+    width: 45px;
+    height: 20px;
+    line-height: 1px;
+
+}
+
+/* 하단바 통째로 넣었을 경우
+.windows-bar{
+    position: absolute;
+    width: 1920px;
+    height: 40px;
+    box-sizing: border-box;
+    background-image: url(./하단_윈도우바.png);
+    bottom: 0;
+} */
+
+.windows-bar{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    bottom: 0;
+    display: flex;
+}
+
+.windows-bar .windowsbar-left{
+    width: 20%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_왼쪽.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.windows-bar .windowsbar-middle{
+    width: 60%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_중앙.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+.windowsbar-left p{
+    position: absolute;
+    color: white;
+    top: 10px;
+    margin: 0;
+    left: 197px;
+}
+
+.windows-bar .windowsbar-right{
+    width: 20%;
+    height: 100%;
+    background-image: url(../login/하단_윈도우바_오른쪽.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.windowsbar-right .time{
+    /* width: 100px;
+    height: 40px; */
+}
+
+.windows-bar .time{
+    position: absolute;
+    color: white;
+    left: 1800px;
+
+    margin: 0;
+    font-size: 15px;
+    margin-top: 10px;
+
+}

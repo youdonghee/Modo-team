@@ -1,0 +1,197 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.backimage{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../XP-HD-Wallpapers-022.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+/* ---------- 로그인 입력 영역 ----------------------------------------------------------  */
+.background{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.background h1{
+    font-size: 50px;
+    margin: 0;
+    padding: 0%;
+}
+
+.login-input{
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.login-signup{
+    width: 300px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-signup .login-btn,
+.login-signup .signup-btn{
+    width: 100px;
+    height: 50px;
+    border: 3px solid gray;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* -----------회원가입 팝업 창 ------------------------------------------------------------------------- */
+.sign-div,
+.admin-div{
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    border: 1px solid red;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: none;
+}
+
+.sign-div{
+    left: 5%;
+}
+
+.sign-div.popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.sign-subdiv{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.sign-subdiv input{
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+}
+
+
+.sign-pw{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-add{
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.sign-div .pw1-subtext,
+.sign-div .pw2-subtext{
+    width: 100%;
+    height: 30px;
+}
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/* -----------어드민 팝업 창 ------------------------------------------------------------------------- */
+.admin-div{
+    right: 5%;
+    display: none;
+    /* display: block; */
+}
+
+.admin-div.popup{
+    display: block;
+}
+
+.admin-position{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.admin-addNremove,
+.admin-listremove{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 280px;
+    border: 1px solid;
+}
+
+.admin-position h2{
+    width: 100% - 20px;
+    border-bottom: 5px solid;
+    padding-left: 20px;
+}
+
+.x,
+.sign-x{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.x div,
+.sign-x div{
+    position: absolute;
+    border: 1px solid;
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    left: 50%;
+    top: 50%;
+}
+.x div:first-child,
+.sign-x div:first-child{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.x div:last-child,
+.sign-x div:last-child{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
