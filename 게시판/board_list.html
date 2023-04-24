@@ -45,8 +45,8 @@
           <p>검색</p>
         </div>
         <div class="search-sub">
-          <input type="text">
-          <button>검색</button>
+          <input type="text" id="search-input">
+          <button class="search-btn">검색</button>
         </div>
       </div>
       <!-- ----------------------------------------------------------------- -->
@@ -81,9 +81,9 @@
         <div class="written">
           <!-- 게시글 내용 -->
           <div class="written-row1">
-              <div class="written-title">글제목</div>
-              <div class="written-title hide">
-                <input type="text" id="Retitle">
+              <div class="written-title">제목</div>
+              <div class="inputTitle hide show1">
+                제목 : <input type="text" id="Retitle">
               </div>
               
               <div class="vses">
@@ -100,9 +100,9 @@
           </div>
           
           <div class="written-row3">
-              <div class="written-content">JW전자는 맨날 떨어지네 언제 올라가냐</div>
-              <div>
-              <input type="text" id="Recontent">
+              <div class="writtenContent">JW전자는 맨날 떨어지네 언제 올라가냐</div>
+              <div class="inputContent hide show2">
+              <textarea class="main-content" type="text" id="Recontent" style="resize: none;"> </textarea>
               </div>
           </div>
   
@@ -112,7 +112,8 @@
                   <div class="written-em2">비공감버튼</div>
               </div>
               <div class="rd">
-                  <div class="retouch">수정</div>
+                  <div class="firstRetouch">수정</div>
+                  <div class="retouch hide">수정</div>
                   <div class="delete">삭제</div>
               </div>
               
@@ -130,7 +131,7 @@
 
         </div>
         <div class="row2">
-          <input class="main-content" type="text" id="content">
+          <textarea class="main-content" type="text" id="content" style="resize: none;" ></textarea>
         </div>
         <div class="row3">
           <button class="submit" onclick="addPost()">등록하기</button>
@@ -141,11 +142,13 @@
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">
         <div class="page_btn" onclick="before()"><</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+        <div class="page-num">
+          <div class="num">1</div>
+          <div class="num">2</div>
+          <div class="num">3</div>
+          <div class="num">4</div>
+          <div class="num">5</div>
+        </div>
         <div class="page_btn1" onclick="next()">></div>
       </div>
       <!-- ------------------------------------------------------------------------------------------------- -->
