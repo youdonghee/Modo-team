@@ -17,13 +17,13 @@ let boardContentDataArr2;
 let boardTitleDataArr = [];
 let boardContentDataArr = [];
 let date ;
-
 let boardboard = document.querySelector(".board-board");
 let writtenContent = document.querySelector(".written-content");
 let writtenDay = document.querySelector(".written-day");
 let writtenTitle = document.querySelector(".written-title");
 let pageNummain = document.querySelector(".page-nummain");
 let pageNum=document.querySelectorAll(".page-num");
+
 
 function CreateBoard({_title,_date,_id,_user,_content}){
     this.title = _title;
@@ -53,6 +53,7 @@ window.onload = function(){
 //등록하기를 눌렀을 때
 submit.onclick = function(){
 
+    
   // 작성한 제목이랑 내용의 벨류를 변수에 담는다
   const boardTitleData = boardTitle.value;
   const boardContentData = boardContent.value;
@@ -94,7 +95,6 @@ let boardMain = new CreateBoard({_title:boardTitleData, _date:date,
     if(!boardContentArr){ //arr에 데이터가 없음
         // console.log(boardContentArr.length == 0);
         // console.log("arr에 데이터가 없음")
-
         boardContentArr=[];
         boardContentArr.push(boardMain);
         window.localStorage.setItem("boardContentArr",JSON.stringify(boardContentArr));
@@ -104,65 +104,65 @@ let boardMain = new CreateBoard({_title:boardTitleData, _date:date,
         // console.log(boardContentArr.length);
         // console.log("arr에 데이터가 있음")
         boardMain.id = boardContentArr.length+1;
-
         a = JSON.parse(window.localStorage.getItem("boardContentArr"));
         // console.log(a);
         a.push(boardMain);
         // console.log(a);
         window.localStorage.setItem("boardContentArr",JSON.stringify(a));
     }
-
-
-// window.localStorage.setItem("boardContentArr",JSON.stringify(boardContentArr));
-
-// console.log(boardContentArr);
-// localTitle = JSON.parse(window.localStorage.getItem("제목배열"));
-// localContent = JSON.parse(window.localStorage.getItem("내용배열"));
-
-// console.log(localTitle); // (3) ['qwe', 'sadfas', '123']
-// // console.log(localTitle[0]);  // qwe
-
-// console.log(typeof(localTitle)); // object
-// // console.log(typeof(localTitle[0])); // string
-// console.log(typeof(JSON.stringify(localTitle)));
-
-// console.log(localContent);
-// console.log(typeof(localContent));
-
 render();
 listrender();
 
 }
-// let a = JSON.parse(window.localStorage.getItem("boardContentArr"));
+
     let a;
     let ia=1;
 function render(){
-    //  이 함수의 용도? 화면에 그리는거지=> 사용자는 10개의 리스트만 보면되잖아
-    
-    boardboard.innerHTML = "";
+
     a = JSON.parse(window.localStorage.getItem("boardContentArr"));
-    // console.log("이게 a임",a);
+   
+    boardboard.innerHTML="";
+
+    console.log(a.length);
+    if(a.length>11 ) // 
+    {   
+        let b = parseInt(a.length/10);
+
+        if(a.length%10==0 || a.length%10==1){
+            b= b-1;
+        }
+        console.log("b는" + b);
+        console.log("11보다 커서 들어옴");
+        boardboard = document.querySelectorAll(".board-board");
+        console.log(boardboard);
+
+        for(let aa =0; aa <= b ; aa++){
+        boardboard[aa].innerHTML = "";
+        
+        }
+    }
+
+    
     if (!a) {
         return false;
     }
-    // a.length-((i-1)*10)=1
-    // if( i*10 <a.length)
+    
     a.forEach(function(i, index){
-
-        console.log("sdfsdf",index);
-        if (index==0){
-            console.log("나 0됐어");
-        }
-        //  || (index/10==2 && index >=10)
-        console.log(~~(index/10));
+        // console.log(index);
 
 
-        if((~~(index/10))==1 && index >=10){
+        if((parseInt(index/10))==1 && index >=10 || (parseInt(index/10))==2){
              console.log("여기 들어오니?");
              console.log(index);
 
-            let newboardboard = document.createElement("div"); 
-            newboardboard.className="board-board";
+             console.log("create"+a.length);
+
+             if(a.length % 10==1 && a.length>10 && a.length-index==1){
+                console.log("이번만 만든다");
+                let newboardboard = document.createElement("div"); 
+                newboardboard.className="board-board";
+             }
+            
 
         const boardlist = document.createElement("div");
         const titleSpan = document.createElement("span");
@@ -187,6 +187,7 @@ function render(){
         let {title,date,id,user} = i; //이거 안하면 아래처럼 해야됌
         // let ti=i.title;
         // console.log(id);
+
         div01.innerHTML = id;
         div02.innerHTML = date;
         titleSpan.innerHTML = title;
@@ -195,28 +196,58 @@ function render(){
         div06.innerHTML = "0";
         div07.innerHTML = "0";
 
+        if((a.length-1)%10==0 && index%10==0 && a.length-index==1){
+            console.log("index가 10으로 나눴을 때 0일때만");
+            let newboardboard = document.createElement("div"); 
+            newboardboard.className="board-board";
+
             div03.append(titleSpan);  
             boardlist.append(div01,div02,div03,div04,div05,div06,div07);
-            
-
-
-            // index= 3,6,9 / 1 2 4
+            boardboard = document.querySelectorAll(".board-board");
             newboardboard.append(boardlist);
             boardText.append(newboardboard);
-
             boardboard = document.querySelectorAll(".board-board");
-            console.log(boardboard);
-            console.log(index/10);
             boardboard[parseInt(index/10)].style.display="none";
 
+            console.log( boardboard[parseInt(index/10)]);
+            console.log(parseInt(index/10));
+            console.log(index);
         }
+        
+        if(a.length >11){
+        //
 
-        // console.log(boardContentArr[0]);
+            console.log("11부터 들어옴");
+            div03.append(titleSpan); 
+            boardlist.append(div01,div02,div03,div04,div05,div06,div07);
+            boardboard = document.querySelectorAll(".board-board");
+
+            console.log("몇이니"+parseInt(index/10))
+            boardboard[parseInt(index/10)].append(boardlist);
+            
+            boardText.append(boardboard[parseInt(index/10)]);
+            console.log( boardboard[parseInt(index/10)]);
+            console.log(parseInt(index/10));
+            console.log(index);
+
+            
+            // boardboard = document.querySelectorAll(".board-board");
+            // boardboard[parseInt(index/10)].style.display="none";
+
+        }
+        
+        
+        }
+       
         else{
+            
+            // console.log("처음"+a.length);
+            // if(a.length > 10){
+            // return;
+            // }
             // let divboard = document.createElement("div"); 
             // divboard.className="board-board";
-
-
+            // else{
         const boardlist = document.createElement("div");
         const titleSpan = document.createElement("span");
         let div01 =document.createElement("div")
@@ -248,36 +279,27 @@ function render(){
         div06.innerHTML = "0";
         div07.innerHTML = "0";
 
-        // let pagenum02 = document.createElement("div");
+        if(a.length>10){
 
-        // if(a.length%3==0){
-
-
-
-        //     console.log(a.length);
-        //     pagenum02.className="page-num";        
-        //     pagenum02.innerText= `${parseInt(a.length/3)+1}`;
-        //     pageNummain.append(pagenum02);
-            
-        // }
-
+        // console.log("10개이상이라  여기들어옴");
+        div03.append(titleSpan);  
+        boardlist.append(div01,div02,div03,div04,div05,div06,div07);
+        boardboard = document.querySelectorAll(".board-board");
         
+        // boardboard[0].innerHTML="";
+        boardboard[0].append(boardlist);
+        }
+
+        else{
+            console.log("a의 랭스는"+a.length);
         div03.append(titleSpan);  
         boardlist.append(div01,div02,div03,div04,div05,div06,div07);
         boardboard.append(boardlist);
-        // boardText.append(boardboard);
-
+        }
         }
     
     })
-
-    
-    // console.log(ia);
-
-
- //? 렌더안에 있었던거 같은데
-    
-    
+    // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   if(a.length % 10==1 && a.length>10){
     // console.log(a.length);
 
@@ -298,7 +320,7 @@ function render(){
     
     pageNum.forEach(function(i,index){
 
-        boardboard = document.querySelectorAll(".board-board");
+    boardboard = document.querySelectorAll(".board-board");
     console.log(i);
 
     i.onclick = function(){
@@ -326,20 +348,14 @@ function render(){
         }
         // boardboard[i].style.display ="none";
         // boardboard[i].style.display ="block";
-
-
     }
-
 })
   }
-
+  
 }
-
-
 
 function listrender(){
     // console.log("listrender");
-    
     // console.log(document.querySelectorAll('.list1'));
     list1 = document.querySelectorAll(".list1");
     list1.forEach(function(i,index){

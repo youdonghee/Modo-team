@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자유게시판</title>
+  <link rel="stylesheet" href="./2.css">
+</head>
+
+<body>
+  <div class="backbox"> <!-- 배경 폴더 박스 영역-->
+    <p></p>
+    <!-- -------게시판 메뉴 ------------------------------------------------- -->
+    <div class="menu">
+      <!-- -----게시글 순서 ------------------------------------------------- -->
+      <div class="post-order">
+        <div class="postorder-title">
+          <p>게시글 순서</p>
+        </div>
+        <div class="postorder-sub">
+          <p class="">등록순</p>
+          <p class="">조회수순</p>
+          <p class="">공감순</p>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+
+      <!-- -----게시글 등록 ------------------------------------------------- -->
+      <div class="add">
+        <div class="add-title">
+          <p>등록</p>
+        </div>
+        <div class="add-sub">
+          <p class="signUp">게시글 등록하기</p>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+
+      <!-- -----게시글 검색 ------------------------------------------------- -->
+      <div class="search">
+        <div class="search-title">
+          <p>검색</p>
+        </div>
+        <div class="search-sub">
+          <input type="text">
+          <button>검색</button>
+        </div>
+      </div>
+      <!-- ----------------------------------------------------------------- -->
+      <div class=""></div>
+      <div class=""></div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------- -->
+
+    <!-- -------게시판 영역 ----------------------------------------------------------------------------- -->
+    <div class="board-ground">
+      <div class="board-top">
+        <!-- -----자유게시판 타이틀------------------------------------>
+        <h1>자유게시판</h1>
+        <!-- -----로그아웃 버튼------------------------------------- -->
+        <span class="logout">로그아웃</span>
+      </div>
+      <div class="board-text">
+      
+        <div class ="board-title">
+          <div class="number">글번호</div>
+          <div class="day">날짜</div>
+          <div class="list-title">제목</div>
+          <div class="writer">글쓴이</div>
+          <div class="view">조회</div>
+          <div class="sym">공감</div>
+          <div class="em">비공감</div>
+        </div>
+        <div class="board-board">
+          <!-- <div class ="board-list"> -->
+           <!-- <div class="number">1</div>
+            <div class="day">2023-04-17</div>
+            <div class="list"><span class="list1">JY전자는 왜 맨날 떨어지냐?</span></div>
+            <div class="writer">이재영</div>
+            <div class="view">3</div>
+            <div class="sym">2</div>
+            <div class="em">0</div> -->
+          <!-- </div> -->
+        </div>
+
+      </div>
+        <div class="written">
+          <!-- 게시글 내용 -->
+          <div class="written-row1">
+              <div class="written-title"></div>
+              <div class="vses">
+                  <div class="written-view">조회 0</div>
+                  <div class="written-sym">공감 0</div>
+                  <div class="written-em">비공감 0</div>
+                  <div class="written-singo">신고</div>
+              </div>
+          </div>
+  
+          <div class="written-row2">
+              <div class="written-writer"></div>
+              <div class="written-day"></div>  
+          </div>
+          
+          <div class="written-row3">
+              <div class="written-content">JW전자는 맨날 떨어지네 언제 올라가냐</div>
+          </div>
+  
+          <div class="written-row4">
+              <div class="se">
+                  <div class="written-sym2"><button id="like-btn">공감</button></div>
+                  <div class="written-em2"><button id="hate-btn">비공감</button></div>
+              </div>
+              <div class="rd">
+                  <div class="retouch">수정</div>
+                  <div class="delete">삭제</div>
+              </div>
+              
+          </div>
+          <button class="back-btn">뒤로가기</button>
+          
+        
+        </div>
+       
+
+      <!-- 게시글 등록 부분 -->
+      <div class="content">
+        <div class ="row1">
+            <div class="title">제목</div>
+            <input class="main-title" type="text">
+
+        </div>
+        <div class="row2">
+            <input class="main-content" type="text">
+        </div>
+        <div class="row3">
+            <button class="submit">등록하기</button>
+        </div>
+      </div>
+
+      <!-- 페이지네이션 영역 -->
+      <div class="page-nation">
+        <div class="page_btn" onclick="before()">&laquo;</div>
+        <div class="page-nummain" style="display: flex; width: 100%; justify-content: center;">
+          <div class="page-num">1</div>
+          <!-- <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div> -->
+        </div>
+        <div class="page_btn1" onclick="next()">&raquo;</div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------------- -->
+    </div>
+  </div>
+</div>
+</body>
+<script src="./2.js"></script>
+
+</html>
