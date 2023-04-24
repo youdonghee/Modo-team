@@ -267,6 +267,9 @@ body{
   line-height: 34px;
   border: 1px solid black;
   text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 .number{
   width: 50px;
@@ -314,7 +317,10 @@ body{
 }
 
 .written-title{
-    width: 117px;
+    width: 400px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     /* border: 1px solid black; */
     /* text-align: center; */
 }
@@ -356,6 +362,9 @@ body{
     height: 290px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     
 
 }

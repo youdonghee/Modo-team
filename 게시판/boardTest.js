@@ -73,15 +73,15 @@ function addPost() {
 // // 게시글 목록
 function showPostList(page) {
   // localStorage에서 저장된 게시물 목록을 가져옵니다.
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   // 게시물 목록을 보여줍니다.
   // board-titile 밑에
-  var list = document.getElementById("board-list");
+  let list = document.getElementById("board-list");
   list.innerHTML = "";
-  for (var i = 0; i < posts.length; i++) {
-    var post = posts[i];
-    var board = list.children[i] || document.createElement("div");
+  for (let i = 0; i < posts.length; i++) {
+    let post = posts[i];
+    let board = list.children[i] || document.createElement("div");
     //div 만들어줌 
     let div01 = document.createElement("div")
     let div02 = document.createElement("div")
@@ -114,7 +114,6 @@ function showPostList(page) {
     });
 
     // 제목클릭하면 보여주기
-    
     board.onclick = (function (post) { // 클로저 활용
       return function () {
         post.view += 1
@@ -139,6 +138,27 @@ function showPostList(page) {
     if (~~(i/10) === page-1){ 
       list.appendChild(board); 
     }
+
+  }
+}
+
+searchBtn.onclick = function () {
+  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let searchInput = document.getElementById("search-input");
+  let valueArr = document.getElementsByClassName("board-list");
+  console.log("클릭")
+  console.log(searchInput)
+
+  for (let i = 0; i < valueArr.length; i++) {
+    let InputValue = searchInput.value
+    if(posts[i].title.includes(InputValue)){
+      console.log("있음");
+      valueArr[i].style.display = "flex";
+    }
+    else{ 
+      console.log("없음");
+      valueArr[i].style.display = "none";
+    } 
   }
 }
 
@@ -280,18 +300,4 @@ function pageNation(){
   }
 }
 
-searchBtn.onclick = function () {
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
-  let searchInput = document.getElementById("search-input");
-  let valueArr = document.getElementsByClassName("board-list");
-  for (let i = 0; i < valueArr.length; i++) {
-    console.log(valueArr); // 11개 
-    let InputValue = searchInput.value
-    if(posts[i].title.includes(InputValue)){
-      valueArr[i].style.display = "flex";
-    }
-    else{ 
-      valueArr[i].style.display = "none";
-    } 
-  }
-}
+
