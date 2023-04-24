@@ -8,9 +8,9 @@ let loginX = document.querySelector(".login-x");            //로그인 영역 x
 gameIcon.ondblclick = function(){       //게임아이콘 더블클릭 시 로그인 창이 뜬다.
     // console.log("클릭돼");
     background.classList.toggle("popup")
-    const audio = new Audio();
-    audio.src = "../BGM/Windows XP Startup.wav";
-    audio.play();
+    // const audio = new Audio();
+    // audio.src = "../BGM/Windows XP Startup.wav";
+    // audio.play();
 }
 
 iconText.ondblclick = function(){       //게임 이름 더블 클릭 시 로그인 창이 뜬다.
@@ -97,12 +97,12 @@ loginBtn.onclick = function () {
             else if(JSON.parse(userData)[idIndex].pw == userPw && JSON.parse(userData)[idIndex].tnf == 1){
                 alert("회원가입 한 아이디로 로그인 성공!");
                 
-                location.href= "../html-folder/main.html"
-            
                                 //로그인 성공 시, 성공한 계정은 로컬스토리지 '로그인'에 저장되어야 한다.
                 let login = JSON.parse(userData)[idIndex];
                 window.localStorage.setItem("로그인", JSON.stringify(login));
                 console.log(login);
+                
+                location.href= "../html-folder/main.html"
             }
             //확인된 인덱스 값의 패스워드와 입력한 패스워드의 값이 동일하고, 해당 인덱스의 tnf값이 0(승인되지 않은 계정)일때
             else if(JSON.parse(userData)[idIndex].pw == userPw && JSON.parse(userData)[idIndex].tnf == 0){

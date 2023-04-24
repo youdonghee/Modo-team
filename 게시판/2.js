@@ -213,28 +213,48 @@ function render(){
             console.log(parseInt(index/10));
             console.log(index);
         }
-        
-        if(a.length >11){
+        if(a.length >11 && a.length <21){
         //
 
             console.log("11부터 들어옴");
             div03.append(titleSpan); 
             boardlist.append(div01,div02,div03,div04,div05,div06,div07);
             boardboard = document.querySelectorAll(".board-board");
-
+            console.log(boardboard);
             console.log("몇이니"+parseInt(index/10))
             boardboard[parseInt(index/10)].append(boardlist);
             
             boardText.append(boardboard[parseInt(index/10)]);
+
             console.log( boardboard[parseInt(index/10)]);
             console.log(parseInt(index/10));
             console.log(index);
-
-            
+            console.log("배열확인" +boardlist);
             // boardboard = document.querySelectorAll(".board-board");
             // boardboard[parseInt(index/10)].style.display="none";
 
         }
+        if(a.length >21){
+            //
+    
+                console.log("11부터 들어옴");
+                div03.append(titleSpan); 
+                boardlist.append(div01,div02,div03,div04,div05,div06,div07);
+                boardboard = document.querySelectorAll(".board-board");
+                console.log(boardboard);
+                console.log("몇이니"+parseInt(index/10))
+                boardboard[parseInt(index/10)].append(boardlist);
+                
+                boardText.append(boardboard[parseInt(index/10)]);
+    
+                console.log( boardboard[parseInt(index/10)]);
+                console.log(parseInt(index/10));
+                console.log(index);
+                console.log("배열확인" +boardlist);
+                // boardboard = document.querySelectorAll(".board-board");
+                // boardboard[parseInt(index/10)].style.display="none";
+    
+            }
         
         
         }

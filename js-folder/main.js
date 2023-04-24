@@ -17,7 +17,11 @@ let accountArr= [];
 let sum=[];
 let totalMoney = document.querySelector(".total-money");
 let ment = document.querySelector(".ment");
-window.localStorage.clear();
+// window.localStorage.clear();
+
+let w = window.localStorage.getItem("로그인");
+let Jsonw = JSON.parse(w);
+console.log(Jsonw);
 
 
 const loadingText = document.getElementById('loading');
