@@ -63,7 +63,7 @@
         <span class="logout">로그아웃</span>
       </div>
       <!-- 게시판 전체 -->
-      <div class="board-text">
+      <div class="board-text popup">
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -124,19 +124,37 @@
 
       <!-- 게시글 등록 부분 -->
       <div class="content">
-        <div class="row1">
+        <!-- <div class="row1">
           <div class="title">제목</div>
           <input class="main-title" type="text" id="title">
 
+        </div> -->
+        <div class="add-top">
+            <div class="triangle"></div>
+            <p class="add-sub">제목을 입력하세요!</p>
+            <div class="addtop-line"></div>
+            <p class="addinput-title">제목</p>
+            <input id="title" type="text">
         </div>
-        <div class="row2">
+        <!-- <div class="row2">
           <textarea class="main-content" type="text" id="content" style="resize: none;" ></textarea>
+        </div> -->
+        <div class="add-bottom">
+            <div class="triangle"></div>
+            <p class="add-sub">내용을 입력하세요!</p>
+            <textarea  class="main-content" type="text" id="content" style="resize: none;"></textarea>
+            <!-- <input type="text"> -->
+            <div class="addtop-line"></div>
         </div>
-        <div class="row3">
-          <button class="submit" onclick="addPost()">등록하기</button>
-          <button class="updateBtn" onclick="addPost()">수정하기</button>
-        </div>
-      </div>
+        <div class="submit" onclick="addPost()">등록</div>
+        <!-- <div  class="updateBtn" onclick="addPost()">수정</div> -->
+        
+    <!-- <div class="row3">
+      <button class="submit" onclick="addPost()">등록하기</button>
+      <button class="updateBtn" onclick="addPost()">수정하기</button>
+      
+    </div> -->
+</div>
 
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">

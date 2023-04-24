@@ -1,0 +1,466 @@
+@font-face {        /* 폰트 - 넥슨 Lv.2 고딕 */
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body{
+    font-family: 'NEXON Lv2 Gothic';
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../login/배경화면_초원.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .backbox{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 1000px;
+    height: 653px;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: url(./배경화면.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .menu{
+    width: 256px;
+    height: 609px;
+    position: relative;
+    top: 38px;
+    left: 131px;
+    display: inline;
+  }
+  
+  .menu .post-order,
+  .menu .add,
+  .menu .search{
+    position: absolute;
+    width: 235px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  
+  .menu .post-order{
+    top: 10px;
+    height: 150px;
+  }
+  
+  
+  .post-order .postorder-title,
+  .add .add-title,
+  .search .search-title{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background-color: #4158bd;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+  
+  .postorder-title p,
+  .add-title p,
+  .search-title p{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translate(0,-50%);
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+  }
+  
+  .post-order .postorder-sub,
+  .add .add-sub{
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    background-color: #f0f3fe;
+    border: 1px solid white;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .post-order .postorder-sub{
+    height: 110px;
+  }
+  
+  
+  .postorder-sub p,
+  .add-sub p{
+    font-size: 16px;
+    font-weight: 700;
+    color: #4158bd;
+    margin: 0;
+    margin-left: 20PX;
+    cursor: pointer;
+  }
+  
+  
+  .menu .add{
+    top: 190px;
+    height: 100px;
+  }
+  
+  .add .add-sub{
+    height: 60px;
+  }
+  
+  
+  
+  
+  .menu .search{
+    top: 320px;
+  }
+  
+  .search .search-sub{
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 60px;
+    background-color: #f0f3fe;
+    border: 1px solid white;
+    box-sizing: border-box;
+  }
+  
+  .search-sub input{
+    margin-left: 20px;
+    margin-top: 15px;
+    width: 140px;
+  }
+  
+  .board-ground,
+  .board-list,
+  .board-add,
+  .board-text{
+    position: absolute;
+    width: 739px;
+    height: 614px;
+    top: 37px;
+    box-sizing: border-box;
+    left: 260px;
+  }
+  
+  .board-ground,
+  .board-add,
+  .board-text{
+    display: none;
+  }
+  
+  .board-ground.popup,
+  .board-add.popup,
+  .board-text.popup{
+    display: block;
+  }
+  
+  .board-ground .board-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 45px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  
+  
+  .board-top h1{
+    margin: 0;
+    letter-spacing: 3px;
+  }
+  
+  .board-top span{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 3px solid red;
+    cursor: pointer;
+  }
+  
+  .borderAddList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 32px;
+  }
+  
+  .boardDiv1,
+  .boardDiv2,
+  .boardDiv3,
+  .boardDiv4,
+  .boardDiv5{
+    height: 31px;
+    border: 1px solid;
+    text-align: center;
+    box-sizing: border-box;
+  
+  }
+  
+  .boardDiv1{
+    width: 60px;
+  }
+  .boardDiv2{
+    width: 330px;
+    cursor: pointer;
+  }
+  .boardDiv3{
+    width: 120px;
+  }
+  .boardDiv4{
+    width: 80px;
+  }
+  .boardDiv5{
+    width: 80px;
+  }
+  
+  
+  .board-bottom{
+    position: absolute;
+    width: 90%;
+    height: 400px;
+    left: 50%;
+    top: 120px;
+    transform: translate(-50%);
+    border: 1px solid red;
+  }
+  
+  .board-bottom ul{
+    padding: 0;
+  }
+  
+  .page-nation{
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 20px;
+  }
+  
+  .page-nation div{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 31px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .page-nation .page-moving{
+    background-color: rgba(222, 222, 222, 0.644);
+  }
+  
+  .add-top{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 130px;
+  }
+  
+  .board-add .triangle{
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid darkblue;
+    border-right: 7px solid darkblue;
+  }
+  
+  .board-add .add-sub{
+    position: absolute;
+    top: 20px;
+    left: 58px;
+    font-size: 20px;
+    color: darkblue;
+    margin: 0;
+    
+  }
+  
+  .board-add .addtop-line{
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 60%;
+    box-sizing: border-box;
+    border: 1px solid darkblue;
+  }
+  
+  .board-add .addinput-title{
+    position: absolute;
+    top: 70px;
+    left: 38px;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 3px;
+  }
+  
+  .add-top input{
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    width: 500px;
+    height: 25px;
+    border: 1px solid rgb(179, 179, 179);
+  }
+
+  
+  
+  .add-bottom{
+    position: absolute;
+    width: 90%;
+    top: 130px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 400px;
+  }
+
+  .add-top{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 130px;
+  }
+  
+  .add-bottom textarea{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 320px;
+    border: 1px solid rgb(179, 179, 179);
+    vertical-align: top;
+    resize: none;
+  }
+  
+  .add-btn{
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    line-height: 30px;
+    /* font-weight: 700; */
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 10px;
+    bottom: 30px;
+    position: absolute;
+    right: 64px;
+    cursor: pointer;
+    background-image: url(./게시판_등록\ 버튼.png);
+  }
+  
+  .board-text{
+    position: relative;
+    background-color: white;
+  }
+  
+  .board-text .text-box{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border: 1px solid darkgreen;
+  
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .text-box .text-top{
+    border: 1px solid rebeccapurple;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-top .text-title{
+    width: 100%;
+    height: 50px;
+    border: 1px solid firebrick;
+  }
+  .text-top .title-sub{
+    width: 100%;
+    height: 50px;
+    border: 1px solid firebrick;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .title-sub .text-nick,
+  .title-sub .text-view,
+  .title-sub .text-like{
+    height: 40px;
+    border: 1px solid;
+  }
+  
+  .title-sub .text-nick{
+    width: 200px;
+  }
+  .title-sub .text-view{
+    width: 100px;
+    margin-left: 220px;
+  
+  }
+  .title-sub .text-like{
+    width: 100px;
+  }
+  
+  
+  .text-box .text-inner{
+    position: relative;
+    border: 1px solid green;
+    width: 100%;
+    height: 380px;
+  }
+  
+  .text-inner .text-board{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid rgb(179, 179, 179);
+  }
+  
+  .text-box .text-btn{
+    border: 1px solid blue;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .text-btn .like,
+  .text-btn .edit,
+  .text-btn .remove,
+  .text-btn .closer{
+    width: 80px;
+    height: 40px;
+    border: #4158bd 1px solid;
+    cursor: pointer;
+  }

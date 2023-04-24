@@ -402,7 +402,19 @@
     cursor: pointer;
   }
   
-  
+  .written.popup,
+  .board-text.popup,
+  .content.popup
+  {
+    display: block;
+  }
+
+  .written,
+  .board-text,
+  .content
+  {
+    display: none;
+  }
   
   .hide{
     display: none;
@@ -417,4 +429,104 @@
   .num{
     margin: 0 10px;
   }
+
+  .add-bottom{
+    position: absolute;
+    width: 90%;
+    top: 130px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 400px;
+  }
+
+  .add-top{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 130px;
+  }
+
+  .add-top input{
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    width: 500px;
+    height: 25px;
+    border: 1px solid rgb(179, 179, 179);
+  }
+
+  .add-bottom textarea{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 230px;
+    border: 1px solid rgb(179, 179, 179);
+    vertical-align: top;
+    resize: none;
+  }
   
+    .content .triangle{
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid darkblue;
+    border-right: 7px solid darkblue;
+  }
+
+    .content .add-sub{
+    position: absolute;
+    top: 20px;
+    left: 58px;
+    font-size: 20px;
+    color: darkblue;
+    margin: 0;
+    
+  }
+
+    .content .addtop-line{
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 55%;
+    box-sizing: border-box;
+    border: 1px solid darkblue;
+  }
+
+  .content .addinput-title{
+    position: absolute;
+    top: 70px;
+    left: 38px;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 3px;
+  }
+
+  .submit,
+  .updateBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    line-height: 30px;
+    /* font-weight: 700; */
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 10px;
+    bottom: -480px;
+    position: absolute;
+    right: 64px;
+    cursor: pointer;
+    background-image: url(./게시판_등록\ 버튼.png);
+  }
+
+  /* .submit
+  {
+    right: 145px;
+  } */
