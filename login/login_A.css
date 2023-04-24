@@ -535,10 +535,10 @@ body{
     background-size: cover;
 }
 
-.windowsbar-right .time{
-    /* width: 100px;
-    height: 40px; */
-}
+/* .windowsbar-right .time{
+    width: 100px;
+    height: 40px;
+} */
 
 .windows-bar .time{
     position: absolute;
