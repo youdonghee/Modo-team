@@ -178,7 +178,9 @@ body{
 .time-btn .stop,
 .time-btn .ten{
   cursor: pointer;
+  font-family: 'GmarketSansMedium';
 }
+
 .board{
   position: relative;
   width: 210px;
@@ -705,9 +707,9 @@ body{
   display: none;
 }
 
-.fontstyle{
+/* .fontstyle{
   font-family: 'GmarketSansMedium';
-}
+} */
 
 .btn-wrap{
   display: flex;
@@ -735,4 +737,8 @@ body{
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+}
+.play.toggle,
+.ten.toggle{
+  display: none;
 }

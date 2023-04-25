@@ -140,7 +140,8 @@ let account5 = window.localStorage.getItem("수량4");
   })
     
   }
-  
+console.log(min);
+console.log(sec);
 
 function setTimer(time) {
   // let result7 = window.localStorage.getItem("소지금");
@@ -148,7 +149,9 @@ function setTimer(time) {
   // console.log(money);
   
   if (!interval) {
+  
     interval = setInterval(() => {
+    
       min = parseInt(timeout / 60);
       sec = timeout % 60;
       document.getElementById("time").innerHTML = `남은 시간 ${min} : ${sec}`
@@ -192,15 +195,24 @@ function setTimer(time) {
         }
       }
     }, time);
+  
   }
 }
 
+const play = document.querySelector(".play");
+const timeStop = document.querySelector(".stop");
+const skip = document.querySelector(".ten");
+
 function timer() {
+  play.classList.add("toggle");
+  skip.classList.remove("toggle");
   if (interval == 1) return;
   if (timeout == null) timeout = 120;
   // 주기적으로 팝업 생성
   setInterval(createPopup(),popTime)
   setTimer(1000);
+
+
 }
 function stopTimer() {
   reset(interval, null, timeout, false)
@@ -212,16 +224,14 @@ function stopTimer() {
 // }
 function ten() {
   if (fast) return;
-  reset(interval, null, 5, true)
+  reset(interval, null, 10, true)
   setTimer(1000);
 
   let ten = new Audio("../BGM/장개시10초전.wav");
         ten.play();
 }
 
-const play = document.querySelector(".play");
-const timeStop = document.querySelector(".stop");
-const skip = document.querySelector(".ten");
+
 
 play.onclick = timer;
 // timeStop.onclick = stopTimer;
@@ -253,6 +263,15 @@ let open = function (i) {
 aa.forEach(function (i, index) {
   
   i.onclick = function () {
+
+    if(min==undefined && sec==undefined){
+      console.log("게임시작 눌러");
+      alert("게임 시작을 버튼을 눌러야 매수,매도가 가능합니다!");
+      return;
+    }
+    console.log(min);
+    console.log(sec);
+    
     open(index);
     
   }
