@@ -34,6 +34,8 @@ let inputData = null;
 let fullInputData; //풀매수 수량
 let money = 10000;
 
+
+
 // console.log(icon);
 // console.log(imgAll);
 function randomNum() {
@@ -225,6 +227,8 @@ function randomPrice() {
     return arr;
 
 }
+re.onclick = ()=>{location.reload()}
+
 let arr = new Array(5).fill(0);
 let Mon ;
 // 주식 상승률 순위 js
@@ -450,6 +454,9 @@ function getvalueInText(i) {
         // console.log(allMonArr[i]);
         document.getElementsByClassName("data")[i].value = ""
         alert(`${inputData} 개 매수 하였습니다`)
+
+        let buySound = new Audio("../BGM/매수주문체결1.wav");
+        buySound.play();
     }
     else {
         document.getElementsByClassName("data")[i].value = ""
@@ -536,6 +543,9 @@ function setvalueInText(i) {
         allMon[i + 1].innerHTML = allMonArr[i];
         document.getElementsByClassName("data")[i].value = ""
         alert(`${inputData} 개 매도 하였습니다`);
+
+        let sellSound = new Audio("../BGM/매도주문체결1.wav");
+        sellSound.play();
     }
     else {
         alert("돈 없어")

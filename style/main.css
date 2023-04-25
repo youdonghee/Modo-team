@@ -48,6 +48,9 @@ body,html{
   text-align: center;
   margin-top: 15px;
 }
+.calculate div{
+  text-align: center;
+}
 .having-josik,
 .total-money{
   margin: auto;
@@ -63,8 +66,28 @@ body,html{
   text-align: center;
   line-height: 110px;
   font-size: xx-large;
+  display: flex;
+  justify-content: space-evenly
 }
-
+.btnstyle{
+  display: flex;
+  align-items: center;
+}
+.btnstyle button{
+  width: 140px;
+  height: 60px;
+  font-size: xx-large;
+  font-family: 'godic';
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #b9b9baa3;
+}
+.btnstyle button:hover{
+  background-color: black;
+  color: white;
+  transition: 0.1s;
+}
 body{
   background-image: url(../img/배경화면_초원.jpeg);
   background-size: cover;

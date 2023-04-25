@@ -16,6 +16,7 @@ let fullTop=document.querySelector(".full-top");
 let accountArr= [];
 let sum=[];
 let totalMoney = document.querySelector(".total-money");
+let btnstyle = document.querySelector(".btnstyle")
 let ment = document.querySelector(".ment");
 // window.localStorage.clear();
 
@@ -81,6 +82,8 @@ let account5 = window.localStorage.getItem("수량4");
   if(num==1){
   // console.log(typeof(num));
   ment.innerHTML = "모든 라운드가 진행되어 장이 마감되었습니다.";
+  let mentSound = new Audio("../BGM/장마감했습니다.wav");
+  mentSound.play();
   }
 
   if(num==2){
@@ -131,6 +134,7 @@ let account5 = window.localStorage.getItem("수량4");
     
     
     totalMoney.innerHTML = `최종 소지금 : ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]+Number(resultArr[5])}`
+    totalMoney.appendChild(btnstyle)
     // ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]}
   }, 5000);
   })
@@ -149,6 +153,9 @@ function setTimer(time) {
       sec = timeout % 60;
       document.getElementById("time").innerHTML = `남은 시간 ${min} : ${sec}`
       timeout--;
+      if( sec <6){
+        createPopup(sec);
+      }
       if (timeout < 0) {
         document.getElementById("time").innerHTML = `시간종료`
         reset(interval, null, null, false)
@@ -157,7 +164,7 @@ function setTimer(time) {
         
         roundCount++;
 
-        if(roundCount==10){ //라운드 설정
+        if(roundCount==1){ //라운드 설정
           // createPopup(1);
           removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
@@ -190,7 +197,7 @@ function setTimer(time) {
 
 function timer() {
   if (interval == 1) return;
-  if (timeout == null) timeout = 300;
+  if (timeout == null) timeout = 120;
   // 주기적으로 팝업 생성
   setInterval(createPopup(),popTime)
   setTimer(1000);
@@ -207,6 +214,9 @@ function ten() {
   if (fast) return;
   reset(interval, null, 10, true)
   setTimer(1000);
+
+  let ten = new Audio("../BGM/장개시10초전.wav");
+        ten.play();
 }
 
 const play = document.querySelector(".play");
@@ -270,14 +280,15 @@ document.querySelector(".closeBtn").addEventListener("click", close);
 // 뉴스속보
 // 팝업 내용을 담은 배열
 const popupContents = [
-  "Level 1 cleared!",
-  "You have a new message!",
-  "Game over! Try again?",
-  "You found a hidden treasure!"
+  "장 시작 1초전",
+  "장 시작 2초전",
+  "장 시작 3초전",
+  "장 시작 4초전",
+  "장 시작 5초전"
 ];
 
 // 팝업 애니메이션 지속시간 
-const popupDuration = 5000;
+const popupDuration = 900;
 
 // 팝업 반복 시간 (10초) 6분은 (360000)
 let popTime = 10000;
@@ -290,16 +301,17 @@ function removePopup() {
   }, 1000);
 }
 // 팝업 생성 함수
-function createPopup() {
+function createPopup(sec) {
 
    // 랜덤으로 팝업 내용 선택
-  const randomIndex = Math.floor(Math.random() * popupContents.length);
-  const content = popupContents[randomIndex];
+  // const randomIndex = Math.floor(Math.random() * popupContents.length);
+  const content = popupContents[sec-1];
 
   // 팝업 요소 생성
   const popup = document.createElement("div"); //div 만들고
   popup.classList.add("popup"); // 클래스 이름 popup
   popup.textContent = content; // textContent : text 콘텐츠 계속 변경
+  
   
   
   // 팝업을 body 요소에 추가
@@ -308,14 +320,14 @@ function createPopup() {
   // 팝업 애니메이션 시작
   setTimeout(() => {
     popup.classList.add("show");
-  }, 100);
+  });
 
   // 팝업 삭제
   setTimeout(() => {
     popup.classList.remove("show");
     setTimeout(() => {
       document.body.removeChild(popup);
-    }, 1000);
+    },100);
   }, popupDuration);
   
 }
