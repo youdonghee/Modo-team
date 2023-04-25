@@ -18,9 +18,6 @@ let index;
 
 let w = window.localStorage.getItem("로그인");
 let Jsonw = JSON.parse(w);
-// console.log(Jsonw);
-// console.log(Jsonw.nickname);
-// console.log(Jsonw.id);
 
 
 
@@ -84,10 +81,6 @@ function addPost() {
   // 배열을 다시 localStorage에 저장합니다.
   localStorage.setItem("posts", JSON.stringify(posts));
 
-//   written.style.display = "none";
-//   boardText.style.display = "block";
-//   contentSelect.style.display = "none";
-
 contentSelect.classList.toggle("popup");
 boardText.classList.toggle("popup");
 pagee.classList.remove("hide") 
@@ -150,23 +143,11 @@ function showPostList(page) {
 
     // 제목클릭하면 보여주기
     arr[2].onclick = (function (post) { // 클로저 활용  
-
       return function () {
-
         post.view += 1 // 조회수 올리고
         arr[4].innerHTML = post.view; // 밖에 조회수 올리고
         localStorage.setItem("posts", JSON.stringify(posts));
-        showPost(post);
-        document.querySelector(".written-sym2").onclick = function(){
-          post.like += 1;
-          window.localStorage.setItem("posts", JSON.stringify(posts));
-          showPost(post)
-        }
-        document.querySelector(".written-em2").onclick = function () {
-          post.disLike += 1;
-          window.localStorage.setItem("posts", JSON.stringify(posts));
-          showPost(post)
-        }
+        showPost(post,i);
       };
     })(post);
     // i 는 페이지갯수의 인덱스 
@@ -200,17 +181,27 @@ searchBtn.onclick = function () {
 }
 
 // 게시물 클릭하면 보여주기
-function showPost(post) {
+function showPost(post,i) {
     
-//   content.style.display = "none";
-//   boardText.style.display = "none";
-//   written.style.display = "block";
-
+  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  
   boardText.classList.toggle("popup")
   content.classList.remove("popup")
   written.classList.toggle("popup")
   pagee.classList.toggle("hide")
-
+  // 토글 이슈 해결 i 값 매개변수로 받아와서 넣어줌
+  document.querySelector(".written-sym2").onclick = function(){
+    let post = posts[i]
+    post.like += 1;
+    document.querySelector(".written-sym").innerHTML = `공감 ${post.like}` ;
+    localStorage.setItem("posts", JSON.stringify(posts));
+  }
+  document.querySelector(".written-em2").onclick = function () {
+    let post = posts[i]
+    post.disLike += 1;
+    document.querySelector(".written-em").innerHTML = `비공감 ${post.disLike}` ;
+    localStorage.setItem("posts", JSON.stringify(posts));
+  }
 
   // localStorage에서 저장된 게시물을 가져옵니다.
   let title = post.title;
@@ -232,6 +223,7 @@ function showPost(post) {
   writtenTitle.innerHTML = "글제목 : " + title;
   let writtenContent = document.querySelector(".writtenContent")
   writtenContent.innerHTML = postcontent;
+
   document.querySelector(".written-day").innerHTML = post.date;
   document.querySelector(".written-writer").innerHTML = post.myname;
   document.querySelector(".written-view").innerHTML = `조회수 ${post.view}` ;
@@ -318,17 +310,15 @@ function updatePost(post) {
   document.querySelector(".written-title").innerHTML = "제목 : " + title;
   document.querySelector(".writtenContent").innerHTML = content;
 
-  // written.style.display = "none";
-  // boardText.style.display = "block";
-  // contentSelect.style.display = "none";
   showPostList(1);
 }
 
 // 게시물 삭제
 function deletePost(post) {
+
   // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
   var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
-// newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
+  // newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
   posts.map((a)=>{
     if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
       posts.splice(posts.indexOf(a),1)
@@ -336,15 +326,12 @@ function deletePost(post) {
     }
   })
   document.querySelector(".written-title").innerHTML = "";
-
-
   document.querySelector(".writtenContent").innerHTML = "";
   document.getElementById("Retitle").value = ""
   document.getElementById("Recontent").value = ""
 
-  written.style.display = "none";
-  boardText.style.display = "block";
-  contentSelect.style.display = "none";
+  boardText.classList.toggle("popup")
+  written.classList.toggle("popup")
   showPostList(1);
   pageNation()
 }
