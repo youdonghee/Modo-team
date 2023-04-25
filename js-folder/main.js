@@ -19,10 +19,37 @@ let totalMoney = document.querySelector(".total-money");
 let btnstyle = document.querySelector(".btnstyle")
 let ment = document.querySelector(".ment");
 // window.localStorage.clear();
-
 let w = window.localStorage.getItem("로그인");
 let Jsonw = JSON.parse(w);
 console.log(Jsonw);
+
+let playyy = document.querySelector(".playyy");
+let pause = document.querySelector(".pause");
+let bgm = new Audio("../BGM/bgm.mp3");
+
+playyy.onclick = function(){
+  console.log("클릭됨")
+  bgm.play();
+}
+pause.onclick = function(){
+  console.log("클릭됨")
+  bgm.pause();
+}
+//새로고침 막기
+function NotReload(){
+  if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+      event.keyCode = 0;
+      event.cancelBubble = true;
+      event.returnValue = false;
+  } 
+}
+document.onkeydown = NotReload;
+
+// let mentSound = new Audio("../BGM/장마감했습니다.wav");
+//   mentSound.play();
+//   mentSound.loop = true;
+
+
 
 
 const loadingText = document.getElementById('loading');
@@ -204,6 +231,9 @@ const timeStop = document.querySelector(".stop");
 const skip = document.querySelector(".ten");
 
 function timer() {
+
+  
+
   play.classList.add("toggle");
   skip.classList.remove("toggle");
   if (interval == 1) return;
@@ -233,7 +263,13 @@ function ten() {
 
 
 
-play.onclick = timer;
+play.onclick = function(){
+  
+    bgm.play();
+    bgm.volume=0.2;
+    bgm.loop = true;
+  timer();
+}
 // timeStop.onclick = stopTimer;
 skip.onclick = ten;
 
@@ -357,7 +393,125 @@ function createPopup(sec) {
 
 let logout = document.querySelector(".logout");
 
+
 logout.onclick = function(){
     window.localStorage.removeItem("로그인");
     location.href= "../login/login_A.html"
+}
+
+//------------------------------------------------------------------------------
+
+let popupCookie = getCookie("event-popup");
+let waringClose = document.querySelector(".waring-close");
+let waring = document.querySelector(".waring");
+
+function popupOpen(){
+  
+  if(waring.classList.contains("off")){
+      
+      waring.classList.remove('off');
+  }else{
+    waring.classList.add('off');
+  }
+}
+
+waringClose.onclick = function(){
+  
+  popupOpen();
+  setCookie("event-popup",true,3600);
+
+}
+
+function setCookie(c_name,value,time){ // event-popup, true, 10초 이렇게 들어옴
+  let date = new Date(); // date에 현재시간 설정하고
+  date.setTime(date.getTime() + time * 1000); // 현재시간을 가져와서 10초를 더한걸 다시 date 에 셋한다.
+   
+  let str = c_name+"="+value+";expires="+date.toUTCString()+";path=/"; //  10초를 더해서 셋된 시간
+  console.log("split전"+str);
+  let str2 = getCookieTime(str);
+
+  console.log("만료시간"+getCookieTime(str));
+  document.cookie = c_name+"="+`{"value" : "${value}", "time" : "${date.toUTCString()}"}`+";expires="+date.toUTCString()+";path=/"
+
+  let value2 = getCookie("event-popup");
+  console.log(JSON.parse(value2));
+}
+
+//위에 documnet.cookie로 작성해서 cookie에 담긴 쿠키 문자열을  매개변수로 가져온다.
+function getCookieTime(cookie){  // 이과정을 하는 이유?
+
+  let str = cookie.split(';');
+  
+  let str2 = str.find(function(i){
+      console.log(i);
+      let temp = i.trim();
+      return temp.startsWith('expires=');
+  })
+  console.log(str2);
+
+  if(str2){
+      let str3 = str2.trim();
+      console.log(str3);
+
+      return new Date(str3);
+  }else{
+      return null;
+  }
+}
+
+console.log(typeof getCookie("event-popup"))
+
+if(popupCookie == undefined)
+{
+    popupOpen();
+}
+
+function getCookie(c_name)
+{
+   var i,x,y,ARRcookies=document.cookie.split(";");
+   for (i=0;i<ARRcookies.length;i++)
+   {
+     x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+     y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+     x=x.replace(/^\s+|\s+$/g,"");
+     if (x==c_name)
+     {
+       return unescape(y);
+     }
+   }
+}
+
+let setTime = setInterval(() => {
+  let date2 = new Date(); //현재시간
+  
+  let timeTag = document.querySelector('.popup-time');
+
+  if(popupCookie != undefined)
+  {
+      let time = JSON.parse(popupCookie).time; 
+      let date = new Date(time);
+      console.log("경고문 다시 열리기까지 남은시간"+times(popupTime(date, date2)));
+  }else{
+
+  }
+}, 1000);
+
+function popupTime(date1,date2) {
+  return date1.getTime() - date2.getTime();
+}
+
+function times(time){
+  let day = Math.floor(time / (24 * 60 * 60 * 1000));
+
+  time %= (24 * 60 * 60 *1000);
+  let hour = Math.floor(time / (60 * 60 * 1000));
+  
+  time %= (60 * 60 * 1000);
+  let min = Math.floor(time /(60 * 1000));
+
+  time %= (60 * 1000)
+
+  let sec = Math.floor(time / 1000);
+
+  return `${day}일 ${hour}시 ${min}분 ${sec}초`;
 }
