@@ -37,26 +37,19 @@ window.onload = function() {
 
 // 게시글 등록하기 누르면 글쓰는 화면 뜨게
 signUp.onclick = function () {
-//   written.style.display = "none";
-//   boardText.style.display = "none";
-//   contentSelect.style.display = "block";
-
-        contentSelect.classList.toggle("popup"); // 맞음
-        
-        // document.querySelector(".board-add").classList.toggle("popup")
-        if(written.classList.contains("popup")){
-            console.log("1")
-            boardText.classList.remove("popup")
-            written.classList.remove("popup")
-        }
-        else{
-            console.log("2")
-            boardText.classList.toggle("popup")
-        }
-        // console.log(document.querySelector(".board-text").classList.contains("popup"))
-        // document.querySelector(".board-text").classList.remove("popup")
-
-    }
+  contentSelect.classList.toggle("popup"); // 맞음
+  if(written.classList.contains("popup")){
+      console.log("1")
+      boardText.classList.remove("popup")
+      written.classList.remove("popup")
+  }
+  else{
+      console.log("2")
+      boardText.classList.toggle("popup")
+      pagee.classList.toggle("hide")
+      
+  }
+}
 
 //  객체에 추가
 function addPost() {
@@ -97,6 +90,8 @@ function addPost() {
 
 contentSelect.classList.toggle("popup");
 boardText.classList.toggle("popup");
+pagee.classList.remove("hide") 
+
   // 글을쓰면 목록 초기화 시켜주기
   showPostList(1);
   pageNation()
@@ -214,6 +209,8 @@ function showPost(post) {
   boardText.classList.toggle("popup")
   content.classList.remove("popup")
   written.classList.toggle("popup")
+  pagee.classList.toggle("hide")
+
 
   // localStorage에서 저장된 게시물을 가져옵니다.
   let title = post.title;
@@ -263,6 +260,8 @@ function showPost(post) {
     if(written.classList.contains("popup")){
         written.classList.remove("popup")
         boardText.classList.add("popup")
+        pagee.classList.remove("hide") 
+
     }
     
 

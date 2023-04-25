@@ -16,6 +16,7 @@ let fullTop=document.querySelector(".full-top");
 let accountArr= [];
 let sum=[];
 let totalMoney = document.querySelector(".total-money");
+let btnstyle = document.querySelector(".btnstyle")
 let ment = document.querySelector(".ment");
 // window.localStorage.clear();
 
@@ -131,6 +132,7 @@ let account5 = window.localStorage.getItem("수량4");
     
     
     totalMoney.innerHTML = `최종 소지금 : ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]+Number(resultArr[5])}`
+    totalMoney.appendChild(btnstyle)
     // ${sum[0]+sum[1]+sum[2]+sum[3]+sum[4]}
   }, 5000);
   })
@@ -157,7 +159,7 @@ function setTimer(time) {
         
         roundCount++;
 
-        if(roundCount==10){ //라운드 설정
+        if(roundCount==1){ //라운드 설정
           // createPopup(1);
           removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
@@ -190,7 +192,7 @@ function setTimer(time) {
 
 function timer() {
   if (interval == 1) return;
-  if (timeout == null) timeout = 300;
+  if (timeout == null) timeout = 120;
   // 주기적으로 팝업 생성
   setInterval(createPopup(),popTime)
   setTimer(1000);
@@ -205,7 +207,7 @@ function stopTimer() {
 // }
 function ten() {
   if (fast) return;
-  reset(interval, null, 10, true)
+  reset(interval, null, 5, true)
   setTimer(1000);
 }
 
