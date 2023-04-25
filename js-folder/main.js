@@ -167,7 +167,7 @@ function setTimer(time) {
         
         roundCount++;
 
-        if(roundCount==1){ //라운드 설정
+        if(roundCount==10){ //라운드 설정
           // createPopup(1);
           removePopup()
           document.querySelector(".round").innerHTML = "ROUND OVER";
