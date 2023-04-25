@@ -258,6 +258,8 @@ body{
   background-image: url(../img/영역_게시판.png);
   position: relative;
   background-size: cover;
+  border-bottom: 3px solid #d2d2d2 ;
+  box-sizing: border-box;
 
 }
 /* .up-percent div{
@@ -273,9 +275,9 @@ body{
   height: 130px;
   position: absolute;
   margin: 0;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   margin-left: -1px;
-  bottom: 5px;
+  bottom: -6px;
 
   
 }
@@ -305,14 +307,14 @@ body{
   margin-top: 7px;
   margin-left: 15px;
   position: absolute;
-  top: 25px;
+  top: 37px;
 
 }
 .list-title1{
-  font-family: 'godic';
+  /* font-family: 'godic'; */
   position: absolute;
-  left: 20px;
-  top: 5px;
+  left: 16px;
+  top: 7px;
   font-size: large;
 }
 
@@ -337,7 +339,6 @@ body{
 }
 .list-flex {
   display: flex;
-  margin-bottom: 3px;
   
 }
 .list-flex li{
@@ -725,4 +726,13 @@ body{
 }
 .btn-wrap .closeBtn{
   width: 100%;
+}
+.logout{
+  position: absolute;
+  border: 2px solid rgb(220, 67, 67);
+  top: 51px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }

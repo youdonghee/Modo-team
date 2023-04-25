@@ -170,8 +170,20 @@ searchBtn.onclick = function () {
   for (let i = 0; i < valueArr.length; i++) {
     let InputValue = searchInput.value
     if(posts[i].title.includes(InputValue)){
+
+      let dog1 = document.querySelector(".dog1");
+      let dog2 = document.querySelector(".dog2");
+      
       console.log("있음");
       valueArr[i].style.display = "flex";
+      if(!dog2.classList.contains("pop")){
+        dog1.style.display = "none";
+        dog2.classList.add("pop")
+        setTimeout(() => {
+          dog1.style.display = "block";
+          dog2.classList.remove("pop")
+        }, 4100);
+      }
     }
     else{ 
       console.log("없음");

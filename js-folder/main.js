@@ -334,3 +334,11 @@ function createPopup(sec) {
 
 // // 주기적으로 팝업 생성
 // setInterval(createPopup(),popTime)
+
+
+let logout = document.querySelector(".logout");
+
+logout.onclick = function(){
+    window.localStorage.removeItem("로그인");
+    location.href= "../login/login_A.html"
+}
