@@ -6,14 +6,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
-  font-family: 'NEXON Lv2 Gothic';
+  font-family: 'GmarketSansMedium';
   position: relative;
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(../login/배경화면_초원.jpg);
+  background-image: url(../img/배경화면_초원.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -111,7 +118,7 @@ body{
 
 
 .menu .add{
-  top: 190px;
+  top: 43px;
   height: 100px;
 }
 
@@ -120,18 +127,46 @@ body{
 }
 
 .menu .search{
-  top: 320px;
+  top: 170px;
 }
 
 .search .search-sub{
   position: absolute;
   top: 40px;
   width: 100%;
-  height: 60px;
+  height: 220px;
   background-color: #f0f3fe;
   border: 1px solid white;
   box-sizing: border-box;
 }
+/* 강아지 사진 영역 ------------------------------------------- */
+.search-sub .dog1,
+.search-sub .dog2{
+  width: 130px;
+  height: 160px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 10px;
+}
+
+.search-sub .dog1{
+  background-image: url(../img/강아지_대기.gif);
+}
+
+.search-sub .dog2{
+  background-image: url(../img/강아지_완료.gif);
+  display: none;
+}
+
+.search-btn{
+  cursor: pointer;
+}
+
+.dog2.pop{
+  display: block;
+}
+
 
 .search-sub input{
   margin-left: 20px;
@@ -143,7 +178,6 @@ body{
   position: relative;
   width: 690px;
   height: 567px;
-  border: 3px solid forestgreen;
   top: 37px;
   left: 260px;
   padding-left: 20px;
@@ -163,7 +197,7 @@ body{
   height: 400px;
   top:100px;
   position: absolute;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
 
   /* display: none; */
@@ -225,7 +259,7 @@ body{
 
 .main-content,
 .inputContent{
-  width: 700px;
+  width: 693px;
   height: 300px;
   float: right;
   border: 1px solid black;
@@ -267,9 +301,16 @@ body{
   line-height: 34px;
   border: 1px solid black;
   text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
+.board-list .list{
+  cursor: pointer;
+}
+
 .number{
-  width: 50px;
+  width: 57px;
 }
 .day{
   width: 150px;
@@ -291,7 +332,7 @@ body{
 }
 
 .em{
-  width: 45px;
+  width: 55px;
 }
 
 
@@ -314,7 +355,11 @@ body{
 }
 
 .written-title{
-    width: 117px;
+    width: 400px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    margin-left: 10px;
     /* border: 1px solid black; */
     /* text-align: center; */
 }
@@ -345,7 +390,7 @@ body{
     text-align: center;
 }
 .written-day{
-    width: 100px;
+    width: 140px;
     /* border: 1px solid black; */
     text-align: center;
 }          
@@ -356,8 +401,14 @@ body{
     height: 290px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     
 
+}
+.writtenContent{
+  padding: 15px;
 }
 .written-row4{
     display: flex;
@@ -367,6 +418,17 @@ body{
     justify-content: space-between;
    
 }
+
+.written-row4 .written-sym2,
+.written-row4 .written-em2,
+.written-row4 .firstRetouch,
+.written-row4 .retouch,
+.written-row4 .delete,
+.back-btn,
+.page-num .num{
+  cursor: pointer;
+}
+
 .rd,
 .se{
     display: flex;
@@ -393,7 +455,19 @@ body{
   cursor: pointer;
 }
 
+.written.popup,
+.board-text.popup,
+.content.popup
+{
+  display: block;
+}
 
+.written,
+.board-text,
+.content
+{
+  display: none;
+}
 
 .hide{
   display: none;
@@ -409,4 +483,103 @@ body{
   margin: 0 10px;
 }
 
+.add-bottom{
+  position: absolute;
+  width: 90%;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%);
+  height: 400px;
+}
 
+.add-top{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  height: 130px;
+}
+
+.add-top input{
+  position: absolute;
+  top: 70px;
+  left: 100px;
+  width: 500px;
+  height: 25px;
+  border: 1px solid rgb(179, 179, 179);
+}
+
+.add-bottom textarea{
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  height: 230px;
+  border: 1px solid rgb(179, 179, 179);
+  vertical-align: top;
+  resize: none;
+}
+
+  .content .triangle{
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid darkblue;
+  border-right: 7px solid darkblue;
+}
+
+  .content .add-sub{
+  position: absolute;
+  top: 15px;
+  left: 58px;
+  font-size: 20px;
+  color: darkblue;
+  margin: 0;
+  
+}
+
+  .content .addtop-line{
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 55%;
+  box-sizing: border-box;
+  border: 1px solid darkblue;
+}
+
+.content .addinput-title{
+  position: absolute;
+  top: 70px;
+  left: 38px;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+.submit,
+.updateBtn{
+  width: 80px;
+  height: 30px;
+  font-size: 17px;
+  line-height: 30px;
+  /* font-weight: 700; */
+  letter-spacing: 2px;
+  text-align: center;
+  border-radius: 10px;
+  bottom: -480px;
+  position: absolute;
+  right: 64px;
+  cursor: pointer;
+  background-image: url(./게시판_등록\ 버튼.png);
+}
+
+/* .submit
+{
+  right: 145px;
+} */

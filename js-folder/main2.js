@@ -225,6 +225,8 @@ function randomPrice() {
     return arr;
 
 }
+re.onclick = ()=>{location.reload()}
+
 let arr = new Array(5).fill(0);
 let Mon ;
 // 주식 상승률 순위 js

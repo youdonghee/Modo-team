@@ -22,7 +22,7 @@ body{
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(./배경화면_초원.jpg);
+    background-image: url(../login/login_img/배경화면_초원.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -31,7 +31,7 @@ body{
     position: relative;
     width: 1000px;
     height: 700px;
-    background-image: url(./배경화면.png);
+    background-image: url(../login/login_img/배경화면.png);
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -102,7 +102,7 @@ body{
     top: 68px;
     width: 492px;
     height: 586px;
-    background-image: url(./로그인영역.png);
+    background-image: url(../login/login_img/로그인영역.png);
     display: none;
 }
 
@@ -211,7 +211,7 @@ body{
 .login-signup .signup-btn{
     width: 120px;
     height: 50px;
-    background-image: url(./로그인\,\ 회원가입\ 버튼.png);
+    background-image: url(../login/login_img/로그인\,\ 회원가입\ 버튼.png);
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -237,7 +237,7 @@ body{
 
 .sign-div{
     left: 15%;
-    background-image: url(./회원가입\ 영역.png);
+    background-image: url(../login/login_img/회원가입\ 영역.png);
 }
 
 .sign-div.popup{
@@ -321,7 +321,7 @@ body{
     font-weight: 800;
     letter-spacing: 3px;
     cursor: pointer;
-    background-image: url(./회원가입\ 창_회원가입\ 버튼.png);
+    background-image: url(../login/login_img/회원가입\ 창_회원가입\ 버튼.png);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -341,8 +341,9 @@ body{
 /* -----------어드민 팝업 창 ------------------------------------------------------------------------- */
 .admin-div{
     right: 5%;
-    background-image: url(./어드민\ 영역.png);
+    background-image: url(../login/login_img/로그인영역.png);
     display: none;
+    background-repeat: no-repeat;
     /* display: block; */
 }
 
@@ -433,7 +434,9 @@ body{
     height: 20px;
     cursor: pointer;
 }
-
+.x{
+    right: 18px;
+}
 .x div,
 .sign-x div,
 .login-x div{
@@ -502,14 +505,14 @@ body{
 .windows-bar .windowsbar-left{
     width: 20%;
     height: 100%;
-    background-image: url(../login/하단_윈도우바_왼쪽.png);
+    background-image: url(../login/login_img/하단_윈도우바_왼쪽.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 .windows-bar .windowsbar-middle{
     width: 60%;
     height: 100%;
-    background-image: url(../login/하단_윈도우바_중앙.png);
+    background-image: url(../login/login_img/하단_윈도우바_중앙.png);
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
@@ -525,7 +528,7 @@ body{
 .windows-bar .windowsbar-right{
     width: 20%;
     height: 100%;
-    background-image: url(../login/하단_윈도우바_오른쪽.png);
+    background-image: url(../login/login_img/하단_윈도우바_오른쪽.png);
     background-repeat: no-repeat;
     background-size: cover;
 }

@@ -12,9 +12,15 @@ const boardTitle = document.querySelector(".main-title");
 const boardContent = document.querySelector(".main-content");
 const contentSelect = document.querySelector(".content");
 const content = document.querySelector(".content");
-
+let pagee = document.querySelector(".page-nation");
 let searchBtn = document.querySelector(".search-btn");
 let index;
+
+let w = window.localStorage.getItem("로그인");
+let Jsonw = JSON.parse(w);
+
+
+
 if (localStorage.getItem('posts')) {
   index = JSON.parse(localStorage.getItem('posts')).length;
 } else {
@@ -28,17 +34,32 @@ window.onload = function() {
 
 // 게시글 등록하기 누르면 글쓰는 화면 뜨게
 signUp.onclick = function () {
-  written.style.display = "none";
-  boardText.style.display = "none";
-  contentSelect.style.display = "block";
-};
+  contentSelect.classList.toggle("popup"); // 맞음
+  if(written.classList.contains("popup")){
+      console.log("1")
+      boardText.classList.remove("popup")
+      written.classList.remove("popup")
+  }
+  else{
+      console.log("2")
+      boardText.classList.toggle("popup")
+      pagee.classList.toggle("hide")
+      
+  }
+}
 
 //  객체에 추가
 function addPost() {
   let title = document.getElementById("title").value;
   let content = document.getElementById("content").value;
+
+  if(title.length == 0 || content ==0){
+     alert("제목과 내용을 모두 입력해주세요.")
+     return;
+  }
+
   let date = new Date().toISOString().substring(0, 10)
-  let myname = "유동희"
+  let myname = Jsonw.nickname // 여기에 id
   // 새로운 게시물을 만듭니다.
   var post = {
     title: title,
@@ -60,9 +81,9 @@ function addPost() {
   // 배열을 다시 localStorage에 저장합니다.
   localStorage.setItem("posts", JSON.stringify(posts));
 
-  written.style.display = "none";
-  boardText.style.display = "block";
-  contentSelect.style.display = "none";
+contentSelect.classList.toggle("popup");
+boardText.classList.toggle("popup");
+pagee.classList.remove("hide") 
 
   // 글을쓰면 목록 초기화 시켜주기
   showPostList(1);
@@ -70,18 +91,25 @@ function addPost() {
   index++;
 }
 
+let logout = document.querySelector(".logout");
+
+logout.onclick = function(){
+    window.localStorage.removeItem("로그인");
+    location.href= "../login/login_A.html"
+}
+
 // // 게시글 목록
 function showPostList(page) {
   // localStorage에서 저장된 게시물 목록을 가져옵니다.
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   // 게시물 목록을 보여줍니다.
   // board-titile 밑에
-  var list = document.getElementById("board-list");
+  let list = document.getElementById("board-list");
   list.innerHTML = "";
-  for (var i = 0; i < posts.length; i++) {
-    var post = posts[i];
-    var board = list.children[i] || document.createElement("div");
+  for (let i = 0; i < posts.length; i++) {
+    let post = posts[i];
+    let board = list.children[i] || document.createElement("div");
     //div 만들어줌 
     let div01 = document.createElement("div")
     let div02 = document.createElement("div")
@@ -114,23 +142,12 @@ function showPostList(page) {
     });
 
     // 제목클릭하면 보여주기
-    
-    board.onclick = (function (post) { // 클로저 활용
+    arr[2].onclick = (function (post) { // 클로저 활용  
       return function () {
-        post.view += 1
-        arr[4].innerHTML = post.view;
+        post.view += 1 // 조회수 올리고
+        arr[4].innerHTML = post.view; // 밖에 조회수 올리고
         localStorage.setItem("posts", JSON.stringify(posts));
-        showPost(post);
-        document.querySelector(".written-sym2").onclick = function(){
-          post.like += 1;
-          window.localStorage.setItem("posts", JSON.stringify(posts));
-          showPost(post)
-        }
-        document.querySelector(".written-em2").onclick = function () {
-          post.disLike += 1;
-          window.localStorage.setItem("posts", JSON.stringify(posts));
-          showPost(post)
-        }
+        showPost(post,i);
       };
     })(post);
     // i 는 페이지갯수의 인덱스 
@@ -139,14 +156,64 @@ function showPostList(page) {
     if (~~(i/10) === page-1){ 
       list.appendChild(board); 
     }
+
+  }
+}
+
+searchBtn.onclick = function () {
+  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let searchInput = document.getElementById("search-input");
+  let valueArr = document.getElementsByClassName("board-list");
+  console.log("클릭")
+  console.log(searchInput)
+
+  for (let i = 0; i < valueArr.length; i++) {
+    let InputValue = searchInput.value
+    if(posts[i].title.includes(InputValue)){
+
+      let dog1 = document.querySelector(".dog1");
+      let dog2 = document.querySelector(".dog2");
+      
+      console.log("있음");
+      valueArr[i].style.display = "flex";
+      if(!dog2.classList.contains("pop")){
+        dog1.style.display = "none";
+        dog2.classList.add("pop")
+        setTimeout(() => {
+          dog1.style.display = "block";
+          dog2.classList.remove("pop")
+        }, 4100);
+      }
+    }
+    else{ 
+      console.log("없음");
+      valueArr[i].style.display = "none";
+    } 
   }
 }
 
 // 게시물 클릭하면 보여주기
-function showPost(post) {
-  content.style.display = "none";
-  boardText.style.display = "none";
-  written.style.display = "block";
+function showPost(post,i) {
+    
+  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  
+  boardText.classList.toggle("popup")
+  content.classList.remove("popup")
+  written.classList.toggle("popup")
+  pagee.classList.toggle("hide")
+  // 토글 이슈 해결 i 값 매개변수로 받아와서 넣어줌
+  document.querySelector(".written-sym2").onclick = function(){
+    let post = posts[i]
+    post.like += 1;
+    document.querySelector(".written-sym").innerHTML = `공감 ${post.like}` ;
+    localStorage.setItem("posts", JSON.stringify(posts));
+  }
+  document.querySelector(".written-em2").onclick = function () {
+    let post = posts[i]
+    post.disLike += 1;
+    document.querySelector(".written-em").innerHTML = `비공감 ${post.disLike}` ;
+    localStorage.setItem("posts", JSON.stringify(posts));
+  }
 
   // localStorage에서 저장된 게시물을 가져옵니다.
   let title = post.title;
@@ -168,17 +235,40 @@ function showPost(post) {
   writtenTitle.innerHTML = "글제목 : " + title;
   let writtenContent = document.querySelector(".writtenContent")
   writtenContent.innerHTML = postcontent;
+
   document.querySelector(".written-day").innerHTML = post.date;
   document.querySelector(".written-writer").innerHTML = post.myname;
   document.querySelector(".written-view").innerHTML = `조회수 ${post.view}` ;
   document.querySelector(".written-sym").innerHTML = `공감 ${post.like}` ;
   document.querySelector(".written-em").innerHTML = `비공감 ${post.disLike}` ;
 
+  console.log(post.myname);
+  console.log(typeof(post.myname));
+  console.log(Jsonw.nickname);
+  console.log(typeof(Jsonw.nickname));
+
+  if(post.myname == Jsonw.nickname){
+        console.log("같아요")
+        firstRetouchBtn.style.display="block";
+        deleteBtn.style.display="block";
+    }
+    else if(post.myname !== Jsonw.nickname) {
+        console.log("달라요")
+        firstRetouchBtn.style.display="none";
+        deleteBtn.style.display="none";
+    }
+
   // 뒤로가기 버튼 누르면 
   backbtn.onclick = function () {
-    written.style.display = "none";
-    boardText.style.display = "block";
-    content.style.display = "none";
+
+    if(written.classList.contains("popup")){
+        written.classList.remove("popup")
+        boardText.classList.add("popup")
+        pagee.classList.remove("hide") 
+
+    }
+    
+
     showPostList(1);
   };
   // 수정1 버튼누르면
@@ -232,17 +322,15 @@ function updatePost(post) {
   document.querySelector(".written-title").innerHTML = "제목 : " + title;
   document.querySelector(".writtenContent").innerHTML = content;
 
-  // written.style.display = "none";
-  // boardText.style.display = "block";
-  // contentSelect.style.display = "none";
   showPostList(1);
 }
 
 // 게시물 삭제
 function deletePost(post) {
+
   // localStorage에서 저장된 게시물 목록을 객체로 가져옵니다.
   var posts = JSON.parse(localStorage.getItem("posts")) || []; //전체 다 받아오고
-// newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
+  // newTemp 에 posts 값만 복사해서 넣고 map 으로 원본값은 냅두고 값을 바꿔준다
   posts.map((a)=>{
     if(a.index==post.index){ //내가 선택한 인덱스가 포스트의 인덱스와 같으면 
       posts.splice(posts.indexOf(a),1)
@@ -250,15 +338,12 @@ function deletePost(post) {
     }
   })
   document.querySelector(".written-title").innerHTML = "";
-
-
   document.querySelector(".writtenContent").innerHTML = "";
   document.getElementById("Retitle").value = ""
   document.getElementById("Recontent").value = ""
 
-  written.style.display = "none";
-  boardText.style.display = "block";
-  contentSelect.style.display = "none";
+  boardText.classList.toggle("popup")
+  written.classList.toggle("popup")
   showPostList(1);
   pageNation()
 }
@@ -277,21 +362,5 @@ function pageNation(){
         showPostList(i)
     }
     pageNum.appendChild(numDiv)
-  }
-}
-
-searchBtn.onclick = function () {
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
-  let searchInput = document.getElementById("search-input");
-  let valueArr = document.getElementsByClassName("board-list");
-  for (let i = 0; i < valueArr.length; i++) {
-    console.log(valueArr); // 11개 
-    let InputValue = searchInput.value
-    if(posts[i].title.includes(InputValue)){
-      valueArr[i].style.display = "flex";
-    }
-    else{ 
-      valueArr[i].style.display = "none";
-    } 
   }
 }

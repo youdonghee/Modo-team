@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
     <!-- -------게시판 메뉴 ------------------------------------------------- -->
     <div class="menu">
       <!-- -----게시글 순서 ------------------------------------------------- -->
-      <div class="post-order">
+      <!-- <div class="post-order">
         <div class="postorder-title">
           <p>게시글 순서</p>
         </div>
@@ -25,7 +24,7 @@
           <p class="">조회수순</p>
           <p class="">공감순</p>
         </div>
-      </div>
+      </div> -->
       <!-- ----------------------------------------------------------------- -->
 
       <!-- -----게시글 등록 ------------------------------------------------- -->
@@ -47,6 +46,8 @@
         <div class="search-sub">
           <input type="text" id="search-input">
           <button class="search-btn">검색</button>
+          <div class="dog1"></div>
+          <div class="dog2"></div>
         </div>
       </div>
       <!-- ----------------------------------------------------------------- -->
@@ -64,7 +65,7 @@
         <span class="logout">로그아웃</span>
       </div>
       <!-- 게시판 전체 -->
-      <div class="board-text">
+      <div class="board-text popup">
         <div class ="board-title">
           <div class="number">글번호</div>
           <div class="day">날짜</div>
@@ -83,12 +84,12 @@
           <div class="written-row1">
               <div class="written-title">제목</div>
               <div class="inputTitle hide show1">
-                제목 : <input type="text" id="Retitle">
+                제목 : <input type="text" id="Retitle" style="width: 350px;">
               </div>
               
               <div class="vses">
-                  <div class="written-view">조회 3</div>
-                  <div class="written-sym">공감 2</div>
+                  <div class="written-view">조회 0</div>
+                  <div class="written-sym">공감 0</div>
                   <div class="written-em">비공감 0</div>
                   <div class="written-singo">신고</div>
               </div>
@@ -125,23 +126,41 @@
 
       <!-- 게시글 등록 부분 -->
       <div class="content">
-        <div class="row1">
+        <!-- <div class="row1">
           <div class="title">제목</div>
           <input class="main-title" type="text" id="title">
 
+        </div> -->
+        <div class="add-top">
+            <div class="triangle"></div>
+            <p class="add-sub">제목을 입력하세요!</p>
+            <div class="addtop-line"></div>
+            <p class="addinput-title">제목</p>
+            <input id="title" type="text">
         </div>
-        <div class="row2">
+        <!-- <div class="row2">
           <textarea class="main-content" type="text" id="content" style="resize: none;" ></textarea>
+        </div> -->
+        <div class="add-bottom">
+            <div class="triangle"></div>
+            <p class="add-sub">내용을 입력하세요!</p>
+            <textarea  class="main-content" type="text" id="content" style="resize: none;"></textarea>
+            <!-- <input type="text"> -->
+            <div class="addtop-line"></div>
         </div>
-        <div class="row3">
-          <button class="submit" onclick="addPost()">등록하기</button>
-          <button class="updateBtn" onclick="addPost()">수정하기</button>
-        </div>
-      </div>
+        <div class="submit" onclick="addPost()">등록</div>
+        <!-- <div  class="updateBtn" onclick="addPost()">수정</div> -->
+        
+    <!-- <div class="row3">
+      <button class="submit" onclick="addPost()">등록하기</button>
+      <button class="updateBtn" onclick="addPost()">수정하기</button>
+      
+    </div> -->
+</div>
 
       <!-- 페이지네이션 영역 -->
       <div class="page-nation">
-        <div class="page_btn" onclick="before()"><</div>
+        <!-- <div class="page_btn" onclick="before()"><</div> -->
         <div class="page-num">
           <div class="num">1</div>
           <div class="num">2</div>
@@ -149,7 +168,7 @@
           <div class="num">4</div>
           <div class="num">5</div>
         </div>
-        <div class="page_btn1" onclick="next()">></div>
+        <!-- <div class="page_btn1" onclick="next()">></div> -->
       </div>
       <!-- ------------------------------------------------------------------------------------------------- -->
     </div>

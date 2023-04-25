@@ -8,9 +8,9 @@ let loginX = document.querySelector(".login-x");            //로그인 영역 x
 gameIcon.ondblclick = function(){       //게임아이콘 더블클릭 시 로그인 창이 뜬다.
     // console.log("클릭돼");
     background.classList.toggle("popup")
-    const audio = new Audio();
-    audio.src = "../BGM/Windows XP Startup.wav";
-    audio.play();
+    // const audio = new Audio();
+    // audio.src = "../BGM/Windows XP Startup.wav";
+    // audio.play();
 }
 
 iconText.ondblclick = function(){       //게임 이름 더블 클릭 시 로그인 창이 뜬다.
@@ -67,21 +67,6 @@ window.onload = function () {
     // audio.play();
 }
 //--------------------------------------------------------------------------------------------------
-
-
-
-// let signUserData = JSON.parse(localStorage.getItem('유저'));
-// if (!signUserData) {
-//     signUserData = [{ id: "admin", pw: "q123123!", nickname: "관리자" }];
-// } 
-// console.log(signUserData);
-
-// window.localStorage.setItem("유저", JSON.stringify([{ id: "admin", pw: "q123123!", nickname: "관리자" }]));
-// let signUserData = JSON.parse(localStorage.getItem('유저'));
-// signUserData.push({ id: "admin", pw: "q123123!", nickname: "관리자" });
-
-
-
 //-------로그인 버튼을 클릭했을 때 실행되는 함수 - 정규식 여부확인,  
 loginBtn.onclick = function () {
     userData = window.localStorage.getItem("유저");
@@ -89,18 +74,7 @@ loginBtn.onclick = function () {
     // console.log("클릭");
     let userId = document.querySelector('.user-id').value;
     let userPw = document.querySelector('.user-pw').value;
-
-    // console.log(userData);
-    // console.log(JSON.parse(userData));
-    // console.log(JSON.parse(userData)[0].id);
-    // console.log(JSON.parse(userData).length);
-
-    // let idIndex = JSON.parse(userData).findIndex(function(user){
-    //     user.id == userId;
-    //     console.log(user.id)
-    //     console.log(userId)
-    // });
-
+    
     let idIndex = JSON.parse(userData).findIndex(user =>
         user.id == userId)          //회원 목록에 입력된 아이디가 없으면 -1, 있으면 해당 아이디 값의 인덱스를 반환
         // console.log(user.id);
@@ -122,11 +96,13 @@ loginBtn.onclick = function () {
             //확인된 인덱스 값의 패스워드와 입력한 패스워드의 값이 동일하고, 해당 인덱스의 tnf값이 1(승인된계정)일때
             else if(JSON.parse(userData)[idIndex].pw == userPw && JSON.parse(userData)[idIndex].tnf == 1){
                 alert("회원가입 한 아이디로 로그인 성공!");
-
-                //로그인 성공 시, 성공한 계정은 로컬스토리지 '로그인'에 저장되어야 한다.
+                
+                                //로그인 성공 시, 성공한 계정은 로컬스토리지 '로그인'에 저장되어야 한다.
                 let login = JSON.parse(userData)[idIndex];
                 window.localStorage.setItem("로그인", JSON.stringify(login));
                 console.log(login);
+                
+                location.href= "../html-folder/main.html"
             }
             //확인된 인덱스 값의 패스워드와 입력한 패스워드의 값이 동일하고, 해당 인덱스의 tnf값이 0(승인되지 않은 계정)일때
             else if(JSON.parse(userData)[idIndex].pw == userPw && JSON.parse(userData)[idIndex].tnf == 0){
@@ -155,116 +131,7 @@ loginBtn.onclick = function () {
 
 
 
-//     let text = document.querySelector(".textbox");
-// try{
-//     if (isId(userId) && isPw(userPw)) { // 정규식이 맞았고
-//         // console.log("로그인 성공");
 
-//         JSON.parse(userData).forEach(function(e,index){
-
-//                 console.log(e);
-//                 console.log(JSON.parse(userData));
-
-//                 if(userId !== e.id && userPw !== e.pw){
-
-//                     // alert("로그인 성공");
-//                     text.innerHTML="로그인 실패";
-//                 }
-
-//                 else{
-//                     throw new Error(alert("로그인 성공"));
-//                 }
-//         })
-//     }
-
-// }
-// catch(e){
-
-// }
-    //     for (let i = 0; i < JSON.parse(userData).length; i++) {
-    //         console.log(JSON.parse(userData)[i].id)
-    //         console.log(userId);
-    //         console.log(JSON.parse(userData)[i].pw);
-    //         console.log(userPw)
-
-    //         if (JSON.parse(userData)[i].id == userId && JSON.parse(userData)[i].pw == userPw && JSON.parse(userData)[i].tnf == 1) {
-    //             // alert("동작s")
-    //             //회원가입 한 로그인 성공 시 동작하는 명령문
-    //             if (userId != "admin") {
-    //                 alert("회원가입 한 아이디로 로그인 성공!")
-
-
-    //                 // 해당 영역에서 게임 페이지로 이동!
-
-
-    //                 break;
-    //             }
-    //             else {
-    //                 //어드민 계정 로그인 시 팝업창 띄움
-    //                 alert("관리자 계정으로 로그인 성공!")
-    //                 admin();
-    //                 // console.log("관리자 계정으로 로그인 성공!")
-    //                 break;
-    //             }
-
-    //         }
-    //         // else {
-    //         //     alert("가입된 계정이 아닙니다.\n아이디와 비밀번호를 확인하세요!");
-
-    //         // }
-    //         else if (JSON.parse(userData)[i].id == userId && JSON.parse(userData)[i].pw != userPw) {
-    //         alert("회원정보와 일치하지 않습니다.\n비밀번호를 확인하세요!");
-            
-    //         }
-    //         else if (JSON.parse(userData)[i].id != userId && JSON.parse(userData)[i].pw == userPw) {
-    //         alert("가입된 계정이 아닙니다.\n아이디를 확인하세요!");
-            
-    //         }
-    //         else if (JSON.parse(userData)[i].id != userId && JSON.parse(userData)[i].pw !== userPw) {
-    //         alert("가입된 계정이 아닙니다.\n아이디와 비밀번호를 확인하세요!");
-            
-    //         }
-    //     }
-    // }
-    // else {
-    //     alert("아이디와 비밀번호 형식을 확인하세요!");
-    // }
-
-
-
-        // for (let i = 0; i < JSON.parse(userData).length; i++) {
-    //     console.log(JSON.parse(userData)[i].id)
-    //     console.log(userId);
-    //     console.log(JSON.parse(userData)[i].pw);
-    //     console.log(userPw);
-    //     if (isId(userId) && isPw(userPw)) {
-    //         console.log("로그인 성공");
-    //         if (JSON.parse(userData)[i].id == userId && JSON.parse(userData)[i].pw == userPw && JSON.parse(userData)[i].tnf == 1) {
-    //             alert("동작s")
-    //             //회원가입 한 로그인 성공 시 동작하는 명령문
-    //             if(userId != "admin"){
-    //                 alert("회원가입 한 아이디로 로그인 성공!")
-    //                 // console.log("회원가입 한 아이디로 로그인 성공!")
-    //                 break;
-    //             }
-    //             else{
-    //                 //어드민 계정 로그인 시 팝업창 띄움
-    //                 alert("관리자 계정으로 로그인 성공!")
-    //                 admin();
-    //                 // console.log("관리자 계정으로 로그인 성공!")
-    //                 break;
-    //             }
-
-    //         }
-    //         // else {
-    //         //     alert("가입된 계정이 아닙니다.\n아이디와 비밀번호를 확인하세요!");
-
-    //         // }
-    //     }
-    //     else {
-    //         alert("아이디와 비밀번호 형식을 확인하세요!");
-    //     }
-    // }
 }
 //---------------------------------------------------------------------------------------------------
 
@@ -310,18 +177,6 @@ let userNickOverlapTnF = 1;         //유저 닉네임이 중복되지 않을 �
 //------- 아이디 중복확인 버튼 클릭 시 어드민 계정 생성 --------------------------------------------
 signIdBtn.onclick = function () {
     console.log("동작")
-
-    // //userData = JSON.parse(localStorage.getItem('유저'));
-    // userData = localStorage.getItem('유저');
-    // if (!userData) {
-    //     window.localStorage['유저'] = JSON.stringify([{ id: "admin", pw: "q123123!", nickname: "관리자", tnf: 1 }])
-    //     // window.localStorage.setItem("유저", JSON.stringify([{ id: "admin", pw: "q123123!", nickname: "관리자" }]));
-    //     // userData = JSON.parse(localStorage.getItem('유저'));
-    //     userData = localStorage.getItem('유저');
-    // }
-    //  console.log(userData);
-    //------------------------------------------------------------------------------------
-
     userData = localStorage.getItem("유저");
     // console.log(window.localStorage.getItem("유저"));
     console.log(JSON.parse(userData));
@@ -351,25 +206,7 @@ signIdBtn.onclick = function () {
         signIdSub.style.color = "red";
         userIdOverlapTnF = 1;
     }
-    /*
-    for (let i = 0; i < JSON.parse(userData).length; i++) {
-        console.log(signIdInput.value)
-        if (!JSON.parse(userData)[i].id == signIdInput.value) {
-            //for문으로 저장된 아이디값 돌려서 같은 값이 나오면 else
-            //다른 값이 나오면 if
-            console.log("중복?")
-            signIdSub.innerHTML = "사용 가능한 아이디 입니다.";
-            signIdSub.style.color = "blue";
-            userIdOverlapTnF = 0;
-            break;
-        }
-        else {
-            signIdSub.innerHTML = "이미 사용 중인 아이디 입니다.";
-            signIdSub.style.color = "red";
-            break;
-        }
-    }
-    */
+    
 }
 // filter에서 id를 찾아서 일치하지 않은것만 return
 //--------------------------------------------------------------------------------------------------
@@ -392,24 +229,7 @@ signNickBtn.onclick = function () {
         signNickSub.style.color = "red";
         userNickOverlapTnF = 1;
     }
-    /*
-    for (let i = 0; i < JSON.parse(userData).length; i++) {
-        console.log(signNickname.value)
-        if (!JSON.parse(userData)[i].nickname == signNickname.value) {
-            //for문으로 저장된 아이디값 돌려서 같은 값이 나오면 else
-            //다른 값이 나오면 if
-            signNickSub.innerHTML = "사용 가능한 닉네임 입니다.";
-            signNickSub.style.color = "blue";
-            userNickOverlapTnF = 0;
-            break;
-        }
-        else {
-            signNickSub.innerHTML = "이미 사용 중인 닉네임 입니다.";
-            signNickSub.style.color = "red";
-            break;
-        }
-    }
-    */
+    
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -518,43 +338,6 @@ signAdd.onclick = function () {
     adminadd();
 }
 //------------------------------------------------------------------------------------------------------
-
-
-
-
-// let arr = [{ "id": "dsfsdklf", "pw": "sfsdf123!", "nickname": "af" }, { "id": "jiwon1", "pw": "123123q!", "nickname": "지원1" }]
-
-
-
-
-
-
-/*
-function addUser() {
-    let value = window.localStorage.getItem("유저");
-    //닉네임 조건도 추가해야 한다.
-    if(window.localStorage.length == 0){        //로컬 스토리지에 아무 내용도 기입되지 않았을 경우
-        if (userIdTnF == 0 && userPwTnF == 0 ) {        //아이디와 패스워드가 정규식 조건에 맞을 경우.
-            window.localStorage.setItem("유저", `{"id": "${signIdInput.value}", "pw": "${signPwInput.value}", "nickname": "${signNickname.value}" }`);
-        }
-        else {   //모든 조건이 들어맞지 않을 때
-            alert("회원가입을 진행 할 수 없습니다. 입력한 사항을 다시 확인해주세요.")
-        }
-    }
-    else{       //로컬스토리지에 내용이 기입되어 있을 경우 추가로 기입되도록 함
-        if (userIdTnF == 0 && userPwTnF == 0 ) {        //아이디와 패스워드가 정규식 조건에 맞을 경우.
-            window.localStorage.setItem("유저", value + "|" + `{"id": "${signIdInput.value}", "pw": "${signPwInput.value}", "nickname": "${signNickname.value}" }`);
-        }
-        else {   //모든 조건이 들어맞지 않을 때
-            alert("회원가입을 진행 할 수 없습니다. 입력한 사항을 다시 확인해주세요.")
-        }
-    }
-    console.log(window.localStorage.getItem("유저"));
-}
-*/
-
-
-
 //--------- 어드민 진행 - 어드민 계정으로 로그인 시 팝업창 열기 ----------------------------------------
 let adminXBtn = document.querySelector('.x');
 let adminDiv = document.querySelector('.admin-div');
@@ -615,21 +398,6 @@ function adminadd() {
     _Ali.append(_Adiv1,_Adiv2,_Adiv3,_Adiv4,_Adiv5);
     _Aul.append(_Ali);
     
-    // _li1.style.display = "flex";
-    // _li1.append(_div4,_div5);
-    // _topDiv1.append(_li1);
-    // _ul.append(_topDiv1);
-    
-    // _topDiv2.style.display = "flex";
-    // _li2.style.display = "flex";
-    // _li2.append(_div6);
-    // _topDiv2.append(_li.cloneNode(true));
-    // _topDiv2.append(_li2);
-    // _ul2.append(_topDiv2);
-    //---------------------------------------------------------
-
-
-
     //----- 회원목록 리스트 목록 --------------------------------
     let _Bul = document.createElement("ul");
     let _Bli = document.createElement("li");
@@ -742,89 +510,6 @@ function adminadd() {
 }
 adminadd()
 //--------------------------------------------------------------------------------------------------
-
-
-// //--------- 어드민 진행 - 회원가입 시 어드민 창 회원 정보에 그려져야 한다. -----------------------------
-// function adminadd() {
-    
-//     userData = window.localStorage.getItem("유저");
-//     let userData2 = JSON.parse(userData);
-//     let adminAddNRemove = document.querySelector(".admin-addsub");
-//     let adminRemove = document.querySelector(".admin-listsub");
-    
-//     adminAddNRemove.innerHTML = "";     //추가 할 때 초기화 시켜주는 구문.
-//     let _ul = document.createElement("ul");
-//     let _li = document.createElement('li');
-//     let _div1 = document.createElement("div");
-//     let _div2 = document.createElement("div");
-//     let _div3 = document.createElement("div");
-//     let _div4 = document.createElement("div");
-//     let _div5 = document.createElement("div");
-
-//     _div1.innerHTML = "아이디";
-//     _div2.innerHTML = "비밀번호";
-//     _div3.innerHTML = "닉네임";
-//     _div4.innerHTML = "수락";
-//     _div5.innerHTML = "거절";
-
-//     _li.style.display = "flex";
-//     _li.append(_div1,_div2,_div3,_div4,_div5);
-//     _ul.append(_li);
-
-//     // [...userData2].forEach(function(i,index){
-//     userData2.forEach(function(i,index){
-//         let _li = document.createElement('li');
-//         let _div1 = document.createElement("div");
-//         let _div2 = document.createElement("div");
-//         let _div3 = document.createElement("div");
-//         let _div4 = document.createElement("div");
-//         let _div5 = document.createElement("div");
-//         let _addBtn = document.createElement("button");    
-//         let _removeBtn = document.createElement("button");
-        
-//         if((i).tnf == 0){
-//             _div1.innerHTML = (i).id;
-//             _div2.innerHTML = (i).pw;
-//             _div3.innerHTML = (i).nickname;
-//             _addBtn.innerHTML = "수락";
-//             _removeBtn.innerHTML = "거절";
-//             _div4.append(_addBtn);
-//             _div5.append(_removeBtn);
-//         }
-        
-//         _addBtn.onclick = function(){
-//             console.log("수락될거임");
-//             console.log(userData2);
-//             console.log([...userData2]);
-//             console.log(userData2==[...userData2]);
-//             // i.tnf = 1;
-//             userData2[index].tnf = 1;
-//             window.localStorage.setItem('유저',JSON.stringify(userData2));
-//             console.log(index)
-            
-//         }
-
-//         _removeBtn.onclick = function(){
-//             userData2.splice(index,1);
-//             // window.localStorage.removeItem
-//             console.log("나");
-//             console.log(userData2);
-//             console.log(...userData2);
-//             window.localStorage.setItem('유저',JSON.stringify(userData2));
-//             adminadd();
-
-//         }
-//         _li.style.display = "flex";
-//         _li.append(_div1,_div2,_div3,_div4, _div5);
-//         _ul.append(_li);
-//     });
-//     adminAddNRemove.append(_ul);
-//     // adminRemove.append(_ul);
-// }
-// adminadd()
-// //--------------------------------------------------------------------------------------------------
-
-
 
 //--------- 로그인 팝업 드래그이동 -------------------------------------------------------------------
 let loginTop = document.querySelector(".login-drag");       //로그인 상단 파란영역 (클릭될 영역)

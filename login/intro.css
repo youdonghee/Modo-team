@@ -3,7 +3,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url(../윈도우\ 인트로.png);
+    background-image: url(../login/login_img/윈도우\ 인트로.png);
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 2;
@@ -36,7 +36,7 @@
 .microsoft{
     width: 100%;
     height: 270px;
-    background-image: url(../마이크로소프트_로고.png);
+    background-image: url(../login/login_img/마이크로소프트_로고.png);
 }
 
 .left-subtext{
@@ -65,7 +65,7 @@
     left: 60px;
     top: 50%;
     transform: translate(0,-50%);
-    background-image: url(../윈도우\ 인트로_사용자.png);
+    background-image: url(../login/login_img/윈도우\ 인트로_사용자.png);
     background-repeat: no-repeat;
 
 }
@@ -114,6 +114,6 @@
     margin-top: 2px;
     width: 40px;
     height: 40px;
-    background-image: url(../윈도우\ 인트로_입력.png);
+    background-image: url(../login/login_img/윈도우\ 인트로_입력.png);
     cursor: pointer;
 }
