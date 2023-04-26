@@ -1,6 +1,6 @@
 let nowPrice = document.querySelectorAll(".now-price");
 let howPrice = document.querySelectorAll(".how-price");
-let sumA = [2000, 2000, 2000, 2000, 2000];
+let sumA = [100, 100, 2000, 2000, 2000];
 let icon = document.querySelectorAll(".icon");
 let imgA = document.querySelector(".A");
 let imgB = document.querySelector(".B");
